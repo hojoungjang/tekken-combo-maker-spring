@@ -23,7 +23,8 @@ public class Move {
 
     private int hitCount;
 
-    @Column(nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stance_id", nullable = true)
     private Stance stance;
 
     /*
