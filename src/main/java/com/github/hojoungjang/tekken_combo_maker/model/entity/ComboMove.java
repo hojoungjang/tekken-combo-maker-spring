@@ -10,9 +10,8 @@ public class ComboMove {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "move_id")
-    private Move move;
+    // MongoDB document ID
+    private String moveId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "combo_id")
