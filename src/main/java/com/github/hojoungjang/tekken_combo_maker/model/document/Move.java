@@ -1,4 +1,4 @@
-package com.github.hojoungjang.tekken_combo_maker.model.entity;
+package com.github.hojoungjang.tekken_combo_maker.model.document;
 
 import com.github.hojoungjang.tekken_combo_maker.model.enums.HitLevel;
 import com.github.hojoungjang.tekken_combo_maker.model.enums.MoveAttribute;
