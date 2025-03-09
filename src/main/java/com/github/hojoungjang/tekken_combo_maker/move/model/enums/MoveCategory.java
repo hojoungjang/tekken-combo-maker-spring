@@ -1,4 +1,4 @@
-package com.github.hojoungjang.tekken_combo_maker.model.enums;
+package com.github.hojoungjang.tekken_combo_maker.move.model.enums;
 
 /**
  * 기술 분류

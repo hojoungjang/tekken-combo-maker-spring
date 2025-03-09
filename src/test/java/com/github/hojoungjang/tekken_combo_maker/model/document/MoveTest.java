@@ -1,8 +1,8 @@
 package com.github.hojoungjang.tekken_combo_maker.model.document;
 
-import com.github.hojoungjang.tekken_combo_maker.model.enums.HitLevel;
-import com.github.hojoungjang.tekken_combo_maker.model.enums.MoveAttribute;
-import com.github.hojoungjang.tekken_combo_maker.model.enums.MoveCategory;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
+import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.github.hojoungjang.tekken_combo_maker.model.entity;
+package com.github.hojoungjang.tekken_combo_maker.combo.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
