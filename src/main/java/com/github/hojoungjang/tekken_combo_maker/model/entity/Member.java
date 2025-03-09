@@ -3,6 +3,9 @@ package com.github.hojoungjang.tekken_combo_maker.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+/**
+ * 사용자 엔티티 클래스
+ */
 @Entity
 @Getter
 public class Member {

@@ -3,6 +3,9 @@ package com.github.hojoungjang.tekken_combo_maker.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+/**
+ * 게시물 엔티티 클래스
+ */
 @Entity
 @Getter
 public class Post {
@@ -12,9 +15,9 @@ public class Post {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    private long likes;
-    private long dislikes;
+    // private long likes;
+    // private long dislikes;
 }
