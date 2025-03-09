@@ -1,7 +1,6 @@
-package com.github.hojoungjang.tekken_combo_maker.comment.model.entity;
+package com.github.hojoungjang.tekken_combo_maker.post.model.entity;
 
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
-import com.github.hojoungjang.tekken_combo_maker.post.model.entity.Post;
 import jakarta.persistence.*;
 import lombok.Getter;
 
