@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-// TODO: use builder or better ways to map between entity and DTO
 @Getter
 public class CharacterDto {
     private final Long id;
