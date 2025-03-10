@@ -5,6 +5,9 @@ import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterRep
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -32,20 +35,20 @@ class CharacterServiceTest {
     @Test
     public void testFindAll() throws Exception {
         // given
+        Pageable pageable = PageRequest.of(0, 10);
+
         // when
-        List<CharacterDto> characters = characterService.findAll();
+        Page<CharacterDto> charactersPage = characterService.findAll(pageable);
 
         // then
+        List<CharacterDto> characters = charactersPage.getContent();
         Assertions.assertThat(characters)
                 .isNotEmpty()
                 .hasSize(3);
-
         Assertions.assertThat(characters)
                 .extracting(CharacterDto::getId).contains(1L);
-
         Assertions.assertThat(characters)
                 .extracting(CharacterDto::getName).contains("character 1", "character 2", "character 3");
-
         Assertions.assertThat(characters)
                 .extracting(CharacterDto::getAvatarImageUrl).contains("image url 1", "image url 2", "image url 3");
     }

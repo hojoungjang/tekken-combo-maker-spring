@@ -2,6 +2,9 @@ package com.github.hojoungjang.tekken_combo_maker.character.mock;
 
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
 import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +31,11 @@ public class FakeCharacterRepository implements ICharacterRepository {
     }
 
     @Override
-    public List<Character> findAll() {
-        return characters;
+    public Page<Character> findAll(Pageable pageable) {
+        int offset = (int) pageable.getOffset();
+        int pageSize = pageable.getPageSize();
+
+        List<Character> data = new ArrayList<>(characters.subList(offset, Math.min(offset + pageSize, characters.size())));
+        return new PageImpl<>(data, pageable, data.size());
     }
 }

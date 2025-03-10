@@ -4,6 +4,8 @@ import com.github.hojoungjang.tekken_combo_maker.character.controller.ICharacter
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,17 +31,17 @@ public class CharacterService implements ICharacterService {
     }
 
     @Override
-    public List<CharacterDto> findAll() {
-        List<Character> characters = characterRepository.findAll();
+    public Page<CharacterDto> findAll(Pageable pageable) {
+        Page<Character> characters = characterRepository.findAll(pageable);
 
-        return characters.stream().map(character -> {
+        return characters.map(character -> {
             CharacterDto dto = new CharacterDto();
             dto.setId(character.getId());
             dto.setName(character.getName());
             dto.setDescription(character.getDescription());
             dto.setAvatarImageUrl(character.getAvatarImageUrl());
             return dto;
-        }).toList();
+        });
     }
 
 }
