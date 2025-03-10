@@ -27,5 +27,5 @@ public class Combo {
 
     private String name;
     private int damage;
-    private int hit_count;
+    private int hitCount;
 }
