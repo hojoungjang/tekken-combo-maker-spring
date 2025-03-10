@@ -2,7 +2,6 @@ package com.github.hojoungjang.tekken_combo_maker.character.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class CharacterDto {
