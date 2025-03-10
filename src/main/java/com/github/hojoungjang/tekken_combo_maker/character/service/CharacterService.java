@@ -22,12 +22,12 @@ public class CharacterService implements ICharacterService {
         // TODO: use .orElseThrow() and error handling in controller layer
         Character character = characterRepository.findById(id).get();
 
-        CharacterDto dto = new CharacterDto();
-        dto.setId(character.getId());
-        dto.setName(character.getName());
-        dto.setDescription(character.getDescription());
-        dto.setAvatarImageUrl(character.getAvatarImageUrl());
-        return dto;
+        return CharacterDto.builder()
+                .id(character.getId())
+                .name(character.getName())
+                .description(character.getDescription())
+                .avatarImageUrl(character.getAvatarImageUrl())
+                .build();
     }
 
     @Override
@@ -35,12 +35,12 @@ public class CharacterService implements ICharacterService {
         Page<Character> characters = characterRepository.findAll(pageable);
 
         return characters.map(character -> {
-            CharacterDto dto = new CharacterDto();
-            dto.setId(character.getId());
-            dto.setName(character.getName());
-            dto.setDescription(character.getDescription());
-            dto.setAvatarImageUrl(character.getAvatarImageUrl());
-            return dto;
+            return CharacterDto.builder()
+                    .id(character.getId())
+                    .name(character.getName())
+                    .description(character.getDescription())
+                    .avatarImageUrl(character.getAvatarImageUrl())
+                    .build();
         });
     }
 

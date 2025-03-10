@@ -13,13 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Character {
 
-    public Character(Long id, String name, String description, String avatarImageUrl) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.avatarImageUrl = avatarImageUrl;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,4 +24,12 @@ public class Character {
 
     @Column(name = "avatar_image")
     private String avatarImageUrl;
+
+    // TODO: find a way to remove id; updating id is dangerous
+    public Character(Long id, String name, String description, String avatarImageUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.avatarImageUrl = avatarImageUrl;
+    }
 }

@@ -17,12 +17,12 @@ public class FakeCharacterService implements ICharacterService {
     public CharacterDto findById(Long id) {
         Character character = characterRepository.findById(id).get();
 
-        CharacterDto dto = new CharacterDto();
-        dto.setId(character.getId());
-        dto.setName(character.getName());
-        dto.setDescription(character.getDescription());
-        dto.setAvatarImageUrl(character.getAvatarImageUrl());
-        return dto;
+        return CharacterDto.builder()
+                .id(character.getId())
+                .name(character.getName())
+                .description(character.getDescription())
+                .avatarImageUrl(character.getAvatarImageUrl())
+                .build();
     }
 
     @Override
@@ -30,12 +30,12 @@ public class FakeCharacterService implements ICharacterService {
         Page<Character> characters = characterRepository.findAll(pageable);
 
         return characters.map(character -> {
-            CharacterDto dto = new CharacterDto();
-            dto.setId(character.getId());
-            dto.setName(character.getName());
-            dto.setDescription(character.getDescription());
-            dto.setAvatarImageUrl(character.getAvatarImageUrl());
-            return dto;
+            return CharacterDto.builder()
+                    .id(character.getId())
+                    .name(character.getName())
+                    .description(character.getDescription())
+                    .avatarImageUrl(character.getAvatarImageUrl())
+                    .build();
         });
     }
 }
