@@ -1,8 +1,8 @@
-package com.github.hojoungjang.tekken_combo_maker.model.document;
+package com.github.hojoungjang.tekken_combo_maker.move.model.document;
 
-import com.github.hojoungjang.tekken_combo_maker.model.enums.HitLevel;
-import com.github.hojoungjang.tekken_combo_maker.model.enums.MoveAttribute;
-import com.github.hojoungjang.tekken_combo_maker.model.enums.MoveCategory;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
