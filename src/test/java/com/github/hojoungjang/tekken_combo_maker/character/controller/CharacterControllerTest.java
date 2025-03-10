@@ -54,4 +54,10 @@ class CharacterControllerTest {
         Assertions.assertThat(characters)
                 .extracting(CharacterDto::getAvatarImageUrl).contains("image url 1", "image url 2", "image url 3");
     }
+
+    @DisplayName("Pagination 을 사용하여 여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")
+    @Test
+    public void Pagination을_사용하여_여러_캐릭터_정보를_가져올_수_있다() throws Exception {
+        // TODO: 작성하기
+    }
 }

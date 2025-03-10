@@ -4,6 +4,7 @@ import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,8 +18,9 @@ class CharacterServiceTest {
 
     private CharacterService characterService = new CharacterService(new FakeCharacterRepository());
 
+    @DisplayName("ID 를 사용해 캐릭터 엔티티를 가져온다.")
     @Test
-    public void testFindById() throws Exception {
+    public void 특정_ID_캐릭터_엔티티를_가져올_수_있다() throws Exception {
         // given
         Long id = 1L;
 
@@ -32,8 +34,9 @@ class CharacterServiceTest {
         Assertions.assertThat(character.getAvatarImageUrl()).isEqualTo("image url 1");
     }
 
+    @DisplayName("여러 캐릭터 엔티티를 리스트로 가져온다.")
     @Test
-    public void testFindAll() throws Exception {
+    public void 여러_캐릭터_엔티티를_가져올_수_있다() throws Exception {
         // given
         Pageable pageable = PageRequest.of(0, 10);
 
