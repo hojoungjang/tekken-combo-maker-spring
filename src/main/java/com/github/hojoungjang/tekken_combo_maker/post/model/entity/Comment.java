@@ -2,13 +2,17 @@ package com.github.hojoungjang.tekken_combo_maker.post.model.entity;
 
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * 게시물 댓글 엔티티 클래스
  */
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment {
 
     @Id
@@ -30,4 +34,12 @@ public class Comment {
 
     @Column(nullable = false)
     private String content;
+
+    @Builder
+    public Comment(Member member, Post post, Comment thread, String content) {
+        this.member = member;
+        this.post = post;
+        this.thread = thread;
+        this.content = content;
+    }
 }
