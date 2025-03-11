@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 public class ComboDto {
 
-    private record ComboCharacterDto(Long id, String name) {
+    record ComboCharacterDto(Long id, String name) {
     }
 
-    private record ComboPostDto(Long id, Long authorId) {
+    record ComboPostDto(Long id, Long authorId) {
     }
 
     private final Long id;
