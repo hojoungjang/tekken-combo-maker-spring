@@ -2,6 +2,7 @@ package com.github.hojoungjang.tekken_combo_maker.character.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,9 +26,8 @@ public class Character {
     @Column(name = "avatar_image")
     private String avatarImageUrl;
 
-    // TODO: find a way to remove id; updating id is dangerous
-    public Character(Long id, String name, String description, String avatarImageUrl) {
-        this.id = id;
+    @Builder
+    public Character(String name, String description, String avatarImageUrl) {
         this.name = name;
         this.description = description;
         this.avatarImageUrl = avatarImageUrl;
