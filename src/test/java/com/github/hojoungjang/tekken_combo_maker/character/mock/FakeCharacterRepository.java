@@ -5,6 +5,7 @@ import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRep
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,12 @@ public class FakeCharacterRepository implements ICharacterRepository {
             String name = "character " + i;
             String description = "description " + i;
             String avatarImageUrl = "image url " + i;
-            Character character = new Character(i, name, description, avatarImageUrl);
+            Character character = Character.builder()
+                    .name(name)
+                    .description(description)
+                    .avatarImageUrl(avatarImageUrl)
+                    .build();
+            ReflectionTestUtils.setField(character, "id", i);
             characters.add(character);
         }
     }
