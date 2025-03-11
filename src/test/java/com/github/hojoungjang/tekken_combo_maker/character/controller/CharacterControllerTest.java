@@ -2,6 +2,8 @@ package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterService;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
+import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterControllerTest {
 
-    private CharacterController characterController = new CharacterController(new FakeCharacterService());
+    private CharacterController characterController = new CharacterController(
+            new FakeCharacterService(),
+            new FakeComboService()
+    );
 
     @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterDto 로 가져온다.")
     @Test
@@ -59,5 +64,28 @@ class CharacterControllerTest {
     @Test
     public void Pagination을_사용하여_여러_캐릭터_정보를_가져올_수_있다() throws Exception {
         // TODO: 작성하기
+    }
+
+    @DisplayName("캐릭터 ID 를 사용하여 해당 캐릭터의 콤보를 가져온다.")
+    @Test
+    public void test() throws Exception {
+        // given
+        Long id = 1L;
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // when
+        Page<ComboDto> characterComboPage = characterController.getAllCombos(id, pageable);
+
+        // then
+        List<ComboDto> characterCombos = characterComboPage.getContent();
+        Assertions.assertThat(characterCombos).isNotEmpty().hasSize(1);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getId).contains(1L);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getName).contains("combo 1");
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getDamage).contains(50);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getHitCount).contains(6);
     }
 }

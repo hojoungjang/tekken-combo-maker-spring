@@ -1,0 +1,14 @@
+package com.github.hojoungjang.tekken_combo_maker.combo.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/combos")
+@RequiredArgsConstructor
+public class ComboController {
+
+    // private final IComboService comboService;
+}
