@@ -3,7 +3,10 @@ package com.github.hojoungjang.tekken_combo_maker.combo.model.entity;
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
 import com.github.hojoungjang.tekken_combo_maker.post.model.entity.Post;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * 콤보 엔티티 클래스
@@ -11,6 +14,7 @@ import lombok.Getter;
  */
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Combo {
 
     @Id
@@ -27,5 +31,14 @@ public class Combo {
 
     private String name;
     private int damage;
-    private int hit_count;
+    private int hitCount;
+
+    @Builder
+    public Combo(Character character, Post post, String name, int damage, int hitCount) {
+        this.character = character;
+        this.post = post;
+        this.name = name;
+        this.damage = damage;
+        this.hitCount = hitCount;
+    }
 }
