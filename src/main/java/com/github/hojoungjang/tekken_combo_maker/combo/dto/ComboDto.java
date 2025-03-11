@@ -41,10 +41,14 @@ public class ComboDto {
                 combo.getCharacter().getName()
         );
 
-        ComboPostDto post = new ComboPostDto(
-                combo.getPost().getId(),
-                combo.getPost().getMember().getId()
-        );
+        // TODO: post is optional; How do I effectively check for undefined post value?
+        ComboPostDto post = null;
+        if (combo.getPost() != null) {
+            post = new ComboPostDto(
+                    combo.getPost().getId(),
+                    combo.getPost().getMember().getId()
+            );
+        }
 
         return new ComboDto(
                 combo.getId(),
