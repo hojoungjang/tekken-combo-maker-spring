@@ -1,0 +1,53 @@
+package com.github.hojoungjang.tekken_combo_maker.combo.mock;
+
+import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterRepository;
+import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
+import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRepository;
+import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
+import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
+import com.github.hojoungjang.tekken_combo_maker.combo.service.IComboRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FakeComboService implements IComboService {
+
+    private final IComboRepository comboRepository = new FakeComboRepository();
+    private final ICharacterRepository characterRepository = new FakeCharacterRepository();
+
+    @Override
+    public Page<ComboDto> findAllByCharacter(Long characterId, Pageable pageable) {
+        Page<Combo> characterComboPage = comboRepository.findAllByCharacter(characterId, pageable);
+        return characterComboPage.map(ComboDto::fromEntity);
+    }
+
+    @Override
+    public Page<ComboDto> findAllByPost(Long postId, Pageable pageable) {
+        // TODO: implement
+        List<ComboDto> data = new ArrayList<>();
+        return new PageImpl<>(data, pageable, data.size());
+    }
+
+    @Override
+    public List<Long> saveAll(ComboCreateAllRequest request) {
+        List<ComboCreateRequest> comboPayloads = request.getCombos();
+        List<Combo> combos = comboPayloads.stream().map(comboRequest -> {
+            Long characterId = comboRequest.getCharacterId();
+            Character character = characterRepository.findById(characterId).get();
+            return Combo.builder()
+                    .character(character)
+                    .name(comboRequest.getName())
+                    .damage(comboRequest.getDamage())
+                    .hitCount(comboRequest.getHitCount())
+                    .build();
+        }).toList();
+        List<Combo> savedCombos = comboRepository.saveAll(combos);
+        return savedCombos.stream().map(Combo::getId).toList();
+    }
+}

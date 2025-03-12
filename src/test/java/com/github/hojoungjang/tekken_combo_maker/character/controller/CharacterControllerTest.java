@@ -2,6 +2,10 @@ package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterService;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
+import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,13 +13,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterControllerTest {
 
-    private CharacterController characterController = new CharacterController(new FakeCharacterService());
+    private CharacterController characterController = new CharacterController(
+            new FakeCharacterService(),
+            new FakeComboService()
+    );
 
     @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterDto 로 가져온다.")
     @Test
@@ -59,5 +67,60 @@ class CharacterControllerTest {
     @Test
     public void Pagination을_사용하여_여러_캐릭터_정보를_가져올_수_있다() throws Exception {
         // TODO: 작성하기
+    }
+
+    @DisplayName("캐릭터 ID 를 사용하여 해당 캐릭터의 콤보를 가져올 수 있다.")
+    @Test
+    public void 캐릭터_ID_를_사용하여_해당_캐릭터의_콤보를_가져올_수_있다() throws Exception {
+        // given
+        Long id = 1L;
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // when
+        Page<ComboDto> characterComboPage = characterController.getAllCombos(id, pageable);
+
+        // then
+        List<ComboDto> characterCombos = characterComboPage.getContent();
+        Assertions.assertThat(characterCombos).isNotEmpty().hasSize(1);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getId).contains(1L);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getName).contains("combo 1");
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getDamage).contains(50);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getHitCount).contains(6);
+    }
+
+    @DisplayName("캐릭터에 대해 콤보를 생성 할 수 있다.")
+    @Test
+    public void 캐릭터에_대해_콤보를_생성_할_수_있다() throws Exception {
+        // given
+        Long characterId = 1L;
+        List<ComboCreateRequest> comboPayloads = new ArrayList<>();
+        for (long id=1; id <= 3; id++) {
+            ComboCreateRequest comboPayload = ComboCreateRequest.builder()
+                    .characterId(characterId)
+                    .name(String.format("new combo %d", id))
+                    .damage(30)
+                    .hitCount(2)
+                    .build();
+            comboPayloads.add(comboPayload);
+        }
+        ComboCreateAllRequest request = ComboCreateAllRequest.builder()
+                .combos(comboPayloads)
+                .build();
+
+        // when
+        characterController.createAllCombo(request);
+
+        // then
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<ComboDto> characterComboPage = characterController.getAllCombos(characterId, pageable);
+        List<ComboDto> characterCombos = characterComboPage.getContent();
+        Assertions.assertThat(characterCombos).isNotEmpty().hasSize(4);
+        Assertions.assertThat(characterCombos)
+                .extracting(ComboDto::getName)
+                .contains("new combo 1", "new combo 2", "new combo 3");
     }
 }
