@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/character")
+@RequestMapping("/api/v1/characters")
 @RequiredArgsConstructor
 public class CharacterController {
 
@@ -26,7 +26,7 @@ public class CharacterController {
         return characterService.findById(id);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public Page<CharacterDto> getAll(Pageable pageable) {
         return characterService.findAll(pageable);
     }
