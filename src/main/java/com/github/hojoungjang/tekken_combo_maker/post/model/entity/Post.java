@@ -32,7 +32,9 @@ public class Post {
     // private long dislikes;
 
     @Builder
-    public Post(Member member) {
+    public Post(Member member, String title, String content) {
         this.member = member;
+        this.title = title;
+        this.content = content;
     }
 }
