@@ -23,6 +23,11 @@ public class Post {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    private String title;
+
+    @Lob
+    private String content;
+
     // private long likes;
     // private long dislikes;
 
