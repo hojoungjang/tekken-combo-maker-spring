@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class ComboCreateRequest {
 
+    // TODO: CharacterId might be unnecessary; Confirm the schema
     private Long characterId;
     private String name;
     private Integer damage;

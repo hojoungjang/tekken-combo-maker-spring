@@ -40,6 +40,7 @@ public class CharacterController {
 
     @PostMapping("/{id}/combos")
     public List<Long> createAllCombo(@RequestBody ComboCreateAllRequest request) {
+        // TODO: Add base response format and change this response format
         return comboService.saveAll(request);
     }
 }
