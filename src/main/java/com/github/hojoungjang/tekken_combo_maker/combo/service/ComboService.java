@@ -3,6 +3,7 @@ package com.github.hojoungjang.tekken_combo_maker.combo.service;
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
 import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRepository;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
@@ -34,8 +35,9 @@ public class ComboService implements IComboService {
     }
 
     @Override
-    public List<ComboDto> saveAll(List<ComboCreateRequest> comboRequests) {
-        List<Combo> combos = comboRequests.stream().map(comboRequest -> {
+    public List<Long> saveAll(ComboCreateAllRequest request) {
+        List<ComboCreateRequest> comboPayloads = request.getCombos();
+        List<Combo> combos = comboPayloads.stream().map(comboRequest -> {
             Long characterId = comboRequest.getCharacterId();
             // TODO: optimize DB query
             // TODO: if not found return resource not found error (404)
@@ -48,6 +50,6 @@ public class ComboService implements IComboService {
                     .build();
         }).toList();
         List<Combo> savedCombos = comboRepository.saveAll(combos);
-        return savedCombos.stream().map(ComboDto::fromEntity).toList();
+        return savedCombos.stream().map(Combo::getId).toList();
     }
 }

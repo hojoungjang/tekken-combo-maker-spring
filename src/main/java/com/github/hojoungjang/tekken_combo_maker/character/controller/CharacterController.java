@@ -2,14 +2,13 @@ package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,5 +36,10 @@ public class CharacterController {
             Pageable pageable
     ) {
         return comboService.findAllByCharacter(id, pageable);
+    }
+
+    @PostMapping("/{id}/combos")
+    public List<Long> createAllCombo(@RequestBody ComboCreateAllRequest request) {
+        return comboService.saveAll(request);
     }
 }

@@ -2,6 +2,7 @@ package com.github.hojoungjang.tekken_combo_maker.combo.service;
 
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterRepository;
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboRepository;
@@ -110,19 +111,22 @@ class ComboServiceTest {
     public void saveAllCombos() throws Exception {
         // given
         Long characterId = 1L;
-        List<ComboCreateRequest> comboRequests = new ArrayList<>();
+        List<ComboCreateRequest> comboPayloads = new ArrayList<>();
         for (long id=1; id <= 3; id++) {
-            ComboCreateRequest comboRequest = ComboCreateRequest.builder()
+            ComboCreateRequest comboPayload = ComboCreateRequest.builder()
                     .characterId(characterId)
                     .name(String.format("new combo %d", id))
                     .damage(30)
                     .hitCount(2)
                     .build();
-            comboRequests.add(comboRequest);
+            comboPayloads.add(comboPayload);
         }
+        ComboCreateAllRequest request = ComboCreateAllRequest.builder()
+                .combos(comboPayloads)
+                .build();
 
         // when
-        List<ComboDto> savedCombos = comboService.saveAll(comboRequests);
+        comboService.saveAll(request);
 
         // then
         Page<ComboDto> characterComboPage = comboService.findAllByCharacter(characterId, PageRequest.of(0, 10));
