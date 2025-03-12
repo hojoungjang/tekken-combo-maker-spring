@@ -1,0 +1,34 @@
+package com.github.hojoungjang.tekken_combo_maker.member.service;
+
+import com.github.hojoungjang.tekken_combo_maker.member.controller.IMemberService;
+import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
+import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+@RequiredArgsConstructor
+public class MemberService implements IMemberService {
+
+    private final IMemberRepository memberRepository;
+
+    @Override
+    public MemberResponse findById(Long id) {
+        // TODO: check for null and raise 404 resource not found
+        Member member = memberRepository.findById(id).get();
+        return MemberResponse.fromEntity(member);
+    }
+
+    @Override
+    public MemberResponse findByEmail(String email) {
+        // TODO: check for null and raise 404 resource not found
+        Member member = memberRepository.findByEmail(email).get();
+        return MemberResponse.fromEntity(member);
+    }
+
+    @Override
+    public Page<MemberResponse> findAll(Pageable pageable) {
+        Page<Member> members = memberRepository.findAll(pageable);
+        return members.map(MemberResponse::fromEntity);
+    }
+}
