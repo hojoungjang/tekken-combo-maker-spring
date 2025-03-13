@@ -17,4 +17,9 @@ public class CommentRepository implements ICommentRepository {
     public Page<Comment> findAllByPost(Long postId, Pageable pageable) {
         return commentJpaRepository.findAllByPost(postId, pageable);
     }
+
+    @Override
+    public Comment save(Comment comment) {
+        return commentJpaRepository.save(comment);
+    }
 }

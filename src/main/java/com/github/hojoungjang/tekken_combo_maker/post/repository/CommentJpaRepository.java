@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface CommentJpaRepository extends JpaRepository<Comment, Long> {
 
-    @Query("select c from Comment c where c.post.id = :postId")
+    @Query("select c from Comment c where c.post.id = :postId and c.thread is null")
     Page<Comment> findAllByPost(@Param("postId") Long id, Pageable pageable);
 }

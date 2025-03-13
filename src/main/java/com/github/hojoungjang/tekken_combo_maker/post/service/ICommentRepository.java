@@ -6,5 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ICommentRepository {
 
+    // TODO: 대댓글 조회 기능을 추가해야 한다.
     Page<Comment> findAllByPost(Long postId, Pageable pageable);
+    Comment save(Comment comment);
 }
