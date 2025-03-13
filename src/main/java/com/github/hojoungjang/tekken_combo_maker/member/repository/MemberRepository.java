@@ -5,9 +5,11 @@ import com.github.hojoungjang.tekken_combo_maker.member.service.IMemberRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 @RequiredArgsConstructor
 public class MemberRepository implements IMemberRepository {
 
