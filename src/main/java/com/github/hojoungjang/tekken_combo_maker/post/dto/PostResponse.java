@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.post.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import com.github.hojoungjang.tekken_combo_maker.post.model.entity.Post;
 import lombok.Getter;
@@ -39,10 +40,12 @@ public class PostResponse {
         );
     }
 
+    @JsonIgnore
     public Long getMemberId() {
         return member.id();
     }
 
+    @JsonIgnore
     public String getMemberNickName() {
         return member.nickName();
     }
