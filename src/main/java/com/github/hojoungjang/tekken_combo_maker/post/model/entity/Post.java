@@ -23,11 +23,18 @@ public class Post {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    private String title;
+
+    @Lob
+    private String content;
+
     // private long likes;
     // private long dislikes;
 
     @Builder
-    public Post(Member member) {
+    public Post(Member member, String title, String content) {
         this.member = member;
+        this.title = title;
+        this.content = content;
     }
 }
