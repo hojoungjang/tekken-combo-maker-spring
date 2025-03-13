@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class PostResponse {
 
-    record MemberResponse(Long id, String nickName) {}
+    private record MemberResponse(Long id, String nickName) {}
 
     private final Long id;
     private final MemberResponse member;
