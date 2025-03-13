@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 public class CommentRepository implements ICommentRepository {
@@ -19,7 +21,13 @@ public class CommentRepository implements ICommentRepository {
     }
 
     @Override
+    public Optional<Comment> findById(Long id) {
+        return commentJpaRepository.findById(id);
+    }
+
+    @Override
     public Comment save(Comment comment) {
         return commentJpaRepository.save(comment);
     }
+
 }
