@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface PostJpaRepository extends JpaRepository<Post, Long> {
 
-    @Query("select p from Post p where p.getMember().getId() = :memberId")
+    @Query("select p from Post p where p.member.id = :memberId")
     Page<Post> findAllByMember(@Param("memberId") Long memberId, Pageable pageable);
 }

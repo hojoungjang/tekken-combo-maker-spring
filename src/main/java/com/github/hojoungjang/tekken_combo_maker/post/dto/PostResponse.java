@@ -38,4 +38,12 @@ public class PostResponse {
                 post.getContent()
         );
     }
+
+    public Long getMemberId() {
+        return member.id();
+    }
+
+    public String getMemberNickName() {
+        return member.nickName();
+    }
 }

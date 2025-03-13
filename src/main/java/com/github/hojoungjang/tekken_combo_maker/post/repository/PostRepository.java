@@ -6,9 +6,11 @@ import com.github.hojoungjang.tekken_combo_maker.post.service.IPostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 @RequiredArgsConstructor
 public class PostRepository implements IPostRepository {
 

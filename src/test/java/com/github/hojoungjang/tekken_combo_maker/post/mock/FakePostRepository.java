@@ -30,6 +30,7 @@ public class FakePostRepository implements IPostRepository {
                 .title(String.format("title %d", id))
                 .content(String.format("content %d", id))
                 .build();
+        ReflectionTestUtils.setField(post, "id", id);
         return post;
     }
 
