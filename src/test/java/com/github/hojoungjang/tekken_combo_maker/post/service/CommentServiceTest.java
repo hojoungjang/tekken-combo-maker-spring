@@ -6,7 +6,6 @@ import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentResponse;
 import com.github.hojoungjang.tekken_combo_maker.post.mock.FakeCommentRepository;
 import com.github.hojoungjang.tekken_combo_maker.post.mock.FakePostRepository;
-import com.github.hojoungjang.tekken_combo_maker.post.model.entity.Comment;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
