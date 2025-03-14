@@ -3,9 +3,8 @@ package com.github.hojoungjang.tekken_combo_maker.move.model.document;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
-import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Set;
  * 기술의 메타데이터를 담고 있습니다.
  */
 @Document("move")
-@Getter @Setter     // TODO: substitute @Setter with meaningful methods
+@Getter
 public class Move {
 
     @Id
