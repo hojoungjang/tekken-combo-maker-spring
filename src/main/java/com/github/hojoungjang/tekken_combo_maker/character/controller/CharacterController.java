@@ -5,6 +5,8 @@ import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
+import com.github.hojoungjang.tekken_combo_maker.move.controller.IMoveService;
+import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,7 @@ public class CharacterController {
 
     private final ICharacterService characterService;
     private final IComboService comboService;
+    private final IMoveService moveService;
 
     @GetMapping("/{id}")
     public CharacterDto getById(@PathVariable("id") Long id) {
@@ -42,5 +45,13 @@ public class CharacterController {
     public List<Long> createAllCombo(@RequestBody ComboCreateAllRequest request) {
         // TODO: Add base response format and change this response format
         return comboService.saveAll(request);
+    }
+
+    @GetMapping("/{id}/moves")
+    public Page<MoveResponse> getAllMoves(
+            @PathVariable("id") Long id,
+            Pageable pageable
+    ) {
+        return moveService.findAllByCharacter(id, pageable);
     }
 }
