@@ -32,6 +32,7 @@ public class Comment {
     @JoinColumn(name = "thread_id")
     private Comment thread;
 
+    @Lob
     @Column(nullable = false)
     private String content;
 

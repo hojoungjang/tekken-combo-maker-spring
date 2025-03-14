@@ -1,7 +1,10 @@
 package com.github.hojoungjang.tekken_combo_maker.post.controller;
 
+import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentCreateRequest;
+import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentResponse;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.PostCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.PostResponse;
+import com.github.hojoungjang.tekken_combo_maker.post.mock.FakeCommentService;
 import com.github.hojoungjang.tekken_combo_maker.post.mock.FakePostService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +19,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PostControllerTest {
 
-    private PostController postController = new PostController(new FakePostService());
+    private PostController postController = new PostController(
+            new FakePostService(),
+            new FakeCommentService()
+    );
 
     @DisplayName("ID 로 게시물 정보를 가져올 수 있다.")
     @Test
@@ -73,5 +79,48 @@ class PostControllerTest {
         Assertions.assertThat(post.getMemberId()).isEqualTo(2L);
         Assertions.assertThat(post.getTitle()).isEqualTo("title 2");
         Assertions.assertThat(post.getContent()).isEqualTo("content 2");
+    }
+
+    @DisplayName("게시물 댓글을 조회 할 수 있다.")
+    @Test
+    public void 게시물_댓글을_조회_할_수_있다() throws Exception {
+        // given
+        Long postId = 1L;
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // when
+        Page<CommentResponse> commentPage = postController.getAllCommentsByPost(postId, pageable);
+
+        // then
+        List<CommentResponse> comments = commentPage.getContent();
+        Assertions.assertThat(comments).hasSize(3);
+        Assertions.assertThat(comments)
+                .extracting(CommentResponse::getContent)
+                .contains("comment 1", "comment 2", "comment 3");
+    }
+
+    @DisplayName("게시물 댓글을 만들 수 있다.")
+    @Test
+    public void 게시물_댓글을_만들_수_있다() throws Exception {
+        // given
+        Long postId = 1L;
+        Long memberId = 2L;
+        CommentCreateRequest request = CommentCreateRequest.builder()
+                .memberId(memberId)
+                .content("This is a new comment by member 2")
+                .build();
+
+        // when
+        Long savedCommentId = postController.createComment(postId, request);
+
+        // then
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<CommentResponse> commentPage = postController.getAllCommentsByPost(postId, pageable);
+        List<CommentResponse> comments = commentPage.getContent();
+        Assertions.assertThat(comments)
+                .filteredOn(comment -> comment.getMemberId().equals(2L))
+                .singleElement()
+                .extracting(CommentResponse::getContent)
+                .isEqualTo("This is a new comment by member 2");
     }
 }
