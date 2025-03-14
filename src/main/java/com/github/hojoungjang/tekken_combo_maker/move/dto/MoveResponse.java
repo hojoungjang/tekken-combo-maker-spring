@@ -1,45 +1,38 @@
-package com.github.hojoungjang.tekken_combo_maker.move.model.document;
+package com.github.hojoungjang.tekken_combo_maker.move.dto;
 
+import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Set;
 
-/**
- * 캐릭터의 기술을 나타내는 도큐먼트 클래스
- * 기술의 메타데이터를 담고 있습니다.
- */
-@Document("move")
 @Getter
-public class Move {
+public class MoveResponse {
 
-    @Id
-    private String id;
+    private final String id;
+    private final Long characterId;
+    private final Long stanceId;
 
-    private Long characterId;   // character 테이블 primary key
-    private Long stanceId;      // stance 테이블 primary key
+    private final String name;
+    private final String command;
+    private final Integer damage;
+    private final Integer hitCount;
+    private final boolean counter;
 
-    private String name;
-    private String command;
-    private Integer damage;
-    private Integer hitCount;
-    private boolean counter;
-
-    private List<Integer> startupFrames;        // 타수별 발동 프레임
-    private List<HitLevel> hitLevels;           // 타수별 타점 판정
-    private List<Integer> hitFrames;            // 타수별 적중시 프레임 격차
-    private List<Integer> guardFrames;          // 타수별 가드시 프레임 격차
-    private Set<MoveAttribute> moveAttributes;  // 기술 특수 효과
-    private MoveCategory moveCategory;          // 기술 분류
+    private final List<Integer> startupFrames;
+    private final List<HitLevel> hitLevels;
+    private final List<Integer> hitFrames;
+    private final List<Integer> guardFrames;
+    private final Set<MoveAttribute> moveAttributes;
+    private final MoveCategory moveCategory;
 
     @Builder
-    Move(
+    MoveResponse(
+            String id,
             Long characterId,
             Long stanceId,
             String name,
@@ -54,6 +47,7 @@ public class Move {
             Set<MoveAttribute> moveAttributes,
             MoveCategory moveCategory
     ) {
+        this.id = id;
         this.characterId = characterId;
         this.stanceId = stanceId;
         this.name = name;
@@ -67,5 +61,18 @@ public class Move {
         this.guardFrames = guardFrames;
         this.moveAttributes = moveAttributes;
         this.moveCategory = moveCategory;
+    }
+
+    public static MoveResponse fromEntity(Move move) {
+        return MoveResponse.builder()
+                .id(move.getId())
+                .characterId(move.getCharacterId())
+                .stanceId(move.getStanceId())
+                .name(move.getName())
+                .command(move.getCommand())
+                .damage(move.getDamage())
+                .hitCount(move.getHitCount())
+                .counter(move.isCounter())
+                .build();
     }
 }

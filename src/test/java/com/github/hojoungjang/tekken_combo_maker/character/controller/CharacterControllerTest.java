@@ -6,6 +6,8 @@ import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboService;
+import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
+import com.github.hojoungjang.tekken_combo_maker.move.mock.FakeMoveService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +24,8 @@ class CharacterControllerTest {
 
     private CharacterController characterController = new CharacterController(
             new FakeCharacterService(),
-            new FakeComboService()
+            new FakeComboService(),
+            new FakeMoveService()
     );
 
     @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterDto 로 가져온다.")
@@ -122,5 +125,26 @@ class CharacterControllerTest {
         Assertions.assertThat(characterCombos)
                 .extracting(ComboDto::getName)
                 .contains("new combo 1", "new combo 2", "new combo 3");
+    }
+
+    @DisplayName("캐릭터 기술을 가져올 수 있다.")
+    @Test
+    public void 캐릭터_기술을_가져올_수_있다() {
+        // given
+        Long characterId = 1L;
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // when
+        Page<MoveResponse> movePage = characterController.getAllMoves(characterId, pageable);
+
+        // then
+        List<MoveResponse> moves = movePage.getContent();
+        Assertions.assertThat(moves).hasSize(5);
+        Assertions.assertThat(moves)
+                .extracting(MoveResponse::getId)
+                .containsExactlyInAnyOrder("1", "2", "3", "4", "5");
+        Assertions.assertThat(moves)
+                .extracting(MoveResponse::getName)
+                .containsExactlyInAnyOrder("move 1", "move 2", "move 3", "move 4", "move 5");
     }
 }
