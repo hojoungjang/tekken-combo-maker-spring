@@ -42,7 +42,7 @@ public class PostController {
     @PostMapping("/{id}/comments")
     public Long createComment(
             @PathVariable("id") Long id,
-            CommentCreateRequest request
+            @RequestBody CommentCreateRequest request
     ) {
         return commentService.create(id, request);
     }
