@@ -1,11 +1,14 @@
 package com.github.hojoungjang.tekken_combo_maker.member.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.controller.IMemberService;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 
@@ -18,7 +21,11 @@ public class MemberService implements IMemberService {
     @Override
     public MemberResponse findById(Long id) {
         // TODO: check for null and raise 404 resource not found
-        Member member = memberRepository.findById(id).get();
+        Member member = memberRepository.findById(id).orElseThrow(
+                () -> new NotFoundException(
+                        HttpStatusCode.valueOf(HttpStatus.NOT_FOUND.value())
+                )
+        );
         return MemberResponse.fromEntity(member);
     }
 
