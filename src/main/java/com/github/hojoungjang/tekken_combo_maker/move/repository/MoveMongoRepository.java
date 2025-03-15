@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface MoveMongoRepository extends MongoRepository<Move, String> {
 
-    Page<Move> findAllByCharacter(Long characterId, Pageable pageable);
+    Page<Move> findAllByCharacterId(Long characterId, Pageable pageable);
 }
