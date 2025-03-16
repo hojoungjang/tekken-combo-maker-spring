@@ -7,6 +7,7 @@ import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,8 +41,10 @@ public class ComboService implements IComboService {
         List<Combo> combos = comboPayloads.stream().map(comboRequest -> {
             Long characterId = comboRequest.getCharacterId();
             // TODO: optimize DB query
-            // TODO: if not found return resource not found error (404)
-            Character character = characterRepository.findById(characterId).get();
+            Character character = characterRepository.findById(characterId)
+                    .orElseThrow(() -> NotFoundException.supplier(
+                            String.format("Character not found with ID: %d", characterId)
+                    ));
             return Combo.builder()
                     .character(character)
                     .name(comboRequest.getName())
