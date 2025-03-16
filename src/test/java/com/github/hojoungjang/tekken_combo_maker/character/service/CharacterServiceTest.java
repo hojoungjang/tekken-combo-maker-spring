@@ -2,6 +2,7 @@ package com.github.hojoungjang.tekken_combo_maker.character.service;
 
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterRepository;
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterServiceTest {
 
-    private CharacterService characterService = new CharacterService(new FakeCharacterRepository());
+    private final CharacterService characterService = new CharacterService(new FakeCharacterRepository());
 
     @DisplayName("ID 를 사용해 캐릭터 엔티티를 가져온다.")
     @Test
@@ -32,6 +33,21 @@ class CharacterServiceTest {
         Assertions.assertThat(character.getName()).isEqualTo("character 1");
         Assertions.assertThat(character.getDescription()).isEqualTo("description 1");
         Assertions.assertThat(character.getAvatarImageUrl()).isEqualTo("image url 1");
+    }
+
+    @DisplayName("캐릭터 ID 가 존재하지 않으면 NotFoundException 예외를 던지다.")
+    @Test
+    public void 캐릭터_ID_가_존재하지_않는다() throws Exception {
+        // given
+        Long id = 10L;
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    CharacterDto characterDto = characterService.findById(id);
+                })
+                .withMessageContaining("Character not found with ID: 10");
     }
 
     @DisplayName("여러 캐릭터 엔티티를 리스트로 가져온다.")

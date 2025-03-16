@@ -6,6 +6,7 @@ import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboService;
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.mock.FakeMoveService;
 import org.assertj.core.api.Assertions;
@@ -18,11 +19,9 @@ import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CharacterControllerTest {
 
-    private CharacterController characterController = new CharacterController(
+    private final CharacterController characterController = new CharacterController(
             new FakeCharacterService(),
             new FakeComboService(),
             new FakeMoveService()
@@ -42,6 +41,21 @@ class CharacterControllerTest {
         Assertions.assertThat(characterDto.getName()).isEqualTo("character 1");
         Assertions.assertThat(characterDto.getDescription()).isEqualTo("description 1");
         Assertions.assertThat(characterDto.getAvatarImageUrl()).isEqualTo("image url 1");
+    }
+
+    @DisplayName("캐릭터 ID 가 존재하지 않으면 NotFoundException 예외를 던지다.")
+    @Test
+    public void 캐릭터_ID_가_존재하지_않는다() throws Exception {
+        // given
+        Long id = 10L;
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    CharacterDto characterDto = characterController.getById(id);
+                })
+                .withMessageContaining("Character not found with ID: 10");
     }
 
     @DisplayName("여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")
