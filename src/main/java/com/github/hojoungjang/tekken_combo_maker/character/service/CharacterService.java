@@ -3,6 +3,7 @@ package com.github.hojoungjang.tekken_combo_maker.character.service;
 import com.github.hojoungjang.tekken_combo_maker.character.controller.ICharacterService;
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +20,8 @@ public class CharacterService implements ICharacterService {
 
     @Override
     public CharacterDto findById(Long id) {
-        // TODO: use .orElseThrow() and error handling in controller layer
-        Character character = characterRepository.findById(id).get();
+        Character character = characterRepository.findById(id)
+                .orElseThrow(() -> NotFoundException.supplier(String.format("Character not found with ID: %d", id)));
 
         return CharacterDto.builder()
                 .id(character.getId())
@@ -43,5 +44,4 @@ public class CharacterService implements ICharacterService {
                     .build();
         });
     }
-
 }

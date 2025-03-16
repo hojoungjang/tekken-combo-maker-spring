@@ -33,6 +33,9 @@ public class FakeCharacterRepository implements ICharacterRepository {
     @Override
     public Optional<Character> findById(Long id) {
         int idx = id.intValue() - 1;
+        if (idx < 0 || idx >= characters.size()) {
+            return Optional.empty();
+        }
         return Optional.of(characters.get(idx));
     }
 

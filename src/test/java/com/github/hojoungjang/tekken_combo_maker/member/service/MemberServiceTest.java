@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.member.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.mock.FakeMemberRepository;
 import org.assertj.core.api.Assertions;
@@ -11,11 +12,9 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MemberServiceTest {
 
-    private MemberService memberService = new MemberService(new FakeMemberRepository());
+    private final MemberService memberService = new MemberService(new FakeMemberRepository());
 
     @DisplayName("ID 를 이용해 특정 멤버를 가져올 수 있다.")
     @Test
@@ -32,6 +31,21 @@ class MemberServiceTest {
         Assertions.assertThat(member.getNickName()).isEqualTo("test user 1");
     }
 
+    @DisplayName("ID 가 매칭되는 멤버가 존재하지 않으면 NotFoundException 예외를 던지다.")
+    @Test
+    public void ID_가_매칭되지_않으면_멤버를_가져올_수_없다() throws Exception {
+        // given
+        Long memberId = 10L;
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    memberService.findById(memberId);
+                })
+                .withMessageContaining("Member not found with ID: 10");
+    }
+
     @DisplayName("email 을 이용해 특정 멤버를 가져올 수 있다.")
     @Test
     public void email_을_이용해_특정_멤버를_가져올_수_있다() throws Exception {
@@ -45,6 +59,21 @@ class MemberServiceTest {
         Assertions.assertThat(member.getId()).isEqualTo(1L);
         Assertions.assertThat(member.getEmail()).isEqualTo("test1@example.com");
         Assertions.assertThat(member.getNickName()).isEqualTo("test user 1");
+    }
+
+    @DisplayName("email 을 이용해 매칭되는 멤버가 없으면 NotFoundException 예외를 던지다.")
+    @Test
+    public void email_이_매칭되지_않으면_멤버를_가져올_수_없다() throws Exception {
+        // given
+        String email = "test10@example.com";
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    memberService.findByEmail(email);
+                })
+                .withMessageContaining("Member not found with email: test10@example.com");
     }
 
     @DisplayName("모든 멤버를 가져올 수 있다.")

@@ -1,6 +1,5 @@
 package com.github.hojoungjang.tekken_combo_maker.member.mock;
 
-import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import com.github.hojoungjang.tekken_combo_maker.member.service.IMemberRepository;
 import org.springframework.data.domain.Page;
@@ -10,7 +9,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class FakeMemberRepository implements IMemberRepository {
@@ -34,7 +32,11 @@ public class FakeMemberRepository implements IMemberRepository {
 
     @Override
     public Optional<Member> findById(Long id) {
-        return Optional.of(members.get(id.intValue() - 1));
+        int idx = id.intValue() - 1;
+        if (idx < 0 || idx >= members.size()) {
+            return Optional.empty();
+        }
+        return Optional.of(members.get(idx));
     }
 
     @Override

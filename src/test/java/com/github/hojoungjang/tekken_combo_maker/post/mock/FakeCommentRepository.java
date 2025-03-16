@@ -60,6 +60,10 @@ public class FakeCommentRepository implements ICommentRepository {
 
     @Override
     public Optional<Comment> findById(Long id) {
+        int idx = id.intValue() - 1;
+        if (idx < 0 || idx >= comments.size()) {
+            return Optional.empty();
+        }
         return Optional.of(comments.get(id.intValue() - 1));
     }
 

@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.post.controller;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentResponse;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.PostCreateRequest;
@@ -41,6 +42,21 @@ class PostControllerTest {
         Assertions.assertThat(post.getMemberNickName()).isEqualTo("test user 1");
     }
 
+    @DisplayName("ID 가 매칭되는 게시물이 존재하지 않으면 NotFoundException 예외를 던진다.")
+    @Test
+    public void ID_가_매칭되지_않으면_NotFoundException_예외를_던진다() throws Exception {
+        // given
+        Long postId = 100L;
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    postController.getById(postId);
+                })
+                .withMessageContaining("Post not found with ID: 100");
+    }
+
     @DisplayName("여러 게시물 정보를 가져올 수 있다.")
     @Test
     public void 여러_게시물_정보를_가져올_수_있다() throws Exception {
@@ -79,6 +95,26 @@ class PostControllerTest {
         Assertions.assertThat(post.getMemberId()).isEqualTo(2L);
         Assertions.assertThat(post.getTitle()).isEqualTo("title 2");
         Assertions.assertThat(post.getContent()).isEqualTo("content 2");
+    }
+
+    @DisplayName("멤버 ID 에 해당하는 멤버가 없으면 NotFoundException 예외를 던진다.")
+    @Test
+    public void 멤버_ID_에_해당하는_멤버가_없으면_NotFoundException_예외를_던진다() throws Exception {
+        // given
+        Long memberId = 100L;
+        PostCreateRequest request = PostCreateRequest.builder()
+                .memberId(memberId)
+                .title("title 2")
+                .content("content 2")
+                .build();
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    postController.createPost(request);
+                })
+                .withMessageContaining("Member not found with ID: 100");
     }
 
     @DisplayName("게시물 댓글을 조회 할 수 있다.")

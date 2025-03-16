@@ -7,6 +7,7 @@ import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboRepository;
 import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import com.github.hojoungjang.tekken_combo_maker.post.model.entity.Post;
 import org.assertj.core.api.Assertions;
@@ -135,5 +136,34 @@ class ComboServiceTest {
         Assertions.assertThat(characterCombos)
                 .extracting(ComboDto::getName)
                 .contains("new combo 1", "new combo 2", "new combo 3");
+    }
+
+    @DisplayName("ID 에 해당하는 캐릭터가 없을경우 NotFoundException 예외가 발생한다.")
+    @Test
+    public void ID_에_해당하는_캐릭터가_없을경우_콤보를_저장할수_없다() throws Exception {
+        // given
+        Long characterId = 10L;
+        List<ComboCreateRequest> comboPayloads = new ArrayList<>();
+        for (long id=1; id <= 3; id++) {
+            ComboCreateRequest comboPayload = ComboCreateRequest.builder()
+                    .characterId(characterId)
+                    .name(String.format("new combo %d", id))
+                    .damage(30)
+                    .hitCount(2)
+                    .build();
+            comboPayloads.add(comboPayload);
+        }
+        ComboCreateAllRequest request = ComboCreateAllRequest.builder()
+                .combos(comboPayloads)
+                .build();
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                        comboService.saveAll(request);
+                })
+                .withMessageContaining("Character not found with ID: 10");
+
     }
 }
