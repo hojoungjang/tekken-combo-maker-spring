@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.member.mock;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.controller.IMemberService;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
@@ -7,21 +8,23 @@ import com.github.hojoungjang.tekken_combo_maker.member.service.IMemberRepositor
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Optional;
-
 public class FakeMemberService implements IMemberService {
 
     private final IMemberRepository memberRepository = new FakeMemberRepository();
 
     @Override
     public MemberResponse findById(Long id) {
-        Member member = memberRepository.findById(id).get();
+        Member member = memberRepository.findById(id)
+                .orElseThrow(() -> NotFoundException.supplier(
+                        String.format("Member not found with ID: %d", id)
+                ));
         return MemberResponse.fromEntity(member);
     }
 
     @Override
     public MemberResponse findByEmail(String email) {
-        Member member = memberRepository.findByEmail(email).get();
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> NotFoundException.supplier(String.format("Member not found with email: %s", email)));
         return MemberResponse.fromEntity(member);
     }
 
