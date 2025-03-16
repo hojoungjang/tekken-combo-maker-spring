@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.post.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.mock.FakeMemberRepository;
 import com.github.hojoungjang.tekken_combo_maker.post.controller.IPostService;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.PostCreateRequest;
@@ -38,6 +39,21 @@ class PostServiceTest {
         Assertions.assertThat(post.getContent()).isEqualTo("content 1");
         Assertions.assertThat(post.getMemberId()).isEqualTo(1L);
         Assertions.assertThat(post.getMemberNickName()).isEqualTo("test user 1");
+    }
+
+    @DisplayName("ID 가 매칭되는 게시물이 존재하지 않으면 찾을 수 없다.")
+    @Test
+    public void ID_가_매칭되지_않으면_찾을_수_없다() throws Exception {
+        // given
+        Long postId = 100L;
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    postService.findById(postId);
+                })
+                .withMessageContaining("Post not found with ID: 100");
     }
 
     @DisplayName("특정 멤버의 게시물을 가져올 수 있다.")
@@ -99,13 +115,23 @@ class PostServiceTest {
         Assertions.assertThat(post.getContent()).isEqualTo("content 2");
     }
 
-    @DisplayName("주어진 ID 에 해당하는 멤버가 없으면 게시물을 만들 수 없다.")
+    @DisplayName("주어진 멤버 ID 에 해당하는 멤버가 없으면 게시물을 만들 수 없다.")
     @Test
-    public void 주어진_ID_에_해당하는_멤버가_없으면_게시물을_만들_수_없다() throws Exception {
+    public void 주어진_멤버_ID_에_해당하는_멤버가_없으면_게시물을_만들_수_없다() throws Exception {
         // given
+        Long memberId = 10L;
+        PostCreateRequest request = PostCreateRequest.builder()
+                .memberId(memberId)
+                .title("title 2")
+                .content("content 2")
+                .build();
 
         // when
-
         // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    postService.create(request);
+                })
+                .withMessageContaining("Member not found with ID: 10");
     }
 }

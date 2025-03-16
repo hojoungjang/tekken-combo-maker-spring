@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.post.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.mock.FakeMemberRepository;
 import com.github.hojoungjang.tekken_combo_maker.post.controller.ICommentService;
 import com.github.hojoungjang.tekken_combo_maker.post.dto.CommentCreateRequest;
@@ -14,8 +15,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CommentServiceTest {
 
@@ -43,9 +42,9 @@ class CommentServiceTest {
                 .contains("comment 1", "comment 2", "comment 3");
     }
 
-    @DisplayName("게시물을 만들 수 있다.")
+    @DisplayName("게시물에 댓글을 만들 수 있다.")
     @Test
-    public void 게시물을_만들_수_있다() throws Exception {
+    public void 게시물에_댓글을_만들_수_있다() throws Exception {
         // given
         Long postId = 1L;
         CommentCreateRequest request = CommentCreateRequest.builder()
@@ -64,5 +63,24 @@ class CommentServiceTest {
         Assertions.assertThat(comments)
                 .extracting(CommentResponse::getContent)
                 .contains("This is a new comment");
+    }
+
+    @DisplayName("게시물 ID 에 해당하는 게시물이 없으면 댓글을 만들 수 없다.")
+    @Test
+    public void 게시물_ID_에_해당하는_게시물이_없으면_댓글을_만들_수_없다() throws Exception {
+        // given
+        Long postId = 100L;
+        CommentCreateRequest request = CommentCreateRequest.builder()
+                .memberId(2L)
+                .content("This is a new comment")
+                .build();
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(NotFoundException.class)
+                .isThrownBy(() -> {
+                    commentService.create(postId, request);
+                })
+                .withMessageContaining("Post not found with ID: 100");
     }
 }

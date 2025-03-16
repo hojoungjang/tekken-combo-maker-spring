@@ -41,7 +41,11 @@ public class FakePostRepository implements IPostRepository {
 
     @Override
     public Optional<Post> findById(Long id) {
-        return Optional.of(posts.get(id.intValue() - 1));
+        int idx = id.intValue() - 1;
+        if (idx < 0 || idx >= posts.size()) {
+            return Optional.empty();
+        }
+        return Optional.of(posts.get(idx));
     }
 
     @Override

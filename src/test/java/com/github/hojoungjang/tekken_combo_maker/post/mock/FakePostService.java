@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.post.mock;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.mock.FakeMemberRepository;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import com.github.hojoungjang.tekken_combo_maker.member.service.IMemberRepository;
@@ -18,7 +19,8 @@ public class FakePostService implements IPostService {
 
     @Override
     public PostResponse findById(Long id) {
-        Post post = postRepository.findById(id).get();
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> NotFoundException.supplier(String.format("Post not found with ID: %d", id)));
         return PostResponse.fromEntity(post);
     }
 
@@ -36,7 +38,10 @@ public class FakePostService implements IPostService {
 
     @Override
     public Long create(PostCreateRequest request) {
-        Member member = memberRepository.findById(request.getMemberId()).get();
+        Member member = memberRepository.findById(request.getMemberId())
+                .orElseThrow(() -> NotFoundException.supplier(
+                        String.format("Member not found with ID: %d", request.getMemberId())
+                ));
         Post post = Post.builder()
                 .member(member)
                 .title(request.getTitle())
