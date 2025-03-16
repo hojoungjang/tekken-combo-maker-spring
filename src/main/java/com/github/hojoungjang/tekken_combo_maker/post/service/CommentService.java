@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.post.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import com.github.hojoungjang.tekken_combo_maker.member.service.IMemberRepository;
 import com.github.hojoungjang.tekken_combo_maker.post.controller.ICommentService;
@@ -30,13 +31,22 @@ public class CommentService implements ICommentService {
 
     @Override
     public Long create(Long postId, CommentCreateRequest request) {
-        // TODO: raise 404
-        Post post = postRepository.findById(postId).get();
-        Member member = memberRepository.findById(request.getMemberId()).get();
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> NotFoundException.supplier(String.format("Post not found with ID: %d", postId)));
+
+        Member member = memberRepository.findById(request.getMemberId())
+                .orElseThrow(() -> NotFoundException.supplier(
+                        String.format("Member not found with ID: %d", request.getMemberId())
+                ));
+
         Comment thread = null;
         if (request.getThreadId() != null) {
-            thread = commentRepository.findById(request.getThreadId()).get();
+            thread = commentRepository.findById(request.getThreadId())
+                    .orElseThrow(() -> NotFoundException.supplier(
+                            String.format("Comment not found with ID: %d", request.getThreadId())
+                    ));
         }
+
         Comment comment = Comment.builder()
                 .member(member)
                 .post(post)
