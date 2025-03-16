@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ProblemDetail;
 import org.springframework.stereotype.Service;
 
 
@@ -21,11 +22,8 @@ public class MemberService implements IMemberService {
     @Override
     public MemberResponse findById(Long id) {
         // TODO: check for null and raise 404 resource not found
-        Member member = memberRepository.findById(id).orElseThrow(
-                () -> new NotFoundException(
-                        HttpStatusCode.valueOf(HttpStatus.NOT_FOUND.value())
-                )
-        );
+        Member member = memberRepository.findById(id)
+                .orElseThrow(() -> NotFoundException.supplier(String.format("Member not found with ID: %d", id)));
         return MemberResponse.fromEntity(member);
     }
 

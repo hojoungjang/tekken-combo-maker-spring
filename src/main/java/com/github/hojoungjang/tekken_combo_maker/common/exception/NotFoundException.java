@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.common.exception;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.ErrorResponse;
@@ -20,5 +21,17 @@ public class NotFoundException extends ErrorResponseException implements ErrorRe
 
     public NotFoundException(HttpStatusCode status, ProblemDetail body, Throwable cause, String messageDetailCode, Object[] messageDetailArguments) {
         super(status, body, cause, messageDetailCode, messageDetailArguments);
+    }
+
+    public static NotFoundException supplier(String detail) {
+        return supplier(detail, null);
+    }
+
+    public static NotFoundException supplier(String detail, Throwable cause) {
+        return new NotFoundException(
+                HttpStatusCode.valueOf(HttpStatus.NOT_FOUND.value()),
+                ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, detail),
+                cause
+        );
     }
 }
