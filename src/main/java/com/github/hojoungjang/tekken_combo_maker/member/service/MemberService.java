@@ -21,7 +21,6 @@ public class MemberService implements IMemberService {
 
     @Override
     public MemberResponse findById(Long id) {
-        // TODO: check for null and raise 404 resource not found
         Member member = memberRepository.findById(id)
                 .orElseThrow(() -> NotFoundException.supplier(String.format("Member not found with ID: %d", id)));
         return MemberResponse.fromEntity(member);
@@ -29,8 +28,8 @@ public class MemberService implements IMemberService {
 
     @Override
     public MemberResponse findByEmail(String email) {
-        // TODO: check for null and raise 404 resource not found
-        Member member = memberRepository.findByEmail(email).get();
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> NotFoundException.supplier(String.format("Member not found with email: %s", email)));
         return MemberResponse.fromEntity(member);
     }
 
