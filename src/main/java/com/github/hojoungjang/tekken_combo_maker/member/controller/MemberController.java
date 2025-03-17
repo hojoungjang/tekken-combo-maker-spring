@@ -1,6 +1,8 @@
 package com.github.hojoungjang.tekken_combo_maker.member.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/members")
 @RequiredArgsConstructor
-public class MemberController {
+public class MemberController implements SwaggerMemberController {
 
     private final IMemberService memberService;
 
