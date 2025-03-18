@@ -12,9 +12,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-@Hidden
 @Slf4j
-@RestControllerAdvice()
+@RestControllerAdvice(basePackages = "com.github.hojoungjang.tekken_combo_maker")
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)

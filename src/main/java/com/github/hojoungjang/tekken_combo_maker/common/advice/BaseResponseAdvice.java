@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-//@RestControllerAdvice()
+@RestControllerAdvice(basePackages = "com.github.hojoungjang.tekken_combo_maker")
 public class BaseResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Override

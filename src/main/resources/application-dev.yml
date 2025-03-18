@@ -25,6 +25,6 @@ logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
 
-springdoc:
-  swagger-ui:
-    disable-swagger-default-url: true
+#springdoc:
+#  swagger-ui:
+#    disable-swagger-default-url: true
