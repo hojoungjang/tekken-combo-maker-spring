@@ -1,7 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.member.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.common.dto.BaseErrorResponse;
-import com.github.hojoungjang.tekken_combo_maker.common.dto.BaseResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -10,8 +9,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 @Tag(name = "Member", description = "Member (유저) API")
@@ -35,6 +34,6 @@ public interface SwaggerMemberController {
             @ApiResponse(responseCode = "200", description = "멤버를 성공적으로 조회")
     })
     Page<MemberResponse> getAll(
-            @Parameter(description = "페이지네이션 파라미터") Pageable pageable
+            @ParameterObject Pageable pageable
     );
 }
