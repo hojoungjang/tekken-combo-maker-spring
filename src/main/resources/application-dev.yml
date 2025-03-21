@@ -33,6 +33,8 @@ springdoc:
     disable-swagger-default-url: true
     operations-sorter: alpha
     defaultModelsExpandDepth: -1
+    tagsSorter: alpha
+    operationsSorter: method
 
   cache:
     disabled: true
