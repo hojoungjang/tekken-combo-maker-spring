@@ -1,11 +1,9 @@
 package com.github.hojoungjang.tekken_combo_maker.common.config;
 
-import com.github.hojoungjang.tekken_combo_maker.common.dto.BaseResponse;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.media.Content;
-import io.swagger.v3.oas.models.media.ObjectSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import org.springdoc.core.customizers.OperationCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -28,20 +26,18 @@ public class SwaggerConfig {
         @Bean
         OperationCustomizer commonResponseWrapper() {
                 return (operation, handlerMethod) -> {
+                        final Content content = operation.getResponses().get("200").getContent();
+                        if (content != null) {
+                                content.forEach((mediaTypeKey, mediaType) -> {
+                                        Schema<?> originalSchema = mediaType.getSchema();
+                                         Schema<?> wrapperSchema = new Schema<>();
 
-//                        final Content content = operation.getResponses().get("200").getContent();
-//                        if (content != null) {
-//                                content.forEach((mediaTypeKey, mediaType) -> {
-//                                        Schema<?> originalSchema = mediaType.getSchema();
-//                                        // Schema<?> wrappedSchema = wrapSchema(originalSchema);
-//
-//                                        new ObjectSchema();
-//                                        Schema<Object> newSchema = new Schema<>();
-//
-//                                        mediaType.setSchema(wrappedSchema);
-//                                });
-//                        }
+                                        wrapperSchema.addProperty("success", new Schema<>().type("boolean"));
+                                        wrapperSchema.addProperty("data", originalSchema);
 
+                                        mediaType.setSchema(wrapperSchema);
+                                });
+                        }
                         return operation;
                 };
         }
