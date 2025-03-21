@@ -3,7 +3,6 @@ package com.github.hojoungjang.tekken_combo_maker.character.controller;
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
-import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.move.controller.IMoveService;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
@@ -17,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/characters")
 @RequiredArgsConstructor
-public class CharacterController {
+public class CharacterController implements SwaggerCharacterController {
 
     private final ICharacterService characterService;
     private final IComboService comboService;
