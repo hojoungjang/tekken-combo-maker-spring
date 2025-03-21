@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.member.model.entity;
 
+import com.github.hojoungjang.tekken_combo_maker.common.model.entity.AuditFieldEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+public class Member extends AuditFieldEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
