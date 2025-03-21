@@ -18,31 +18,23 @@ import org.springframework.data.domain.Pageable;
 public interface SwaggerMemberController {
 
     @Operation(summary = "ID 로 멤버 조회", description = "ID 를 이용해 멤버를 조회합니다.")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "ID 로 멤버를 성공적으로 조회",
-                            content = @Content(schema = @Schema(implementation = BaseResponse.class))
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "ID 에 대한 멤버가 존재하지 않음",
-                            content = @Content(schema = @Schema(implementation = BaseErrorResponse.class))
-                    )
-            }
-    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "ID 로 멤버를 성공적으로 조회"),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "ID 에 대한 멤버가 존재하지 않음",
+                    content = @Content(schema = @Schema(implementation = BaseErrorResponse.class))
+            )
+    })
     MemberResponse getById(
             @Parameter(description = "멤버 ID", example = "1") Long id
     );
 
     @Operation(summary = "멤버 목록 조회", description = "전체 멤버를 조회합니다.")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200", description = "멤버를 성공적으로 조회")
-            }
-    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "멤버를 성공적으로 조회")
+    })
     Page<MemberResponse> getAll(
-            @Parameter(description = "페이지네이션 정보") Pageable pageable
+            @Parameter(description = "페이지네이션 파라미터") Pageable pageable
     );
 }
