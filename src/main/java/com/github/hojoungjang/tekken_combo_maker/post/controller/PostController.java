@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/posts")
 @RequiredArgsConstructor
-public class PostController {
+public class PostController implements SwaggerPostController {
     private final IPostService postService;
     private final ICommentService commentService;
 
