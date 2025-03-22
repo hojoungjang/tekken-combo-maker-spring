@@ -8,7 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -17,10 +17,10 @@ public class AuditFieldEntity {
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createdDate;
+    private Instant createdAt;
 
     @LastModifiedDate
-    private LocalDateTime updatedDate;
+    private Instant updatedAt;
 
 //    @CreatedBy
 //    @Column(updatable = false)
