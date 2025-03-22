@@ -13,7 +13,7 @@ import java.time.Instant;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
-public class AuditFieldEntity {
+public class AuditFields {
 
     @CreatedDate
     @Column(updatable = false)
