@@ -9,5 +9,4 @@ public class TekkenComboMakerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TekkenComboMakerApplication.class, args);
 	}
-
 }

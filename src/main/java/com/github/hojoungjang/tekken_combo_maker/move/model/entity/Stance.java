@@ -1,6 +1,7 @@
 package com.github.hojoungjang.tekken_combo_maker.move.model.entity;
 
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
+import com.github.hojoungjang.tekken_combo_maker.common.model.entity.AuditFields;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Stance {
+public class Stance extends AuditFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
