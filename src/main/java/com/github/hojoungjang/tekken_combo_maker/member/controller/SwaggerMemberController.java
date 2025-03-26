@@ -1,11 +1,14 @@
 package com.github.hojoungjang.tekken_combo_maker.member.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.common.dto.BaseErrorResponse;
+import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberCreateRequest;
+import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberCreateResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -36,4 +39,10 @@ public interface SwaggerMemberController {
     Page<MemberResponse> getAll(
             @ParameterObject Pageable pageable
     );
+
+    @Operation(summary = "멤버 생성", description = "멤버를 생성합니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "멤버를 성공적으로 생성")
+    })
+    MemberCreateResponse create(@RequestBody MemberCreateRequest request);
 }
