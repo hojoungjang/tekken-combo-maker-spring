@@ -24,6 +24,7 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+  org.springframework.security: DEBUG
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
