@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class BaseResponse<T> {
-    private final boolean success;
+    private final boolean success;  // TODO: default to true?
     private final T data;
 
     @Builder

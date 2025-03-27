@@ -6,7 +6,7 @@ import org.springframework.http.ProblemDetail;
 
 @Getter
 public class BaseErrorResponse {
-    private final boolean success;
+    private final boolean success;      // TODO: default to false?
     private final ProblemDetail error;
 
     @Builder
