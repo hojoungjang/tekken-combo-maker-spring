@@ -12,6 +12,10 @@ spring:
       hibernate:
         format_sql: true
 
+  h2:
+    console:
+      enabled: true
+
   output:
     ansi:
       enabled: always
@@ -24,6 +28,7 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+  org.springframework.security: DEBUG
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8

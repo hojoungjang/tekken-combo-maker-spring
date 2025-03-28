@@ -29,4 +29,10 @@ public class MemberRepository implements IMemberRepository {
     public Page<Member> findAll(Pageable pageable) {
         return memberJpaRepository.findAll(pageable);
     }
+
+    @Override
+    public Long save(Member member) {
+        Member savedMember = memberJpaRepository.save(member);
+        return savedMember.getId();
+    }
 }

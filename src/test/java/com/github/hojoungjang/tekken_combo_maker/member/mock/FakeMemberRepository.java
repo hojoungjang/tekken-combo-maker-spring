@@ -56,4 +56,12 @@ public class FakeMemberRepository implements IMemberRepository {
         List<Member> data = new ArrayList<>(members.subList(offset, Math.min(offset + pageSize, members.size())));
         return new PageImpl<>(data, pageable, data.size());
     }
+
+    @Override
+    public Long save(Member member) {
+        Long memberId = (long) members.size() + 1;
+        ReflectionTestUtils.setField(member, "id", memberId);
+        members.add(member);
+        return memberId;
+    }
 }
