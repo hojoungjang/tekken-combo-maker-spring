@@ -1,5 +1,7 @@
 package com.github.hojoungjang.tekken_combo_maker.auth;
 
+import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.CustomOAuth2UserService;
+import com.github.hojoungjang.tekken_combo_maker.member.repository.MemberRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,6 +16,7 @@ import org.springframework.security.config.annotation.web.configurers.HttpBasicC
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -36,7 +39,8 @@ public class SecurityConfig {
             HttpSecurity http,
             AuthenticationEntryPoint restLoginAuthenticationEntryPoint,
             AuthenticationSuccessHandler loginSuccessHandler,
-            AuthenticationFailureHandler loginFailureHandler
+            AuthenticationFailureHandler loginFailureHandler,
+            CustomOAuth2UserService customOAuth2UserService
     ) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);      // TODO: 제대로 설정해주기
 
@@ -51,7 +55,9 @@ public class SecurityConfig {
                         .failureHandler(loginFailureHandler)
                         .loginProcessingUrl("/api/v1/auth/login"));
 
-        http.oauth2Login(Customizer.withDefaults());
+        http.oauth2Login(c -> c
+                .userInfoEndpoint(config -> config
+                        .userService(customOAuth2UserService)));
 
         http.exceptionHandling(c -> c
                 .authenticationEntryPoint(restLoginAuthenticationEntryPoint));    // TODO: defaultAuthenticationEntryPointFor() 사용 확인하기
@@ -99,4 +105,13 @@ public class SecurityConfig {
     public AuthenticationFailureHandler loginFailureHandler() {
         return new LoginFailureHandler();
     }
+
+    @Bean
+    CustomOAuth2UserService customOAuth2UserService(
+            PasswordEncoder passwordEncoder,
+            MemberRepository memberRepository
+    ) {
+        return new CustomOAuth2UserService(passwordEncoder, memberRepository);
+    }
+
 }

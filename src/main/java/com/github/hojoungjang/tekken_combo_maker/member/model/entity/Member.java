@@ -27,10 +27,22 @@ public class Member extends AuditFields {
     @Column(unique = true)
     private String nickName;
 
+    private String oauthProvider;
+
+    private String oauthProviderId;
+
     @Builder
-    public Member(String email, String password, String nickName) {
+    public Member(
+            String email,
+            String password,
+            String nickName,
+            String oauthProvider,
+            String oauthProviderId
+    ) {
         this.email = email;
         this.password = password;
         this.nickName = nickName;
+        this.oauthProvider = oauthProvider;
+        this.oauthProviderId = oauthProviderId;
     }
 }
