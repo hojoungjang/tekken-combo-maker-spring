@@ -1,6 +1,8 @@
 package com.github.hojoungjang.tekken_combo_maker.member.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
+import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberCreateRequest;
+import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberCreateResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
 import com.github.hojoungjang.tekken_combo_maker.member.mock.FakeMemberService;
 import org.assertj.core.api.Assertions;
@@ -67,5 +69,23 @@ class MemberControllerTest {
         Assertions.assertThat(members)
                 .extracting(MemberResponse::getNickName)
                 .contains("test user 1", "test user 2", "test user 3");
+    }
+
+    @DisplayName("멤버를 생성 할 수 있다.")
+    @Test
+    public void 멤버를_생성_할_수_있다() throws Exception {
+        // given
+        String email = "testuser@example.com";
+        String password = "password";
+        String nickname = "Test User";
+        MemberCreateRequest request = new MemberCreateRequest(email, password, nickname);
+
+        // when
+        MemberCreateResponse response = memberController.create(request);
+
+        // then
+        MemberResponse member = memberController.getById(response.getId());
+        Assertions.assertThat(member.getEmail()).isEqualTo("testuser@example.com");
+        Assertions.assertThat(member.getNickName()).isEqualTo("Test User");
     }
 }
