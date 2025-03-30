@@ -1,6 +1,7 @@
 package com.github.hojoungjang.tekken_combo_maker.auth.oauth2;
 
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.user.GoogleUserInfo;
+import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.user.NaverUserInfo;
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.user.OAuth2UserInfo;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
 import com.github.hojoungjang.tekken_combo_maker.member.repository.MemberRepository;
@@ -34,6 +35,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         switch (registrationId) {
             case "google":
                 return Optional.of(new GoogleUserInfo(user.getAttributes()));
+            case "naver":
+                return Optional.of(new NaverUserInfo(user.getAttributes()));
             default:
                 return Optional.empty();
         }
