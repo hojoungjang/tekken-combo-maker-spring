@@ -21,7 +21,7 @@ public class FakeCommentRepository implements ICommentRepository {
     private Comment createTestData(Long id) {
         Member member = Member.builder()
                 .email("test1@example.com")
-                .nickName("test user 1")
+                .nickname("test user 1")
                 .build();
         ReflectionTestUtils.setField(member, "id", 1L);
 

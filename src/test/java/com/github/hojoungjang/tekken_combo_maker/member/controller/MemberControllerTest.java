@@ -30,7 +30,7 @@ class MemberControllerTest {
         // then
         Assertions.assertThat(member.getId()).isEqualTo(1L);
         Assertions.assertThat(member.getEmail()).isEqualTo("test1@example.com");
-        Assertions.assertThat(member.getNickName()).isEqualTo("test user 1");
+        Assertions.assertThat(member.getNickname()).isEqualTo("test user 1");
     }
 
     @DisplayName("ID 가 매칭되는 멤버가 존재하지 않으면 NotFoundException 예외를 던지다.")
@@ -67,7 +67,7 @@ class MemberControllerTest {
                 .extracting(MemberResponse::getEmail)
                 .contains("test1@example.com", "test2@example.com", "test3@example.com");
         Assertions.assertThat(members)
-                .extracting(MemberResponse::getNickName)
+                .extracting(MemberResponse::getNickname)
                 .contains("test user 1", "test user 2", "test user 3");
     }
 
@@ -86,6 +86,6 @@ class MemberControllerTest {
         // then
         MemberResponse member = memberController.getById(response.getId());
         Assertions.assertThat(member.getEmail()).isEqualTo("testuser@example.com");
-        Assertions.assertThat(member.getNickName()).isEqualTo("Test User");
+        Assertions.assertThat(member.getNickname()).isEqualTo("Test User");
     }
 }

@@ -80,7 +80,7 @@ class ComboServiceTest {
     private Combo createTestCombo(Long id) {
         Member member = Member.builder()
                 .email(String.format("test%d@example.com", id))
-                .nickName(String.format("test user %d", id))
+                .nickname(String.format("test user %d", id))
                 .build();
         ReflectionTestUtils.setField(member, "id", id);
 

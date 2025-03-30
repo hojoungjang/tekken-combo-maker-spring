@@ -9,20 +9,20 @@ public class MemberResponse {
 
     private final Long id;
     private final String email;
-    private final String nickName;
+    private final String nickname;
 
     @Builder
-    public MemberResponse(Long id, String email, String nickName) {
+    public MemberResponse(Long id, String email, String nickname) {
         this.id = id;
         this.email = email;
-        this.nickName = nickName;
+        this.nickname = nickname;
     }
 
     public static MemberResponse fromEntity(Member member) {
         return MemberResponse.builder()
                 .id(member.getId())
                 .email(member.getEmail())
-                .nickName(member.getNickName())
+                .nickname(member.getNickname())
                 .build();
     }
 }
