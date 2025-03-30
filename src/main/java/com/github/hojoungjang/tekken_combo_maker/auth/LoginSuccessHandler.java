@@ -26,6 +26,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         String msg = String.format("Successfully logged in as %s", authentication.getName());
         log.info(msg);
 
+        // TODO: 이런 방식도 가능하다.
+        // response.sendRedirect("/api/v1/auth/login/success");
+
         BaseResponse<Object> responseBody = BaseResponse.builder()
                 .success(true)
                 .data(msg)
