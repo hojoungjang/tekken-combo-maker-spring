@@ -1,4 +1,7 @@
 spring:
+  config:
+    import: ./env/.env.dev[.properties]
+
   datasource:
     url: jdbc:h2:mem:test
     username: sa
@@ -24,6 +27,17 @@ spring:
     mongodb:
       uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER_URI}
       database: tekken
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_OAUTH_CLIENT_ID}
+            client-secret: ${GOOGLE_OAUTH_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
 
 logging.level:
   org.hibernate.SQL: debug

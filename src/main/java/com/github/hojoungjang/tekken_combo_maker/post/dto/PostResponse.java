@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 public class PostResponse {
 
-    private record MemberResponse(Long id, String nickName) {}
+    private record MemberResponse(Long id, String nickname) {}
 
     private final Long id;
     private final MemberResponse member;
@@ -30,7 +30,7 @@ public class PostResponse {
     public static PostResponse fromEntity(Post post) {
         MemberResponse member = new MemberResponse(
                 post.getMember().getId(),
-                post.getMember().getNickName()
+                post.getMember().getNickname()
         );
         return new PostResponse(
                 post.getId(),
@@ -47,6 +47,6 @@ public class PostResponse {
 
     @JsonIgnore
     public String getMemberNickName() {
-        return member.nickName();
+        return member.nickname();
     }
 }

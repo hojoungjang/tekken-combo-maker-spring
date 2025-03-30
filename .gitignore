@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### environment variable file ###
+src/main/resources/env

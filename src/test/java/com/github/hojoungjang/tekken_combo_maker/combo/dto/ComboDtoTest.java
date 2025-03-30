@@ -19,7 +19,7 @@ class ComboDtoTest {
         // given
         Member member = Member.builder()
                 .email("test@example.com")
-                .nickName("test-user")
+                .nickname("test-user")
                 .build();
         ReflectionTestUtils.setField(member, "id", 10001L);
 

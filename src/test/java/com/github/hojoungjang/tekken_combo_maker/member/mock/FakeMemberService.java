@@ -43,7 +43,7 @@ public class FakeMemberService implements IMemberService {
         Member member = Member.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .nickName(request.getNickname())
+                .nickname(request.getNickname())
                 .build();
         return memberRepository.save(member);
     }
