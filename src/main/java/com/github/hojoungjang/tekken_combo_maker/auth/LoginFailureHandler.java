@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ProblemDetail;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import java.io.IOException;
@@ -25,9 +26,13 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        log.error(String.format("Authentication Failed: %s", exception.getMessage()));
+        String exceptionMsg = exception.getMessage();
+        if (exception instanceof OAuth2AuthenticationException oAuth2AuthenticationException) {
+            exceptionMsg = oAuth2AuthenticationException.getError().getErrorCode();
+        }
+        log.error(String.format("Authentication Failed: %s", exceptionMsg));
 
-        ProblemDetail errorBody = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, exception.getMessage());
+        ProblemDetail errorBody = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, exceptionMsg);
         BaseErrorResponse responseBody = BaseErrorResponse.builder()
                 .success(false)
                 .error(errorBody)
