@@ -24,9 +24,4 @@ public class DiscordUserInfo implements OAuth2UserInfo {
     public String getEmail() {
         return String.valueOf(attributes.get("email"));
     }
-
-    @Override
-    public String getName() {
-        return "";
-    }
 }
