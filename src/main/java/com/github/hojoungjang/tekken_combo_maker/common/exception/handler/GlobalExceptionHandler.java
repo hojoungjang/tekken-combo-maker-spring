@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.common.exception.handler;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.DuplicateResourceException;
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
@@ -15,6 +16,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     protected ResponseEntity<Object> handleNotFoundException(
         NotFoundException ex,  WebRequest request
+    ) {
+        log.error(ex.getMessage());
+        return handleExceptionInternal(ex, ex.getBody(), ex.getHeaders(), ex.getStatusCode(), request);
+    }
+
+    @ExceptionHandler(DuplicateResourceException.class)
+    protected ResponseEntity<Object> handleDuplicateResourceException(
+            DuplicateResourceException ex, WebRequest request
     ) {
         log.error(ex.getMessage());
         return handleExceptionInternal(ex, ex.getBody(), ex.getHeaders(), ex.getStatusCode(), request);
