@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.member.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.DuplicateResourceException;
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberResponse;
@@ -120,5 +121,23 @@ class MemberServiceTest {
         MemberResponse member = memberService.findById(memberId);
         Assertions.assertThat(member.getEmail()).isEqualTo("testuser@example.com");
         Assertions.assertThat(member.getNickname()).isEqualTo("Test User");
+    }
+
+    @DisplayName("중복되는 이메일로 멤버를 생성 할 수 없다.")
+    @Test
+    public void 중복되는_이메일로_멤버를_생성_할_수_없다() throws Exception {
+        // given
+        String email = "test1@example.com";
+        String password = "password";
+        String nickname = "Test User";
+        MemberCreateRequest request = new MemberCreateRequest(email, password, nickname);
+
+        // when
+        // then
+        Assertions.assertThatExceptionOfType(DuplicateResourceException.class)
+                .isThrownBy(() -> {
+                    memberService.create(request);
+                })
+                .withMessageContaining("Member already exists with email: test1@example.com");
     }
 }

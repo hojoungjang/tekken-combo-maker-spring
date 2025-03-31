@@ -45,7 +45,9 @@ public class MemberService implements IMemberService {
     @Override
     public Long create(MemberCreateRequest request) throws DuplicateResourceException {
         memberRepository.findByEmail(request.getEmail()).ifPresent(member -> {
-            throw DuplicateResourceException.supplier("Member already exists with email");
+            throw DuplicateResourceException.supplier(
+                    String.format("Member already exists with email: %s", request.getEmail())
+            );
         });
 
         Member member = Member.builder()
