@@ -44,8 +44,9 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);      // TODO: 제대로 설정해주기
 
         http.authorizeHttpRequests(c -> c
-                        .requestMatchers(HttpMethod.POST, "/api/v1/members").permitAll()
-                        .anyRequest().authenticated());
+                .requestMatchers(HttpMethod.POST, "/api/v1/members").permitAll()
+                .requestMatchers("/swagger", "/swagger-ui/**", "/api-docs/**", "/v3/api-docs/**").permitAll()
+                .anyRequest().authenticated());
 
         http.httpBasic(HttpBasicConfigurer::disable);
 
