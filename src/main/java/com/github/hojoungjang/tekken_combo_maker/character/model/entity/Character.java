@@ -26,14 +26,15 @@ public class Character extends AuditFields {
 
     private String description;
 
-    @Column(name = "avatar_image")
-    private String avatarImageUrl;
-
     @Builder
-    public Character(String name, String fullName, String description, String avatarImageUrl) {
+    public Character(String name, String fullName, String description) {
         this.name = name;
         this.fullName = fullName;
         this.description = description;
-        this.avatarImageUrl = avatarImageUrl;
+    }
+
+    public String getAvatarImageUrl() {
+        // TODO: Change this to CDN or object storage URL
+        return String.format("http://localhost:8080/img/character/avatar/%s.png", name.toLowerCase());
     }
 }

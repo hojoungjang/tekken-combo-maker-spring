@@ -33,14 +33,12 @@ public class CharacterService implements ICharacterService {
     public Page<CharacterResponse> findAll(Pageable pageable) {
         Page<Character> characters = characterRepository.findAll(pageable);
 
-        return characters.map(character -> {
-            return CharacterResponse.builder()
-                    .id(character.getId())
-                    .name(character.getName())
-                    .fullName(character.getFullName())
-                    .description(character.getDescription())
-                    .avatarImageUrl(character.getAvatarImageUrl())
-                    .build();
-        });
+        return characters.map(character -> CharacterResponse.builder()
+                .id(character.getId())
+                .name(character.getName())
+                .fullName(character.getFullName())
+                .description(character.getDescription())
+                .avatarImageUrl(character.getAvatarImageUrl())
+                .build());
     }
 }
