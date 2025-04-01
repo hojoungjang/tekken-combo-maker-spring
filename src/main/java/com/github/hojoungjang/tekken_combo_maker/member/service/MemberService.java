@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.member.service;
 
+import com.github.hojoungjang.tekken_combo_maker.common.exception.DuplicateResourceException;
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import com.github.hojoungjang.tekken_combo_maker.member.controller.IMemberService;
 import com.github.hojoungjang.tekken_combo_maker.member.dto.MemberCreateRequest;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -40,7 +43,13 @@ public class MemberService implements IMemberService {
     }
 
     @Override
-    public Long create(MemberCreateRequest request) {
+    public Long create(MemberCreateRequest request) throws DuplicateResourceException {
+        memberRepository.findByEmail(request.getEmail()).ifPresent(member -> {
+            throw DuplicateResourceException.supplier(
+                    String.format("Member already exists with email: %s", request.getEmail())
+            );
+        });
+
         Member member = Member.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))

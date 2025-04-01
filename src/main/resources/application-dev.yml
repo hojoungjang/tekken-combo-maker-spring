@@ -39,6 +39,25 @@ spring:
               - email
               - profile
 
+          discord:
+            client-id: ${DISCORD_OAUTH_CLIENT_ID}
+            client-secret: ${DISCORD_OAUTH_CLIENT_SECRET}
+            scope:
+              - email
+            client-name: Discord
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/discord
+            client-authentication-method: client_secret_post
+
+        provider:
+          google:
+            user-name-attribute: email
+          discord:
+            authorization-uri: https://discord.com/oauth2/authorize
+            token-uri: https://discord.com/api/oauth2/token
+            user-info-uri: https://discord.com/api/users/@me
+            user-name-attribute: email
+
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace

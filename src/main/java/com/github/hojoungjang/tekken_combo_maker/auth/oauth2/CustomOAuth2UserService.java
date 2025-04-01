@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.auth.oauth2;
 
+import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.user.DiscordUserInfo;
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.user.GoogleUserInfo;
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.user.OAuth2UserInfo;
 import com.github.hojoungjang.tekken_combo_maker.member.model.entity.Member;
@@ -34,6 +35,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         switch (registrationId) {
             case "google":
                 return Optional.of(new GoogleUserInfo(user.getAttributes()));
+            case "discord":
+                return Optional.of(new DiscordUserInfo(user.getAttributes()));
             default:
                 return Optional.empty();
         }
@@ -62,6 +65,14 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                     memberRepository.save(newMember);
                     return newMember;
                 });
+
+        // 다른 인증 방법이면서 (예를 들어 email 회원 가입, 또는 벤더가 다른 소셜 로그인) 동일한 이메일로 만들어지는 경우 확인
+        if (member.getEmail().equals(email)
+                && (!member.getOauthProvider().equals(provider)
+                    || !member.getOauthProviderId().equals(providerId))) {
+            throw new OAuth2AuthenticationException(String.format("User already exists with email: %s", email));
+        }
+
         return user;
     }
 }
