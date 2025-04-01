@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.auth;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.CustomOAuth2UserService;
 import com.github.hojoungjang.tekken_combo_maker.member.repository.MemberRepository;
 import org.springframework.context.annotation.Bean;
@@ -98,13 +99,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationSuccessHandler loginSuccessHandler() {
-        return new LoginSuccessHandler();
+    public AuthenticationSuccessHandler loginSuccessHandler(ObjectMapper objectMapper) {
+        return new LoginSuccessHandler(objectMapper);
     }
 
     @Bean
-    public AuthenticationFailureHandler loginFailureHandler() {
-        return new LoginFailureHandler();
+    public AuthenticationFailureHandler loginFailureHandler(ObjectMapper objectMapper) {
+        return new LoginFailureHandler(objectMapper);
     }
 
     @Bean
