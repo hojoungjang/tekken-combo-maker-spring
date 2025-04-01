@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class CharacterDto {
+public class CharacterResponse {
     private final Long id;
     private final String name;
     private final String fullName;
@@ -12,7 +12,7 @@ public class CharacterDto {
     private final String avatarImageUrl;
 
     @Builder
-    CharacterDto(Long id, String name, String fullName, String description, String avatarImageUrl) {
+    CharacterResponse(Long id, String name, String fullName, String description, String avatarImageUrl) {
         this.id = id;
         this.name = name;
         this.fullName = fullName;

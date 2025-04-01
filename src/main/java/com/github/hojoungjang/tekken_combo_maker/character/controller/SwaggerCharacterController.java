@@ -1,6 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
-import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
+import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.common.dto.BaseErrorResponse;
@@ -31,13 +31,13 @@ public interface SwaggerCharacterController {
                     content = @Content(schema = @Schema(implementation = BaseErrorResponse.class))
             )
     })
-    CharacterDto getById(@Parameter(description = "캐릭터 ID", example = "1") Long id);
+    CharacterResponse getById(@Parameter(description = "캐릭터 ID", example = "1") Long id);
 
     @Operation(summary = "캐릭터 목록 조회", description = "전체 캐릭터를 조회합니다.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "캐릭터를 성공적으로 조회")
     })
-    Page<CharacterDto> getAll(@ParameterObject Pageable pageable);
+    Page<CharacterResponse> getAll(@ParameterObject Pageable pageable);
 
     @Operation(summary = "캐릭터 콤보 목록 조회", description = "캐릭터의 전체 콤보를 조회합니다.")
     @ApiResponses({
