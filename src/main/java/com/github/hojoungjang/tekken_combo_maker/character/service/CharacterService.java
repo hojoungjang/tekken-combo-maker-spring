@@ -26,6 +26,7 @@ public class CharacterService implements ICharacterService {
         return CharacterDto.builder()
                 .id(character.getId())
                 .name(character.getName())
+                .fullName(character.getFullName())
                 .description(character.getDescription())
                 .avatarImageUrl(character.getAvatarImageUrl())
                 .build();
@@ -39,6 +40,7 @@ public class CharacterService implements ICharacterService {
             return CharacterDto.builder()
                     .id(character.getId())
                     .name(character.getName())
+                    .fullName(character.getFullName())
                     .description(character.getDescription())
                     .avatarImageUrl(character.getAvatarImageUrl())
                     .build();

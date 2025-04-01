@@ -22,6 +22,7 @@ public class FakeCharacterService implements ICharacterService {
         return CharacterDto.builder()
                 .id(character.getId())
                 .name(character.getName())
+                .fullName(character.getFullName())
                 .description(character.getDescription())
                 .avatarImageUrl(character.getAvatarImageUrl())
                 .build();
@@ -31,13 +32,12 @@ public class FakeCharacterService implements ICharacterService {
     public Page<CharacterDto> findAll(Pageable pageable) {
         Page<Character> characters = characterRepository.findAll(pageable);
 
-        return characters.map(character -> {
-            return CharacterDto.builder()
-                    .id(character.getId())
-                    .name(character.getName())
-                    .description(character.getDescription())
-                    .avatarImageUrl(character.getAvatarImageUrl())
-                    .build();
-        });
+        return characters.map(character -> CharacterDto.builder()
+                .id(character.getId())
+                .name(character.getName())
+                .fullName(character.getFullName())
+                .description(character.getDescription())
+                .avatarImageUrl(character.getAvatarImageUrl())
+                .build());
     }
 }
