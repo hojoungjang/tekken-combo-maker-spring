@@ -25,6 +25,7 @@ class ComboDtoTest {
 
         Character character = Character.builder()
                 .name("카즈야")
+                .fullName("카즈야 미시마")
                 .description("테스트용 카즈야 상세 글")
                 .avatarImageUrl("/img/kazuya.png")
                 .build();

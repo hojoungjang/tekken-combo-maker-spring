@@ -22,14 +22,17 @@ public class Character extends AuditFields {
     @Column(nullable = false)
     private String name;
 
+    private String fullName;
+
     private String description;
 
     @Column(name = "avatar_image")
     private String avatarImageUrl;
 
     @Builder
-    public Character(String name, String description, String avatarImageUrl) {
+    public Character(String name, String fullName, String description, String avatarImageUrl) {
         this.name = name;
+        this.fullName = fullName;
         this.description = description;
         this.avatarImageUrl = avatarImageUrl;
     }
