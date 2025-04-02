@@ -28,8 +28,9 @@ class CharacterServiceTest {
         // then
         Assertions.assertThat(character.getId()).isEqualTo(1);
         Assertions.assertThat(character.getName()).isEqualTo("character 1");
+        Assertions.assertThat(character.getFullName()).isEqualTo("character full 1");
         Assertions.assertThat(character.getDescription()).isEqualTo("description 1");
-        Assertions.assertThat(character.getAvatarImageUrl()).isEqualTo("image url 1");
+        Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-1.png");
     }
 
     @DisplayName("캐릭터 ID 가 존재하지 않으면 NotFoundException 예외를 던지다.")
@@ -64,8 +65,13 @@ class CharacterServiceTest {
         Assertions.assertThat(characters)
                 .extracting(CharacterResponse::getId).contains(1L);
         Assertions.assertThat(characters)
-                .extracting(CharacterResponse::getName).contains("character 1", "character 2", "character 3");
+                .extracting(CharacterResponse::getName)
+                .contains("character 1", "character 2", "character 3");
         Assertions.assertThat(characters)
-                .extracting(CharacterResponse::getAvatarImageUrl).contains("image url 1", "image url 2", "image url 3");
+                .extracting(CharacterResponse::getFullName)
+                .contains("character full 1", "character full 2", "character full 3");
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getAvatarImageName)
+                .contains("character-1.png", "character-2.png", "character-3.png");
     }
 }

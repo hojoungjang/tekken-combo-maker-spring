@@ -24,7 +24,7 @@ public class FakeCharacterService implements ICharacterService {
                 .name(character.getName())
                 .fullName(character.getFullName())
                 .description(character.getDescription())
-                .avatarImageUrl(character.getAvatarImageUrl())
+                .avatarImageName(character.getAvatarImageName())
                 .build();
     }
 
@@ -37,7 +37,7 @@ public class FakeCharacterService implements ICharacterService {
                 .name(character.getName())
                 .fullName(character.getFullName())
                 .description(character.getDescription())
-                .avatarImageUrl(character.getAvatarImageUrl())
+                .avatarImageName(character.getAvatarImageName())
                 .build());
     }
 }

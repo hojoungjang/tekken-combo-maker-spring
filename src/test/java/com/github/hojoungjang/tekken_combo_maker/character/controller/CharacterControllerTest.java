@@ -27,20 +27,21 @@ class CharacterControllerTest {
             new FakeMoveService()
     );
 
-    @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterDto 로 가져온다.")
+    @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterResponse 로 가져온다.")
     @Test
     public void 특정_ID_캐릭터_정보를_가져올_수_있다() throws Exception {
         // given
         Long id = 1L;
 
         // when
-        CharacterResponse characterDto = characterController.getById(id);
+        CharacterResponse response = characterController.getById(id);
 
         // then
-        Assertions.assertThat(characterDto.getId()).isEqualTo(1L);
-        Assertions.assertThat(characterDto.getName()).isEqualTo("character 1");
-        Assertions.assertThat(characterDto.getDescription()).isEqualTo("description 1");
-        Assertions.assertThat(characterDto.getAvatarImageUrl()).isEqualTo("image url 1");
+        Assertions.assertThat(response.getId()).isEqualTo(1L);
+        Assertions.assertThat(response.getName()).isEqualTo("character 1");
+        Assertions.assertThat(response.getFullName()).isEqualTo("character full 1");
+        Assertions.assertThat(response.getDescription()).isEqualTo("description 1");
+        Assertions.assertThat(response.getAvatarImageName()).isEqualTo("character-1.png");
     }
 
     @DisplayName("캐릭터 ID 가 존재하지 않으면 NotFoundException 예외를 던지다.")
@@ -58,7 +59,7 @@ class CharacterControllerTest {
                 .withMessageContaining("Character not found with ID: 10");
     }
 
-    @DisplayName("여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")
+    @DisplayName("여러 캐릭터 정보를 CharacterResponse 리스트로 가져온다.")
     @Test
     public void 여러_캐릭터_정보를_가져올_수_있다() throws Exception {
         // given
@@ -75,9 +76,14 @@ class CharacterControllerTest {
         Assertions.assertThat(characters)
                 .extracting(CharacterResponse::getId).contains(1L);
         Assertions.assertThat(characters)
-                .extracting(CharacterResponse::getName).contains("character 1", "character 2", "character 3");
+                .extracting(CharacterResponse::getName)
+                .contains("character 1", "character 2", "character 3");
         Assertions.assertThat(characters)
-                .extracting(CharacterResponse::getAvatarImageUrl).contains("image url 1", "image url 2", "image url 3");
+                .extracting(CharacterResponse::getFullName)
+                .contains("character full 1", "character full 2", "character full 3");
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getAvatarImageName)
+                .contains("character-1.png", "character-2.png", "character-3.png");
     }
 
     @DisplayName("Pagination 을 사용하여 여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")

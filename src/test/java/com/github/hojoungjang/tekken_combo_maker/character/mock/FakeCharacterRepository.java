@@ -20,12 +20,10 @@ public class FakeCharacterRepository implements ICharacterRepository {
             String name = "character " + i;
             String fullName = "character full " + i;
             String description = "description " + i;
-            String avatarImageUrl = "image url " + i;
             Character character = Character.builder()
                     .name(name)
                     .fullName(fullName)
                     .description(description)
-                    .avatarImageUrl(avatarImageUrl)
                     .build();
             ReflectionTestUtils.setField(character, "id", i);
             characters.add(character);
