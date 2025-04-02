@@ -33,8 +33,7 @@ public class Character extends AuditFields {
         this.description = description;
     }
 
-    public String getAvatarImageUrl() {
-        // TODO: Change this to CDN or object storage URL
-        return String.format("http://localhost:8080/img/character/avatar/%s.png", name.toLowerCase());
+    public String getAvatarImageName() {
+        return String.format("%s.png", name.toLowerCase().replace(" ", "-"));
     }
 }
