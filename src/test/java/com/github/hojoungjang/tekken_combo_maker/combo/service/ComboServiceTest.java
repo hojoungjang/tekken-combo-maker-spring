@@ -77,36 +77,6 @@ class ComboServiceTest {
                 .extracting(ComboDto::getHitCount).contains(6);
     }
 
-    private Combo createTestCombo(Long id) {
-        Member member = Member.builder()
-                .email(String.format("test%d@example.com", id))
-                .nickname(String.format("test user %d", id))
-                .build();
-        ReflectionTestUtils.setField(member, "id", id);
-
-        Character character = Character.builder()
-                .name(String.format("character %d", id))
-                .description(String.format("character description %d", id))
-                .avatarImageUrl(String.format("/img/character%d.png", id))
-                .build();
-        ReflectionTestUtils.setField(character, "id", id);
-
-        Post post = Post.builder()
-                .member(member)
-                .build();
-        ReflectionTestUtils.setField(post, "id", id);
-
-        Combo combo = Combo.builder()
-                .character(character)
-                .post(post)
-                .name(String.format("combo %d", id))
-                .damage(50)
-                .hitCount(6)
-                .build();
-        ReflectionTestUtils.setField(combo, "id", id);
-        return combo;
-    }
-
     @DisplayName("입력된 모든 콤보를 저장할 수 있다.")
     @Test
     public void saveAllCombos() throws Exception {

@@ -1,10 +1,9 @@
 package com.github.hojoungjang.tekken_combo_maker.character.service;
 
-import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
+import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterRepository;
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
@@ -12,8 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterServiceTest {
 
@@ -26,13 +23,14 @@ class CharacterServiceTest {
         Long id = 1L;
 
         // when
-        CharacterDto character = characterService.findById(id);
+        CharacterResponse character = characterService.findById(id);
 
         // then
         Assertions.assertThat(character.getId()).isEqualTo(1);
         Assertions.assertThat(character.getName()).isEqualTo("character 1");
+        Assertions.assertThat(character.getFullName()).isEqualTo("character full 1");
         Assertions.assertThat(character.getDescription()).isEqualTo("description 1");
-        Assertions.assertThat(character.getAvatarImageUrl()).isEqualTo("image url 1");
+        Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-1.png");
     }
 
     @DisplayName("캐릭터 ID 가 존재하지 않으면 NotFoundException 예외를 던지다.")
@@ -45,7 +43,7 @@ class CharacterServiceTest {
         // then
         Assertions.assertThatExceptionOfType(NotFoundException.class)
                 .isThrownBy(() -> {
-                    CharacterDto characterDto = characterService.findById(id);
+                    CharacterResponse characterDto = characterService.findById(id);
                 })
                 .withMessageContaining("Character not found with ID: 10");
     }
@@ -57,18 +55,23 @@ class CharacterServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<CharacterDto> charactersPage = characterService.findAll(pageable);
+        Page<CharacterResponse> charactersPage = characterService.findAll(pageable);
 
         // then
-        List<CharacterDto> characters = charactersPage.getContent();
+        List<CharacterResponse> characters = charactersPage.getContent();
         Assertions.assertThat(characters)
                 .isNotEmpty()
                 .hasSize(3);
         Assertions.assertThat(characters)
-                .extracting(CharacterDto::getId).contains(1L);
+                .extracting(CharacterResponse::getId).contains(1L);
         Assertions.assertThat(characters)
-                .extracting(CharacterDto::getName).contains("character 1", "character 2", "character 3");
+                .extracting(CharacterResponse::getName)
+                .contains("character 1", "character 2", "character 3");
         Assertions.assertThat(characters)
-                .extracting(CharacterDto::getAvatarImageUrl).contains("image url 1", "image url 2", "image url 3");
+                .extracting(CharacterResponse::getFullName)
+                .contains("character full 1", "character full 2", "character full 3");
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getAvatarImageName)
+                .contains("character-1.png", "character-2.png", "character-3.png");
     }
 }

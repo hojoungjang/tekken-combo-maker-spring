@@ -1,6 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
-import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterDto;
+import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
@@ -27,20 +27,21 @@ class CharacterControllerTest {
             new FakeMoveService()
     );
 
-    @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterDto 로 가져온다.")
+    @DisplayName("ID 를 사용해 캐릭터 정보를 CharacterResponse 로 가져온다.")
     @Test
     public void 특정_ID_캐릭터_정보를_가져올_수_있다() throws Exception {
         // given
         Long id = 1L;
 
         // when
-        CharacterDto characterDto = characterController.getById(id);
+        CharacterResponse response = characterController.getById(id);
 
         // then
-        Assertions.assertThat(characterDto.getId()).isEqualTo(1L);
-        Assertions.assertThat(characterDto.getName()).isEqualTo("character 1");
-        Assertions.assertThat(characterDto.getDescription()).isEqualTo("description 1");
-        Assertions.assertThat(characterDto.getAvatarImageUrl()).isEqualTo("image url 1");
+        Assertions.assertThat(response.getId()).isEqualTo(1L);
+        Assertions.assertThat(response.getName()).isEqualTo("character 1");
+        Assertions.assertThat(response.getFullName()).isEqualTo("character full 1");
+        Assertions.assertThat(response.getDescription()).isEqualTo("description 1");
+        Assertions.assertThat(response.getAvatarImageName()).isEqualTo("character-1.png");
     }
 
     @DisplayName("캐릭터 ID 가 존재하지 않으면 NotFoundException 예외를 던지다.")
@@ -53,37 +54,56 @@ class CharacterControllerTest {
         // then
         Assertions.assertThatExceptionOfType(NotFoundException.class)
                 .isThrownBy(() -> {
-                    CharacterDto characterDto = characterController.getById(id);
+                    CharacterResponse characterDto = characterController.getById(id);
                 })
                 .withMessageContaining("Character not found with ID: 10");
     }
 
-    @DisplayName("여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")
+    @DisplayName("여러 캐릭터 정보를 CharacterResponse 리스트로 가져온다.")
     @Test
     public void 여러_캐릭터_정보를_가져올_수_있다() throws Exception {
         // given
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<CharacterDto> charactersPage = characterController.getAll(pageable);
+        Page<CharacterResponse> charactersPage = characterController.getAll(pageable);
 
         // then
-        List<CharacterDto> characters = charactersPage.getContent();
+        List<CharacterResponse> characters = charactersPage.getContent();
         Assertions.assertThat(characters)
                 .isNotEmpty()
                 .hasSize(3);
         Assertions.assertThat(characters)
-                .extracting(CharacterDto::getId).contains(1L);
+                .extracting(CharacterResponse::getId).contains(1L);
         Assertions.assertThat(characters)
-                .extracting(CharacterDto::getName).contains("character 1", "character 2", "character 3");
+                .extracting(CharacterResponse::getName)
+                .contains("character 1", "character 2", "character 3");
         Assertions.assertThat(characters)
-                .extracting(CharacterDto::getAvatarImageUrl).contains("image url 1", "image url 2", "image url 3");
+                .extracting(CharacterResponse::getFullName)
+                .contains("character full 1", "character full 2", "character full 3");
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getAvatarImageName)
+                .contains("character-1.png", "character-2.png", "character-3.png");
     }
 
-    @DisplayName("Pagination 을 사용하여 여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")
+    @DisplayName("Pagination 을 사용하여 여러 캐릭터 정보를 CharacterResponse 리스트로 가져온다.")
     @Test
     public void Pagination을_사용하여_여러_캐릭터_정보를_가져올_수_있다() throws Exception {
-        // TODO: 작성하기
+        // given
+        Pageable pageable = PageRequest.of(1, 1);
+
+        // when
+        Page<CharacterResponse> charactersPage = characterController.getAll(pageable);
+
+        // then
+        List<CharacterResponse> characters = charactersPage.getContent();
+        Assertions.assertThat(characters).isNotEmpty().hasSize(1);
+
+        CharacterResponse character = characters.getFirst();
+        Assertions.assertThat(character.getId()).isEqualTo(2L);
+        Assertions.assertThat(character.getName()).isEqualTo("character 2");
+        Assertions.assertThat(character.getFullName()).isEqualTo("character full 2");
+        Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-2.png");
     }
 
     @DisplayName("캐릭터 ID 를 사용하여 해당 캐릭터의 콤보를 가져올 수 있다.")

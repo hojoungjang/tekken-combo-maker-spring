@@ -27,8 +27,8 @@ public class FakeComboRepository implements IComboRepository {
 
         Character character = Character.builder()
                 .name(String.format("character %d", id))
+                .fullName(String.format("character full %d", id))
                 .description(String.format("character description %d", id))
-                .avatarImageUrl(String.format("/img/character%d.png", id))
                 .build();
         ReflectionTestUtils.setField(character, "id", id);
 
