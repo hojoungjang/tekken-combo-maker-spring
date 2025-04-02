@@ -86,10 +86,24 @@ class CharacterControllerTest {
                 .contains("character-1.png", "character-2.png", "character-3.png");
     }
 
-    @DisplayName("Pagination 을 사용하여 여러 캐릭터 정보를 CharacterDto 리스트로 가져온다.")
+    @DisplayName("Pagination 을 사용하여 여러 캐릭터 정보를 CharacterResponse 리스트로 가져온다.")
     @Test
     public void Pagination을_사용하여_여러_캐릭터_정보를_가져올_수_있다() throws Exception {
-        // TODO: 작성하기
+        // given
+        Pageable pageable = PageRequest.of(1, 1);
+
+        // when
+        Page<CharacterResponse> charactersPage = characterController.getAll(pageable);
+
+        // then
+        List<CharacterResponse> characters = charactersPage.getContent();
+        Assertions.assertThat(characters).isNotEmpty().hasSize(1);
+
+        CharacterResponse character = characters.getFirst();
+        Assertions.assertThat(character.getId()).isEqualTo(2L);
+        Assertions.assertThat(character.getName()).isEqualTo("character 2");
+        Assertions.assertThat(character.getFullName()).isEqualTo("character full 2");
+        Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-2.png");
     }
 
     @DisplayName("캐릭터 ID 를 사용하여 해당 캐릭터의 콤보를 가져올 수 있다.")
