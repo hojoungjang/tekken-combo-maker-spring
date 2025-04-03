@@ -15,18 +15,18 @@ public class MoveResponse {
 
     private final String id;
     private final Long characterId;
-    private final Long stanceId;
+    private final String stanceName;
 
     private final String name;
     private final String command;
-    private final Integer damage;
+    private final List<Integer> damages;
     private final Integer hitCount;
     private final boolean counter;
 
-    private final List<Integer> startupFrames;
+    private final Integer startupFrame;
     private final List<HitLevel> hitLevels;
-    private final List<Integer> hitFrames;
-    private final List<Integer> guardFrames;
+    private final Integer hitFrame;
+    private final Integer guardFrame;
     private final Set<MoveAttribute> moveAttributes;
     private final MoveCategory moveCategory;
 
@@ -34,31 +34,31 @@ public class MoveResponse {
     MoveResponse(
             String id,
             Long characterId,
-            Long stanceId,
+            String stanceName,
             String name,
             String command,
-            Integer damage,
+            List<Integer> damages,
             Integer hitCount,
             boolean counter,
-            List<Integer> startupFrames,
+            Integer startupFrame,
             List<HitLevel> hitLevels,
-            List<Integer> hitFrames,
-            List<Integer> guardFrames,
+            Integer hitFrame,
+            Integer guardFrame,
             Set<MoveAttribute> moveAttributes,
             MoveCategory moveCategory
     ) {
         this.id = id;
         this.characterId = characterId;
-        this.stanceId = stanceId;
+        this.stanceName = stanceName;
         this.name = name;
         this.command = command;
-        this.damage = damage;
+        this.damages = damages;
         this.hitCount = hitCount;
         this.counter = counter;
-        this.startupFrames = startupFrames;
+        this.startupFrame = startupFrame;
         this.hitLevels = hitLevels;
-        this.hitFrames = hitFrames;
-        this.guardFrames = guardFrames;
+        this.hitFrame = hitFrame;
+        this.guardFrame = guardFrame;
         this.moveAttributes = moveAttributes;
         this.moveCategory = moveCategory;
     }
@@ -67,10 +67,10 @@ public class MoveResponse {
         return MoveResponse.builder()
                 .id(move.getId())
                 .characterId(move.getCharacterId())
-                .stanceId(move.getStanceId())
+                .stanceName(move.getStanceName())
                 .name(move.getName())
                 .command(move.getCommand())
-                .damage(move.getDamage())
+                .damages(move.getDamages())
                 .hitCount(move.getHitCount())
                 .counter(move.isCounter())
                 .build();

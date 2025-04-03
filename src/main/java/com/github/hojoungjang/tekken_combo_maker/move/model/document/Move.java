@@ -31,49 +31,49 @@ public class Move {
     @LastModifiedDate
     private Instant updatedAt;
 
-    private Long characterId;   // character 테이블 primary key
-    private Long stanceId;      // stance 테이블 primary key
+    private Long characterId;       // character 테이블 primary key
+    private String stanceName;      // stance 테이블 primary key
 
     private String name;
     private String command;
-    private Integer damage;
+    private List<Integer> damages;
     private Integer hitCount;
     private boolean counter;
 
-    private List<Integer> startupFrames;        // 타수별 발동 프레임
+    private Integer startupFrame;               // 발동 프레임
     private List<HitLevel> hitLevels;           // 타수별 타점 판정
-    private List<Integer> hitFrames;            // 타수별 적중시 프레임 격차
-    private List<Integer> guardFrames;          // 타수별 가드시 프레임 격차
+    private Integer hitFrame;                   // 적중시 프레임 격차
+    private Integer guardFrame;                 // 가드시 프레임 격차
     private Set<MoveAttribute> moveAttributes;  // 기술 특수 효과
     private MoveCategory moveCategory;          // 기술 분류
 
     @Builder
     Move(
             Long characterId,
-            Long stanceId,
+            String stanceName,
             String name,
             String command,
-            Integer damage,
+            List<Integer> damages,
             Integer hitCount,
             boolean counter,
-            List<Integer> startupFrames,
+            Integer startupFrame,
             List<HitLevel> hitLevels,
-            List<Integer> hitFrames,
-            List<Integer> guardFrames,
+            Integer hitFrame,
+            Integer guardFrame,
             Set<MoveAttribute> moveAttributes,
             MoveCategory moveCategory
     ) {
         this.characterId = characterId;
-        this.stanceId = stanceId;
+        this.stanceName = stanceName;
         this.name = name;
         this.command = command;
-        this.damage = damage;
+        this.damages = damages;
         this.hitCount = hitCount;
         this.counter = counter;
-        this.startupFrames = startupFrames;
+        this.startupFrame = startupFrame;
         this.hitLevels = hitLevels;
-        this.hitFrames = hitFrames;
-        this.guardFrames = guardFrames;
+        this.hitFrame = hitFrame;
+        this.guardFrame = guardFrame;
         this.moveAttributes = moveAttributes;
         this.moveCategory = moveCategory;
     }
