@@ -41,3 +41,6 @@ src/main/resources/env
 
 ### Character Avatar Image for Local Dev ###
 src/main/resources/static/img/character
+
+### MacOS ###
+.DS_Store

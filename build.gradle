@@ -42,8 +42,16 @@ dependencies {
 
 	// Swagger 문서
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+
+	// env 파일 로드해 key-value 객체로 사용
+	implementation 'io.github.cdimascio:dotenv-java:3.2.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.register('seedMoveData', JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.github.hojoungjang.tekken_combo_maker.move.seeder.MoveDataSeederRunner'
 }
