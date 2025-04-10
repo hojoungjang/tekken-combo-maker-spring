@@ -12,7 +12,10 @@ public enum HitLevel {
     MID_SPECIAL,
     HIGH_SPECIAL,
 
+    THROW,
     LOW_THROW,
     MID_THROW,
-    HIGH_THROW;
+    HIGH_THROW,
+
+    UNGUARDABLE;
 }
