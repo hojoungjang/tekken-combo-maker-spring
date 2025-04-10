@@ -1,12 +1,17 @@
 package com.github.hojoungjang.seeder;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.MappingJsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import com.github.hojoungjang.tekken_combo_maker.move.repository.MoveMongoRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.io.InputStream;
@@ -23,18 +28,58 @@ public class MoveDataSeeder {
     }
 
     public void run() throws Exception {
-        // TODO: Fetch all JSON files under /static/json/move/, parse them and insert all move data
-        if (moveMongoRepository.count() == 0) {
-            InputStream is = MoveDataSeeder.class.getResourceAsStream("/static/json/move/Kazuya.json");
-            JsonNode jsonNode = seederObjectMapper.readTree(is);
-            JsonNode movesJson = jsonNode.path("moves");
+        // TODO: Add params to determine force run or maybe drop all documents first and do a push
+//        if (!force && moveMongoRepository.count() > 0) {
+//            return;
+//        }
 
-            List<Move> moves = seederObjectMapper.convertValue(movesJson, new TypeReference<List<Move>>() {
-            });
-            List<Move> savedMoves = moveMongoRepository.saveAll(moves);
-            log.info("Successfully inserted Kazuya moves documents");
-        } else {
-            log.info("Skipped data initialization");
+        PathMatchingResourcePatternResolver pathResolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = pathResolver.getResources("/static/json/move/*.json");
+        MappingJsonFactory jsonFactory = new MappingJsonFactory();
+        List<Move> moves = new ArrayList<>();
+
+        for (Resource resource: resources) {
+            InputStream is = resource.getInputStream();
+            JsonParser parser = jsonFactory.createParser(is);
+
+            while (parser.nextToken() != JsonToken.END_OBJECT) {
+                if ("moves".equals(parser.currentName())) {
+                    int idx = 0;
+                    while (parser.nextToken() != JsonToken.END_ARRAY) {
+                        if (parser.nextToken() == JsonToken.START_ARRAY) {
+                            continue;
+                        }
+
+                        Move move = seederObjectMapper.readValue(parser, Move.class);
+                        moves.add(move);
+
+                        if (moves.size() == 20) {
+                            moveMongoRepository.insert(moves);
+                            moves = new ArrayList<>();
+
+                            log.info(String.format(
+                                    "Saved %s moves from index %d to %d...",
+                                    resource.getFilename(),
+                                    idx*20,
+                                    (idx+1) * 20
+                            ));
+                            idx++;
+                        }
+                    }
+
+                    if (!moves.isEmpty()) {
+                        moveMongoRepository.insert(moves);
+                        log.info(String.format(
+                                "Saved %s moves from index %d to %d...",
+                                resource.getFilename(),
+                                idx*20,
+                                idx*20 + moves.size()
+                        ));
+                    }
+                }
+            }
+
+            log.info(String.format("Saved all moves in %s", resource.getFilename()));
         }
     }
 }
