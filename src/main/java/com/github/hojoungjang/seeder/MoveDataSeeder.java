@@ -29,9 +29,7 @@ public class MoveDataSeeder {
 
     public void run() throws Exception {
         // TODO: Add params to determine force run or maybe drop all documents first and do a push
-//        if (!force && moveMongoRepository.count() > 0) {
-//            return;
-//        }
+        moveMongoRepository.deleteAll();
 
         PathMatchingResourcePatternResolver pathResolver = new PathMatchingResourcePatternResolver();
         Resource[] resources = pathResolver.getResources("/static/json/move/*.json");
