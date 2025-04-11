@@ -1,10 +1,11 @@
 package com.github.hojoungjang.tekken_combo_maker.move.mock;
 
+import com.github.hojoungjang.tekken_combo_maker.move.model.document.CleanHitInfo;
 import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
 import com.github.hojoungjang.tekken_combo_maker.move.service.IMoveRepository;
-import org.aspectj.util.Reflection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -19,18 +20,30 @@ public class FakeMoveRepository implements IMoveRepository {
     private List<Move> moves = new ArrayList<>();
 
     private Move createTestData(String id) {
+        CleanHitInfo cleanHitInfo = CleanHitInfo.builder()
+                .damages(List.of(11))
+                .hitFrame(15)
+                .hitFrameWake(5)
+                .hitStatus(HitStatus.DOWN)
+                .build();
+
         Move move = Move.builder()
                 .characterId(1L)
-                .stanceId(1L)
+                .stanceName("test stance")
                 .name("move " + id)
                 .command("command " + id)
-                .damage(10)
+                .commandDescription("command description " + id)
+                .damages(List.of(10))
                 .hitCount(1)
                 .counter(false)
-                .startupFrames(List.of(10))
+                .startupFrame(10)
                 .hitLevels(List.of(HitLevel.HIGH))
-                .hitFrames(List.of(10))
-                .guardFrames(List.of(10))
+                .guardFrame(10)
+                .hitFrame(10)
+                .hitFrameWake((-10))
+                .hitFrameEngager(17)
+                .hitStatus(HitStatus.DOWN)
+                .cleanHitInfo(cleanHitInfo)
                 .moveAttributes(Set.of())
                 .moveCategory(MoveCategory.NORMAL)
                 .build();

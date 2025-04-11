@@ -6,5 +6,16 @@ package com.github.hojoungjang.tekken_combo_maker.move.model.enums;
 public enum HitLevel {
     LOW,    // 하단
     MID,    // 중단
-    HIGH    // 상단
+    HIGH,    // 상단
+
+    LOW_SPECIAL,
+    MID_SPECIAL,
+    HIGH_SPECIAL,
+
+    THROW,
+    LOW_THROW,
+    MID_THROW,
+    HIGH_THROW,
+
+    UNGUARDABLE;
 }

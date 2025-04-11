@@ -1,0 +1,3876 @@
+{
+    "moves": [
+        {
+            "characterId": 1,
+            "name": "Heat Burst",
+            "command": "RP + LK",
+            "commandDescription": "히트 발동 가능 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                12
+            ],
+            "startupFrame": 16,
+            "guardFrame": 1,
+            "hitFrame": 2,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "POWER_CRUSH"
+            ],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Slaughter Hook",
+            "command": "3 LP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "HIGH"
+            ],
+            "damages": [
+                11,
+                20
+            ],
+            "startupFrame": 15,
+            "guardFrame": 0,
+            "hitFrame": 9,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Goutsuiken",
+            "command": "1 LP RP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                7,
+                8,
+                15
+            ],
+            "startupFrame": 13,
+            "guardFrame": -19,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Flash Tornado",
+            "command": "4 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 17,
+            "guardFrame": -5,
+            "hitFrame": 16,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER",
+                "HOMING"
+            ],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Kumo Kiri",
+            "command": "4 AP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                21
+            ],
+            "startupFrame": 22,
+            "guardFrame": -8,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Fist",
+            "command": "6 6 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 16,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Omega Crash",
+            "command": "RP + LK",
+            "commandDescription": "히트 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW_THROW"
+            ],
+            "damages": [
+                9,
+                18,
+                8,
+                26
+            ],
+            "startupFrame": 18,
+            "guardFrame": -14,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "HEAT"
+        },
+        {
+            "characterId": 1,
+            "name": "Demonic Catastrophe",
+            "command": "3 AP",
+            "commandDescription": "레이지 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                55
+            ],
+            "startupFrame": 20,
+            "guardFrame": -15,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "RAGE"
+        },
+        {
+            "characterId": 1,
+            "name": "Flash Punch Combo(1)",
+            "command": "LP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                5
+            ],
+            "startupFrame": 10,
+            "guardFrame": 1,
+            "hitFrame": 8,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Flash Punch Combo(2)",
+            "command": "LP LP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "HIGH"
+            ],
+            "damages": [
+                5,
+                6
+            ],
+            "startupFrame": "",
+            "guardFrame": -1,
+            "hitFrame": 6,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Flash Punch Combo",
+            "command": "LP LP RP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                5,
+                6,
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -17,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Back Fist Combo(2)",
+            "command": "LP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "HIGH"
+            ],
+            "damages": [
+                5,
+                8
+            ],
+            "startupFrame": "",
+            "guardFrame": -3,
+            "hitFrame": 8,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Back Fist Combo",
+            "command": "LP RP RP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "HIGH"
+            ],
+            "damages": [
+                5,
+                8,
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -12,
+            "hitFrame": 4,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Twin Fang Shattered Spine",
+            "command": "LP RP [ RP LK ]",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                5,
+                8,
+                23
+            ],
+            "startupFrame": "",
+            "guardFrame": -9,
+            "hitFrame": 6,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Twin Fang Double Kick(3)",
+            "command": "LP RP RK",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "LOW"
+            ],
+            "damages": [
+                5,
+                8,
+                18
+            ],
+            "startupFrame": "",
+            "guardFrame": -14,
+            "hitFrame": -3,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": 0,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Twin Fang Double Kick",
+            "command": "LP RP RK LK",
+            "commandDescription": "",
+            "hitCount": 4,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "LOW",
+                "MID"
+            ],
+            "damages": [
+                5,
+                8,
+                18,
+                25
+            ],
+            "startupFrame": "",
+            "guardFrame": -2,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Double Back Fist(1)",
+            "command": "RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                12
+            ],
+            "startupFrame": 12,
+            "guardFrame": -10,
+            "hitFrame": 1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Double Back Fist",
+            "command": "RP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                12,
+                24
+            ],
+            "startupFrame": "",
+            "guardFrame": -8,
+            "hitFrame": 7,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Agony Spear(1)",
+            "command": "LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                12
+            ],
+            "startupFrame": 14,
+            "guardFrame": -8,
+            "hitFrame": 4,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Agony Spear(2)",
+            "command": "LK LP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "HIGH"
+            ],
+            "damages": [
+                12,
+                10
+            ],
+            "startupFrame": "",
+            "guardFrame": -1,
+            "hitFrame": 7,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Agony Spear(2) ~ Wind God Step",
+            "command": "LK LP 3_",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "HIGH"
+            ],
+            "damages": [
+                12,
+                10
+            ],
+            "startupFrame": "",
+            "guardFrame": 2,
+            "hitFrame": 10,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Agony Spear",
+            "command": "LK LP RK",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                12,
+                10,
+                17
+            ],
+            "startupFrame": "",
+            "guardFrame": -6,
+            "hitFrame": 8,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Roundhouse",
+            "command": "RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                18
+            ],
+            "startupFrame": 12,
+            "guardFrame": -9,
+            "hitFrame": 2,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Demon Scissors",
+            "command": "[ RK LK ]",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                18,
+                25
+            ],
+            "startupFrame": 31,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Acute Pain",
+            "command": "AP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                5,
+                20
+            ],
+            "startupFrame": 12,
+            "guardFrame": -13,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Soul Thrust",
+            "command": "6 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                23
+            ],
+            "startupFrame": 20,
+            "guardFrame": -12,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO",
+                "POWER_CRUSH"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Oni Front Kick",
+            "command": "6 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                22
+            ],
+            "startupFrame": 17,
+            "guardFrame": -13,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Right Splits Kick",
+            "command": "6 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 19,
+            "guardFrame": 4,
+            "hitFrame": 7,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Glorious Demon God Fist",
+            "command": "6 AP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 25,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Slaughter Hook(1)",
+            "command": "3 LP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                11
+            ],
+            "startupFrame": "",
+            "guardFrame": -7,
+            "hitFrame": 9,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Slaughter Hook",
+            "command": "3 LP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "HIGH"
+            ],
+            "damages": [
+                11,
+                20
+            ],
+            "startupFrame": 15,
+            "guardFrame": 0,
+            "hitFrame": 9,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Slaughter Uppercut",
+            "command": "3 LP 3_ RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                11,
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -8,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Slaughter High Kick",
+            "command": "3 LP RK",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "HIGH"
+            ],
+            "damages": [
+                11,
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -11,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Abolishing Fist",
+            "command": "3 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                22
+            ],
+            "startupFrame": 14,
+            "guardFrame": -12,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [
+                "HOMING"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Impaling Knee Twin Thrust(1)",
+            "command": "3 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                13
+            ],
+            "startupFrame": 18,
+            "guardFrame": -7,
+            "hitFrame": 9,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Impaling Knee Twin Thrust(2)",
+            "command": "3 LK RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                13,
+                13
+            ],
+            "startupFrame": "",
+            "guardFrame": -11,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Impaling Knee Twin Thrust",
+            "command": "3 LK RP LP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                13,
+                13,
+                21
+            ],
+            "startupFrame": "",
+            "guardFrame": -14,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "impaling Knee Twin Skewer",
+            "command": "3 LK RP LP",
+            "commandDescription": "(홀드)",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                13,
+                13,
+                25
+            ],
+            "startupFrame": "",
+            "guardFrame": 11,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Tsunami Kick(1)",
+            "command": "3 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                10
+            ],
+            "startupFrame": 13,
+            "guardFrame": -9,
+            "hitFrame": 2,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Tsunami Kick",
+            "command": "3 RK RK",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                10,
+                16
+            ],
+            "startupFrame": "",
+            "guardFrame": -15,
+            "hitFrame": -4,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Kyogeki Goutsuiken(1)",
+            "command": "3 AK",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "HIGH"
+            ],
+            "damages": [
+                7,
+                9
+            ],
+            "startupFrame": 18,
+            "guardFrame": -8,
+            "hitFrame": 0,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": 0,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Kyogeki Goutsuiken(2)",
+            "command": "3 AK LP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                7,
+                9,
+                15
+            ],
+            "startupFrame": "",
+            "guardFrame": -11,
+            "hitFrame": 1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Kyogeki Goutsuiken",
+            "command": "3 AK LP RP",
+            "commandDescription": "",
+            "hitCount": 5,
+            "hitLevels": [
+                "MID",
+                "HIGH",
+                "MID",
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                7,
+                9,
+                15,
+                14,
+                25
+            ],
+            "startupFrame": "",
+            "guardFrame": -19,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Nejiri Uraken",
+            "command": "2 AP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 23,
+            "guardFrame": -14,
+            "hitFrame": 3,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Nejiri Uraken ~ 캔슬 ~ 앉은 상태",
+            "command": "2 AP 4_",
+            "commandDescription": "",
+            "hitCount": null,
+            "hitLevels": [],
+            "damages": [],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Goutsuiken(1)",
+            "command": "1 LP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                7
+            ],
+            "startupFrame": 13,
+            "guardFrame": -10,
+            "hitFrame": 0,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": 0,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Goutsuiken",
+            "command": "1 LP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                7,
+                8,
+                15
+            ],
+            "startupFrame": "",
+            "guardFrame": -19,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Lion Slayer",
+            "command": "1 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                23
+            ],
+            "startupFrame": 20,
+            "guardFrame": -9,
+            "hitFrame": 7,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Sliding Low Kick",
+            "command": "1 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                14
+            ],
+            "startupFrame": 19,
+            "guardFrame": -12,
+            "hitFrame": -1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Stature Smash",
+            "command": "1 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                18
+            ],
+            "startupFrame": 20,
+            "guardFrame": -12,
+            "hitFrame": 4,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Sokushitsu Goda(1)",
+            "command": "4 LP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                10
+            ],
+            "startupFrame": 11,
+            "guardFrame": -10,
+            "hitFrame": 1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Sokushitsu Goda",
+            "command": "4 LP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                10,
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -14,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Danzui Raizanba(1)",
+            "command": "4 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -8,
+            "hitFrame": 4,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Danzui Raizanba(2)",
+            "command": "4 RP RP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                12,
+                14
+            ],
+            "startupFrame": "",
+            "guardFrame": -10,
+            "hitFrame": 2,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Danzui Raizanba",
+            "command": "4 RP RP AP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "MID",
+                "HIGH"
+            ],
+            "damages": [
+                12,
+                14,
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -8,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Rampaging Demon(2)",
+            "command": "4 RP RK",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "HIGH"
+            ],
+            "damages": [
+                12,
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -3,
+            "hitFrame": 8,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Rampaging Demon",
+            "command": "4 RP RK LP",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "HIGH",
+                "MID"
+            ],
+            "damages": [
+                12,
+                12,
+                22
+            ],
+            "startupFrame": "",
+            "guardFrame": -14,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Demon`s Wrath(1)",
+            "command": "4 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                15
+            ],
+            "startupFrame": 18,
+            "guardFrame": -8,
+            "hitFrame": 3,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Demon`s Wrath(2)",
+            "command": "4 LK LP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "HIGH",
+                "HIGH"
+            ],
+            "damages": [
+                15,
+                10
+            ],
+            "startupFrame": "",
+            "guardFrame": 0,
+            "hitFrame": 6,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Demon`s Wrath(3)",
+            "command": "4 LK LP RK",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "LOW"
+            ],
+            "damages": [
+                15,
+                10,
+                10
+            ],
+            "startupFrame": "",
+            "guardFrame": -10,
+            "hitFrame": 7,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Demon`s Wrath",
+            "command": "4 LK LP RK LP",
+            "commandDescription": "",
+            "hitCount": 4,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "LOW",
+                "MID"
+            ],
+            "damages": [
+                15,
+                10,
+                10,
+                15
+            ],
+            "startupFrame": "",
+            "guardFrame": -14,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Reign of Terror",
+            "command": "4 LK LP RK LK",
+            "commandDescription": "",
+            "hitCount": 4,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "LOW",
+                "LOW"
+            ],
+            "damages": [
+                15,
+                10,
+                10,
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -13,
+            "hitFrame": 1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Flash Tornado",
+            "command": "4 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -5,
+            "hitFrame": 16,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER",
+                "HOMING"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Kumo Kiri",
+            "command": "4 AP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                21
+            ],
+            "startupFrame": 22,
+            "guardFrame": -8,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": 17,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Lightning Screw Uppercut",
+            "command": "4 LP + RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "UNGUARDABLE"
+            ],
+            "damages": [
+                60
+            ],
+            "startupFrame": 63,
+            "guardFrame": null,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Inferno",
+            "command": "7 AP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                32
+            ],
+            "startupFrame": 41,
+            "guardFrame": -15,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Searing Edge",
+            "command": "9 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                25
+            ],
+            "startupFrame": 19,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Roundhouse > Triple Spin Kick(1)",
+            "command": "9 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                16
+            ],
+            "startupFrame": 25,
+            "guardFrame": -12,
+            "hitFrame": -1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Roundhouse > Triple Spin Kick(2)",
+            "command": "9 RK RK",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "LOW"
+            ],
+            "damages": [
+                16,
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -23,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Roundhouse > Triple Spin Kick(3)",
+            "command": "9 RK RK RK",
+            "commandDescription": "",
+            "hitCount": 3,
+            "hitLevels": [
+                "MID",
+                "LOW",
+                "LOW"
+            ],
+            "damages": [
+                16,
+                12,
+                10
+            ],
+            "startupFrame": "",
+            "guardFrame": -23,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Roundhouse > Triple Spin Kick",
+            "command": "9 RK RK RK RK",
+            "commandDescription": "",
+            "hitCount": 4,
+            "hitLevels": [
+                "MID",
+                "LOW",
+                "LOW",
+                "MID"
+            ],
+            "damages": [
+                16,
+                12,
+                10,
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -17,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Delayed Rising Toe Kick",
+            "command": "9 n RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 23,
+            "guardFrame": -13,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Mist Step",
+            "command": "6 n",
+            "commandDescription": "",
+            "hitCount": null,
+            "hitLevels": [],
+            "damages": [],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Mist Step ~ Wind God Step",
+            "command": "6 n 3_",
+            "commandDescription": "",
+            "hitCount": null,
+            "hitLevels": [],
+            "damages": [],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Fist",
+            "command": "6 6 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 16,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HEAT_ENGAGER"
+            ],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Left Splits Kick",
+            "command": "6 6 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                21
+            ],
+            "startupFrame": 20,
+            "guardFrame": -3,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Devil`s Steel Petal",
+            "command": "6 6 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                22
+            ],
+            "startupFrame": 17,
+            "guardFrame": -9,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Leaping Side Kick",
+            "command": "6 6 6 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                30
+            ],
+            "startupFrame": 22,
+            "guardFrame": 6,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "10 Hit Combo 1",
+            "command": "6 6 n RP LP RP RP LK RK RK LK RP LP",
+            "commandDescription": "",
+            "hitCount": 10,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "HIGH",
+                "HIGH",
+                "HIGH",
+                "MID",
+                "LOW",
+                "LOW",
+                "MID",
+                "UNGUARDABLE"
+            ],
+            "damages": [
+                10,
+                8,
+                6,
+                7,
+                6,
+                11,
+                5,
+                5,
+                25,
+                25
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "10 Hit Combo 2",
+            "command": "6 6 n RP LP RK RK RP RK LK RP LP",
+            "commandDescription": "",
+            "hitCount": 9,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "MID",
+                "MID",
+                "LOW_SPECIAL",
+                "MID",
+                "LOW",
+                "MID",
+                "UNGUARDABLE"
+            ],
+            "damages": [
+                10,
+                8,
+                7,
+                10,
+                5,
+                7,
+                5,
+                25,
+                25
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "NORMAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Ki Charge",
+            "command": "AP + AK",
+            "commandDescription": "",
+            "hitCount": null,
+            "hitLevels": [],
+            "damages": [],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "SPECIAL"
+        },
+        {
+            "characterId": 1,
+            "name": "Wind God Step",
+            "command": "6 n 2 3",
+            "commandDescription": "",
+            "hitCount": null,
+            "hitLevels": [],
+            "damages": [],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Thunder God Fist",
+            "command": "6 n 2 3 LP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                23
+            ],
+            "startupFrame": 20,
+            "guardFrame": -16,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Wind God Fist",
+            "command": "6 n 2 3 RP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 11,
+            "guardFrame": -10,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Electric Wind God Fist",
+            "command": "6 n 2 3 RP",
+            "commandDescription": "(3와RP동시에 누르기)",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                23
+            ],
+            "startupFrame": 11,
+            "guardFrame": 5,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Hell Lancer",
+            "command": "6 n 2 3 LK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                30
+            ],
+            "startupFrame": 18,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Spinning Demon",
+            "command": "6 n 2 3 RK",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                15
+            ],
+            "startupFrame": 16,
+            "guardFrame": -23,
+            "hitFrame": -3,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Spinning Demon > Left Hook",
+            "command": "6 n 2 3 RK LP",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "LOW",
+                "MID"
+            ],
+            "damages": [
+                15,
+                24
+            ],
+            "startupFrame": "",
+            "guardFrame": -16,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Illusive Demon",
+            "command": "6 n 2 3 RK RK",
+            "commandDescription": "",
+            "hitCount": 2,
+            "hitLevels": [
+                "LOW",
+                "HIGH"
+            ],
+            "damages": [
+                15,
+                27
+            ],
+            "startupFrame": "",
+            "guardFrame": -14,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Parricide Fist",
+            "command": "6 n 2 3 AP",
+            "commandDescription": "",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                33
+            ],
+            "startupFrame": 24,
+            "guardFrame": 5,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Twin Pistons(1)",
+            "command": "LP",
+            "commandDescription": "일어나며",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                10
+            ],
+            "startupFrame": 13,
+            "guardFrame": -5,
+            "hitFrame": 5,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Twin Pistons",
+            "command": "LP RP",
+            "commandDescription": "일어나며",
+            "hitCount": 2,
+            "hitLevels": [
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                10,
+                12
+            ],
+            "startupFrame": "",
+            "guardFrame": -12,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Demon God Fist",
+            "command": "RP",
+            "commandDescription": "일어나며",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                25
+            ],
+            "startupFrame": 16,
+            "guardFrame": -18,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HOMING"
+            ],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Engetsusen",
+            "command": "LK",
+            "commandDescription": "일어나며",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                24
+            ],
+            "startupFrame": 21,
+            "guardFrame": -5,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HOMING"
+            ],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Tsunami Kick(1)",
+            "command": "RK",
+            "commandDescription": "일어나며",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                13
+            ],
+            "startupFrame": "",
+            "guardFrame": -3,
+            "hitFrame": 8,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Tsunami Kick",
+            "command": "RK RK",
+            "commandDescription": "일어나며",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                13,
+                16
+            ],
+            "startupFrame": 11,
+            "guardFrame": -15,
+            "hitFrame": -4,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Fujin Uraken",
+            "command": "AP",
+            "commandDescription": "일어나며",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                25
+            ],
+            "startupFrame": 13,
+            "guardFrame": -9,
+            "hitFrame": 8,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Tombstone Crusher",
+            "command": "3 AK",
+            "commandDescription": "몸을 숙인 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                24
+            ],
+            "startupFrame": 23,
+            "guardFrame": -11,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "CROUCH"
+        },
+        {
+            "characterId": 1,
+            "name": "Shattered Spine",
+            "command": "LK",
+            "commandDescription": "횡이동 도중",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                23
+            ],
+            "startupFrame": 23,
+            "guardFrame": -7,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "SIDE_STEP"
+        },
+        {
+            "characterId": 1,
+            "name": "Elkeid",
+            "command": "AP",
+            "commandDescription": "횡이동 도중",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                25
+            ],
+            "startupFrame": 19,
+            "guardFrame": 5,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "SIDE_STEP"
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Break",
+            "command": "LP LP RP 6_",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 3,
+            "hitLevels": [
+                "HIGH",
+                "HIGH",
+                "MID_THROW"
+            ],
+            "damages": [
+                5,
+                6,
+                12,
+                2,
+                2,
+                2,
+                2
+            ],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Blaster",
+            "command": "AK",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "UNGUARDABLE"
+            ],
+            "damages": [
+                30
+            ],
+            "startupFrame": 60,
+            "guardFrame": null,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Roar of the Devil",
+            "command": "LP + RK",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                27
+            ],
+            "startupFrame": 21,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO",
+                "POWER_CRUSH"
+            ],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Impact",
+            "command": "1 AK",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                0
+            ],
+            "startupFrame": 24,
+            "guardFrame": -19,
+            "hitFrame": 2,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Impact ~ Wind God Step",
+            "command": "1 AK 3_",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                0
+            ],
+            "startupFrame": "",
+            "guardFrame": -19,
+            "hitFrame": 11,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Inferno",
+            "command": "7 AP",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "UNGUARDABLE"
+            ],
+            "damages": [
+                40
+            ],
+            "startupFrame": 41,
+            "guardFrame": null,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Air Inferno",
+            "command": "8 AP",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "UNGUARDABLE"
+            ],
+            "damages": [
+                26
+            ],
+            "startupFrame": 18,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Chaos Inferno",
+            "command": "6 6 RP",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID_THROW"
+            ],
+            "damages": [
+                20,
+                20
+            ],
+            "startupFrame": 16,
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Chaos Inferno(잡기 미이행)",
+            "command": "6 6 RP 4",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": "",
+            "guardFrame": -9,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Damnation",
+            "command": "6 n 2 3 LP",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID_THROW"
+            ],
+            "damages": [
+                23,
+                10
+            ],
+            "startupFrame": 20,
+            "guardFrame": -16,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Damnation(잡기 미이행)",
+            "command": "6 n 2 3 LP 4_",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                23
+            ],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Tempest Blaster",
+            "command": "6 n 2 3 LK",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH_THROW"
+            ],
+            "damages": [
+                30,
+                20
+            ],
+            "startupFrame": 18,
+            "guardFrame": 4,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Tempest Blaster(잡기 미이행)",
+            "command": "6 n 2 3 LK 4",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "HIGH"
+            ],
+            "damages": [
+                30
+            ],
+            "startupFrame": "",
+            "guardFrame": 4,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Abyss Damnation",
+            "command": "6 n 2 3 RK LP LP",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 3,
+            "hitLevels": [
+                "LOW",
+                "MID",
+                "MID_THROW"
+            ],
+            "damages": [
+                15,
+                24,
+                17,
+                15
+            ],
+            "startupFrame": 16,
+            "guardFrame": -19,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "DOWN",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Abyss Damnation(잡기 미이행)",
+            "command": "6 n 2 3 RK LP LP 4",
+            "commandDescription": "데빌 상태에서",
+            "hitCount": 3,
+            "hitLevels": [
+                "LOW",
+                "MID",
+                "MID"
+            ],
+            "damages": [
+                15,
+                24,
+                17
+            ],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Devil Twister",
+            "command": "RP",
+            "commandDescription": "데빌 상태에서 횡이동 도중",
+            "hitCount": 1,
+            "hitLevels": [
+                "MID"
+            ],
+            "damages": [
+                25
+            ],
+            "startupFrame": 17,
+            "guardFrame": -15,
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": "AIRBORNE",
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": null
+        },
+        {
+            "characterId": 1,
+            "name": "Double High Sweep",
+            "command": "AL",
+            "commandDescription": "상대에게 접근하여",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                35
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HOMING"
+            ],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Lightning Crash",
+            "command": "AR",
+            "commandDescription": "상대에게 접근하여",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                35
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "HOMING"
+            ],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Steel Pedal Drop",
+            "command": "AL",
+            "commandDescription": "상대의 왼쪽 측면에서 접근하여 {command} (혹은 AR)",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                40
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Skull Smash",
+            "command": "AL",
+            "commandDescription": "상대의 오른쪽 측면에서 접근하여 {command} (혹은 AR)",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                40
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Reverse Neck Throw",
+            "command": "AL",
+            "commandDescription": "상대의 뒤에서 접근하여 {command} (혹은 AR)",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                50
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Stonehead",
+            "command": "9 AP",
+            "commandDescription": "상대에게 접근하여",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                35
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Gates of Hell",
+            "command": "1 AP",
+            "commandDescription": "몸을 숙인 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "THROW"
+            ],
+            "damages": [
+                40
+            ],
+            "startupFrame": 12,
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "THROW"
+        },
+        {
+            "characterId": 1,
+            "name": "Low Parry",
+            "command": "3_",
+            "commandDescription": "상대의 하단 공격에 맞춰서",
+            "hitCount": null,
+            "hitLevels": [],
+            "damages": [],
+            "startupFrame": "",
+            "guardFrame": "",
+            "hitFrame": null,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": null,
+            "stanceName": null,
+            "moveAttributes": [
+                "TORNADO"
+            ],
+            "moveCategory": "PARRY"
+        },
+        {
+            "characterId": 1,
+            "name": "Oni Stomp",
+            "command": "2 AK",
+            "commandDescription": "(상대가 쓰러져 있을 때)",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                25
+            ],
+            "startupFrame": 23,
+            "guardFrame": -12,
+            "hitFrame": -1,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": false,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "DOWN"
+        },
+        {
+            "characterId": 1,
+            "name": "Grand inferno",
+            "command": "1 AP",
+            "commandDescription": "(상대가 쓰러져 있을 때) 데빌 상태에서",
+            "hitCount": 1,
+            "hitLevels": [
+                "LOW"
+            ],
+            "damages": [
+                20
+            ],
+            "startupFrame": 24,
+            "guardFrame": -13,
+            "hitFrame": 6,
+            "hitFrameWake": null,
+            "hitFrameEngager": null,
+            "hitStatus": null,
+            "cleanHitInfo": {
+                "damages": null,
+                "hitFrame": null,
+                "hitFrameWake": null,
+                "hitStatus": null
+            },
+            "counter": true,
+            "stanceName": null,
+            "moveAttributes": [],
+            "moveCategory": "DOWN"
+        }
+    ]
+}

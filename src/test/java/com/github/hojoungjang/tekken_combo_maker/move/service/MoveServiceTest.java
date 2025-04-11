@@ -1,8 +1,10 @@
 package com.github.hojoungjang.tekken_combo_maker.move.service;
 
 import com.github.hojoungjang.tekken_combo_maker.move.controller.IMoveService;
+import com.github.hojoungjang.tekken_combo_maker.move.dto.CleanHitInfoResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.mock.FakeMoveRepository;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,5 +37,26 @@ class MoveServiceTest {
         Assertions.assertThat(moves)
                 .extracting(MoveResponse::getName)
                 .containsExactlyInAnyOrder("move 1", "move 2", "move 3", "move 4", "move 5");
+        Assertions.assertThat(moves)
+                .extracting(MoveResponse::getCommand)
+                .containsExactlyInAnyOrder("command 1", "command 2", "command 3", "command 4", "command 5");
+        Assertions.assertThat(moves)
+                .extracting(MoveResponse::getCommandDescription)
+                .containsExactlyInAnyOrder(
+                        "command description 1",
+                        "command description 2",
+                        "command description 3",
+                        "command description 4",
+                        "command description 5"
+                );
+
+        Assertions.assertThat(moves).first()
+                .extracting(MoveResponse::getCleanHitInfo)
+                .isEqualTo(CleanHitInfoResponse.builder()
+                        .damages(List.of(11))
+                        .hitFrame(15)
+                        .hitFrameWake(5)
+                        .hitStatus(HitStatus.DOWN)
+                        .build());
     }
 }
