@@ -1,4 +1,10 @@
 # Tekken Combo Maker Spring
 개인적으로 진행하고 있는 웹 애플리케이션 프로젝트의 스프링 백엔드 애플리케이션 입니다.
 
-각 pull request 를 열어보시면 작성하였던 코드와 설명을 더 보실 수 있습니다.
+철권은 3D 격투게임으로 각 플레이어가 타격 기술을 사용하여 상대방을 쓰러트리는 게임입니다.
+
+이 프로젝트를 통해 철권 8 의 기술데이터를 이용해 젼략적 플레이에 필요한 정보 및 프레임 데이터를 제공하고 공유할 수 있는 커뮤니티를 만들고자 합니다.
+
+#### 각 pull request 를 열어보시면 작성하였던 코드와 설명을 더 보실 수 있습니다.
+- 콤보 (combo) 도메인 코드 추가 https://github.com/hojoungjang/tekken-combo-maker-spring/pull/3
+- Form login 을 통한 username & password 사용자 로그인 https://github.com/hojoungjang/tekken-combo-maker-spring/pull/17
