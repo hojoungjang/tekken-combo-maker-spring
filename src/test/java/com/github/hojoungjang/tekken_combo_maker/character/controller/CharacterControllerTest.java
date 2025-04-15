@@ -1,6 +1,7 @@
 package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
+import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.character.mock.FakeCharacterService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
@@ -14,6 +15,8 @@ import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -66,9 +69,10 @@ class CharacterControllerTest {
     public void 여러_캐릭터_정보를_가져올_수_있다() throws Exception {
         // given
         Pageable pageable = PageRequest.of(0, 10);
+        CharacterSearchRequest request = CharacterSearchRequest.builder().build();
 
         // when
-        Page<CharacterResponse> charactersPage = characterController.getAll(pageable);
+        Page<CharacterResponse> charactersPage = characterController.getAll(request, pageable);
 
         // then
         List<CharacterResponse> characters = charactersPage.getContent();
@@ -93,9 +97,10 @@ class CharacterControllerTest {
     public void Pagination을_사용하여_여러_캐릭터_정보를_가져올_수_있다() throws Exception {
         // given
         Pageable pageable = PageRequest.of(1, 1);
+        CharacterSearchRequest request = CharacterSearchRequest.builder().build();
 
         // when
-        Page<CharacterResponse> charactersPage = characterController.getAll(pageable);
+        Page<CharacterResponse> charactersPage = characterController.getAll(request, pageable);
 
         // then
         List<CharacterResponse> characters = charactersPage.getContent();
@@ -106,6 +111,31 @@ class CharacterControllerTest {
         Assertions.assertThat(character.getName()).isEqualTo("character 2");
         Assertions.assertThat(character.getFullName()).isEqualTo("character full 2");
         Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-2.png");
+    }
+
+    @DisplayName("검색조건에 부합하는 여러 캐릭터 정보를 가져올 수 있다")
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, character 1",
+            "CHARACTER 1, 1, character 1",
+            "cHaRactER 2, 1, character 2",
+    })
+    public void 검색조건에_부합하는_여러_캐릭터_정보를_가져올_수_있다(String searchString, int size, String characterName) throws Exception {
+        // given
+        Pageable pageable = PageRequest.of(0, 10);
+        CharacterSearchRequest request = CharacterSearchRequest.builder()
+                .search(searchString)
+                .build();
+
+        // when
+        Page<CharacterResponse> charactersPage = characterController.getAll(request, pageable);
+
+        // then
+        List<CharacterResponse> characters = charactersPage.getContent();
+        Assertions.assertThat(characters)
+                .isNotEmpty()
+                .hasSize(size);
+        Assertions.assertThat(characters.getFirst().getName()).isEqualTo(characterName);
     }
 
     @DisplayName("캐릭터 ID 를 사용하여 해당 캐릭터의 콤보를 가져올 수 있다.")

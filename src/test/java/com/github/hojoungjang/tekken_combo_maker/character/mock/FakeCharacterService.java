@@ -2,6 +2,7 @@ package com.github.hojoungjang.tekken_combo_maker.character.mock;
 
 import com.github.hojoungjang.tekken_combo_maker.character.controller.ICharacterService;
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
+import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
 import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRepository;
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
@@ -29,8 +30,8 @@ public class FakeCharacterService implements ICharacterService {
     }
 
     @Override
-    public Page<CharacterResponse> findAll(Pageable pageable) {
-        Page<Character> characters = characterRepository.findAll(pageable);
+    public Page<CharacterResponse> findAll(CharacterSearchRequest request, Pageable pageable) {
+        Page<Character> characters = characterRepository.findAll(request, pageable);
 
         return characters.map(character -> CharacterResponse.builder()
                 .id(character.getId())

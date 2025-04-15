@@ -30,9 +30,9 @@ class CharacterQueryRepositoryTest {
 //                .build();
 //        em.persist(c);
 
-        Character qCharacter = repo.getCharacterById(1L);
-        log.info("Queried character id: " + qCharacter.getId());
-        log.info("Queried character name: " + qCharacter.getName());
+//        Character qCharacter = repo.getCharacterById(1L);
+//        log.info("Queried character id: " + qCharacter.getId());
+//        log.info("Queried character name: " + qCharacter.getName());
     }
 
 }
