@@ -39,7 +39,7 @@ public interface SwaggerCharacterController {
             @ApiResponse(responseCode = "200", description = "캐릭터를 성공적으로 조회")
     })
     Page<CharacterResponse> getAll(
-            CharacterSearchRequest request,
+            @ParameterObject CharacterSearchRequest request,
             @ParameterObject Pageable pageable);
 
     @Operation(summary = "캐릭터 콤보 목록 조회", description = "캐릭터의 전체 콤보를 조회합니다.")
