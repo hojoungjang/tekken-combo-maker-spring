@@ -70,6 +70,9 @@ logging.level:
   org.springframework.security: DEBUG
 
 springdoc:
+  api-docs:
+    version: openapi_3_0
+
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
 
