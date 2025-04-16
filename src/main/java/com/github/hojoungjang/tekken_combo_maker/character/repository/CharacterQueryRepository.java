@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.github.hojoungjang.tekken_combo_maker.character.model.entity.QCharacter.character;
-import static com.github.hojoungjang.tekken_combo_maker.character.repository.predicate.CharacterSearchPredicate.characterNameContains;
+import static com.github.hojoungjang.tekken_combo_maker.character.repository.predicate.CharacterSearchPredicate.nameStartsWith;
 
 @Repository
 @Transactional(readOnly = true)
@@ -31,7 +31,7 @@ public class CharacterQueryRepository implements ICharacterQueryRepository {
         List<Character> characters = jpaQueryFactory
                 .select(character)
                 .from(character)
-                .where(characterNameContains(search))
+                .where(nameStartsWith(search))
                 .offset(offset)
                 .limit(pageSize)
                 .fetch();
@@ -39,7 +39,7 @@ public class CharacterQueryRepository implements ICharacterQueryRepository {
         Long countResult = jpaQueryFactory
                 .select(character.count())
                 .from(character)
-                .where(characterNameContains(search))
+                .where(nameStartsWith(search))
                 .fetchOne();
 
         long total = 0;

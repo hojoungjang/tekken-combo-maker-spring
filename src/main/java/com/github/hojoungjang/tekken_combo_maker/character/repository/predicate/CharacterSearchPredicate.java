@@ -6,11 +6,11 @@ import org.springframework.util.StringUtils;
 
 public class CharacterSearchPredicate {
 
-    public static BooleanExpression characterNameContains(String search) {
+    public static BooleanExpression nameStartsWith(String search) {
+        // TODO: might need to also match last name; May need to change full name field to last name
         if (!StringUtils.hasText(search)) {
             return null;
         }
-        return QCharacter.character.name.upper().contains(search.toUpperCase())
-                .or(QCharacter.character.fullName.upper().contains(search.toUpperCase()));
+        return QCharacter.character.name.startsWithIgnoreCase(search);
     }
 }
