@@ -4,13 +4,12 @@ import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterSearchRe
 import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Character;
 import com.github.hojoungjang.tekken_combo_maker.common.config.TestQueryDslConfig;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -26,8 +25,6 @@ import java.util.List;
 @Import(TestQueryDslConfig.class)
 class CharacterQueryRepositoryTest {
 
-    private static final Logger log = LoggerFactory.getLogger(CharacterQueryRepositoryTest.class);
-
     @TestConfiguration
     static class TestConfig {
         @Bean
@@ -37,14 +34,13 @@ class CharacterQueryRepositoryTest {
     }
 
     @Autowired
-    private CharacterJpaRepository jpaRepo;
+    private EntityManager em;
 
     @Autowired
     private CharacterQueryRepository queryRepo;
 
     @BeforeEach
     void setUp() {
-        jpaRepo.deleteAll();
         Character kazuya = Character.builder()
                 .name("Kazuya")
                 .fullName("Kazuya Mishima")
@@ -56,8 +52,9 @@ class CharacterQueryRepositoryTest {
                 .fullName("Heihachi Mishima")
                 .description("This is for unit test")
                 .build();
-        jpaRepo.save(kazuya);
-        jpaRepo.save(heihachi);
+
+        em.persist(kazuya);
+        em.persist(heihachi);
     }
 
     @DisplayName("검색 조건을 이용하여 캐릭터 검색을 할 수 있다.")
