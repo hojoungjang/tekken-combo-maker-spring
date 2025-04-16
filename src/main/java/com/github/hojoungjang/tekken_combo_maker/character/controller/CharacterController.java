@@ -1,6 +1,7 @@
 package com.github.hojoungjang.tekken_combo_maker.character.controller;
 
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
+import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
@@ -28,8 +29,8 @@ public class CharacterController implements SwaggerCharacterController {
     }
 
     @GetMapping
-    public Page<CharacterResponse> getAll(Pageable pageable) {
-        return characterService.findAll(pageable);
+    public Page<CharacterResponse> getAll(CharacterSearchRequest request, Pageable pageable) {
+        return characterService.findAll(request, pageable);
     }
 
     @GetMapping("/{id}/combos")

@@ -25,51 +25,15 @@ spring:
     console:
       enabled: true
 
-  output:
-    ansi:
-      enabled: always
-
-  data:
-    mongodb:
-      uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER_URI}
-      database: ${MONGODB_DATABASE}
-
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${GOOGLE_OAUTH_CLIENT_ID}
-            client-secret: ${GOOGLE_OAUTH_CLIENT_SECRET}
-            scope:
-              - email
-              - profile
-
-          discord:
-            client-id: ${DISCORD_OAUTH_CLIENT_ID}
-            client-secret: ${DISCORD_OAUTH_CLIENT_SECRET}
-            scope:
-              - email
-            client-name: Discord
-            authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/login/oauth2/code/discord
-            client-authentication-method: client_secret_post
-
-        provider:
-          google:
-            user-name-attribute: email
-          discord:
-            authorization-uri: https://discord.com/oauth2/authorize
-            token-uri: https://discord.com/api/oauth2/token
-            user-info-uri: https://discord.com/api/users/@me
-            user-name-attribute: email
-
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
   org.springframework.security: DEBUG
 
 springdoc:
+  api-docs:
+    version: openapi_3_0
+
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
 
