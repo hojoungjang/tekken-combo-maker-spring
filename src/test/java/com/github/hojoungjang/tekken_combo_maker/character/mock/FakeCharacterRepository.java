@@ -49,8 +49,7 @@ public class FakeCharacterRepository implements ICharacterRepository {
         String searchString = StringUtils.hasText(request.getSearch()) ? request.getSearch() : "";
 
         List<Character> filteredCharacters = characters.stream().filter(
-                character -> character.getName().toUpperCase().contains(searchString.toUpperCase())
-                        || character.getFullName().toUpperCase().contains(searchString.toUpperCase())
+                character -> character.getName().toUpperCase().startsWith(searchString.toUpperCase())
         ).toList();
         List<Character> data = new ArrayList<>(filteredCharacters.subList(offset, Math.min(offset + pageSize, filteredCharacters.size())));
         return new PageImpl<>(data, pageable, data.size());

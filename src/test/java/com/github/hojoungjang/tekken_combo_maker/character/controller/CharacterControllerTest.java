@@ -116,11 +116,11 @@ class CharacterControllerTest {
     @DisplayName("검색조건에 부합하는 여러 캐릭터 정보를 가져올 수 있다")
     @ParameterizedTest
     @CsvSource({
-            "1, 1, character 1",
+            "ch, 3, character 1|character 2|character 3",
             "CHARACTER 1, 1, character 1",
             "cHaRactER 2, 1, character 2",
     })
-    public void 검색조건에_부합하는_여러_캐릭터_정보를_가져올_수_있다(String searchString, int size, String characterName) throws Exception {
+    public void 검색조건에_부합하는_여러_캐릭터_정보를_가져올_수_있다(String searchString, int size, String characterNames) throws Exception {
         // given
         Pageable pageable = PageRequest.of(0, 10);
         CharacterSearchRequest request = CharacterSearchRequest.builder()
@@ -135,7 +135,9 @@ class CharacterControllerTest {
         Assertions.assertThat(characters)
                 .isNotEmpty()
                 .hasSize(size);
-        Assertions.assertThat(characters.getFirst().getName()).isEqualTo(characterName);
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getName)
+                .containsAll(List.of(characterNames.split("\\|")));
     }
 
     @DisplayName("캐릭터 ID 를 사용하여 해당 캐릭터의 콤보를 가져올 수 있다.")

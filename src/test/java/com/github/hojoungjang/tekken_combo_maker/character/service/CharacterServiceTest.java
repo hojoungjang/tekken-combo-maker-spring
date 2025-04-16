@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Arrays;
 import java.util.List;
 
 class CharacterServiceTest {
@@ -82,11 +83,11 @@ class CharacterServiceTest {
     @DisplayName("검색조건에 부합하는 캐릭터 엔티티를 가져올 수 있다")
     @ParameterizedTest
     @CsvSource({
-            "1, 1, character 1",
+            "ch, 3, character 1|character 2|character 3",
             "CHARACTER 1, 1, character 1",
             "cHaRactER 2, 1, character 2",
     })
-    public void 검색조건에_부합하는_캐릭터_엔티티를_가져올_수_있다(String searchString, int size, String characterName) throws Exception {
+    public void 검색조건에_부합하는_캐릭터_엔티티를_가져올_수_있다(String searchString, int size, String characterNames) throws Exception {
         // given
         Pageable pageable = PageRequest.of(0, 10);
         CharacterSearchRequest request = CharacterSearchRequest.builder()
@@ -101,6 +102,8 @@ class CharacterServiceTest {
         Assertions.assertThat(characters)
                 .isNotEmpty()
                 .hasSize(size);
-        Assertions.assertThat(characters.getFirst().getName()).isEqualTo(characterName);
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getName)
+                .containsAll(List.of(characterNames.split("\\|")));
     }
 }
