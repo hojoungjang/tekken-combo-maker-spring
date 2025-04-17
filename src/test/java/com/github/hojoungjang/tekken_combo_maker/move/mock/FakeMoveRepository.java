@@ -1,5 +1,6 @@
 package com.github.hojoungjang.tekken_combo_maker.move.mock;
 
+import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.move.model.document.CleanHitInfo;
 import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
@@ -65,5 +66,10 @@ public class FakeMoveRepository implements IMoveRepository {
         List<Move> characterMoves = this.moves.stream().filter(move -> move.getCharacterId().equals(characterId)).toList();
         List<Move> data = new ArrayList<>(characterMoves.subList(offset, Math.min(offset + pageSize, characterMoves.size())));
         return new PageImpl<>(data, pageable, data.size());
+    }
+
+    @Override
+    public Page<Move> findAll(MoveSearchRequest request, Pageable pageable) {
+        return null;
     }
 }

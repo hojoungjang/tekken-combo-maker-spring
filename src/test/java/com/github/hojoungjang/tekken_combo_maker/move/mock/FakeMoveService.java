@@ -2,6 +2,7 @@ package com.github.hojoungjang.tekken_combo_maker.move.mock;
 
 import com.github.hojoungjang.tekken_combo_maker.move.controller.IMoveService;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
+import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import com.github.hojoungjang.tekken_combo_maker.move.service.IMoveRepository;
 import org.springframework.data.domain.Page;
@@ -15,5 +16,10 @@ public class FakeMoveService implements IMoveService {
     public Page<MoveResponse> findAllByCharacter(Long characterId, Pageable pageable) {
         Page<Move> characterMovePage = moveRepository.findAllByCharacter(characterId, pageable);
         return characterMovePage.map(MoveResponse::fromEntity);
+    }
+
+    @Override
+    public Page<MoveResponse> findAll(MoveSearchRequest request, Pageable pageable) {
+        return null;
     }
 }
