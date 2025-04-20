@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,63 @@ public class FakeMoveRepository implements IMoveRepository {
 
     @Override
     public Page<Move> findAll(MoveSearchRequest request, Pageable pageable) {
-        return null;
+        List<Move> searchMoves = new ArrayList<>(moves);
+
+        if (request.getCharacterId() != null) {
+            List<Move> lll = searchMoves.stream().filter(
+                    move -> move.getCharacterId().equals(request.getCharacterId())
+            ).toList();
+            List<Integer> asd = List.of(1);
+        }
+        if (StringUtils.hasText(request.getNameSearch())) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getName().toLowerCase().startsWith(request.getNameSearch().toLowerCase())
+            ).toList();
+        }
+        if (request.getCounter() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.isCounter() == request.getCounter()
+            ).toList();
+        }
+        if (request.getStartupFrameStart() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getStartupFrame() >= request.getStartupFrameStart()
+            ).toList();
+        }
+        if (request.getStartupFrameEnd() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getStartupFrame() <= request.getStartupFrameEnd()
+            ).toList();
+        }
+        if (request.getHitLevel() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getHitLevels().getFirst().equals(request.getHitLevel())
+            ).toList();
+        }
+        if (request.getGuardFrameStart() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getGuardFrame() >= request.getGuardFrameStart()
+            ).toList();
+        }
+        if (request.getGuardFrameEnd() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getGuardFrame() <= request.getGuardFrameEnd()
+            ).toList();
+        }
+        if (request.getMoveAttributes() != null && !request.getMoveAttributes().isEmpty()) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getMoveAttributes().containsAll(request.getMoveAttributes())
+            ).toList();
+        }
+        if (request.getMoveCategory() != null) {
+            searchMoves = searchMoves.stream().filter(
+                    move -> move.getMoveCategory().equals(request.getMoveCategory())
+            ).toList();
+        }
+
+        int offset = (int) pageable.getOffset();
+        int pageSize = pageable.getPageSize();
+        List<Move> pagedSearchMoves = new ArrayList<>(searchMoves.subList(offset, Math.min(offset + pageSize, searchMoves.size())));
+        return new PageImpl<>(pagedSearchMoves, pageable, searchMoves.size());
     }
 }

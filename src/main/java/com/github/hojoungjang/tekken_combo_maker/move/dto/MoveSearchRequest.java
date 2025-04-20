@@ -3,6 +3,7 @@ package com.github.hojoungjang.tekken_combo_maker.move.dto;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class MoveSearchRequest {
     private final List<MoveAttribute> moveAttributes;
     private final MoveCategory moveCategory;
 
+    @Builder
     public MoveSearchRequest(
             Long characterId,
             String nameSearch,
