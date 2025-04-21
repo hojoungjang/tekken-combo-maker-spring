@@ -4,6 +4,7 @@ import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
+import com.querydsl.core.annotations.QueryEntity;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,7 @@ import java.util.Set;
  * 캐릭터의 기술을 나타내는 도큐먼트 클래스
  * 기술의 메타데이터를 담고 있습니다.
  */
+@QueryEntity
 @Document("move")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

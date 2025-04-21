@@ -29,6 +29,7 @@ logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
   org.springframework.security: DEBUG
+  org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 
 springdoc:
   api-docs:

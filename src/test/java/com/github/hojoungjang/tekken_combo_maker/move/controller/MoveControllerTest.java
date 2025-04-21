@@ -1,12 +1,9 @@
-package com.github.hojoungjang.tekken_combo_maker.move.service;
+package com.github.hojoungjang.tekken_combo_maker.move.controller;
 
-import com.github.hojoungjang.tekken_combo_maker.move.controller.IMoveService;
-import com.github.hojoungjang.tekken_combo_maker.move.dto.CleanHitInfoResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveSearchRequest;
-import com.github.hojoungjang.tekken_combo_maker.move.mock.FakeMoveRepository;
+import com.github.hojoungjang.tekken_combo_maker.move.mock.FakeMoveService;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
-import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
 import org.assertj.core.api.Assertions;
@@ -19,51 +16,9 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Set;
 
-class MoveServiceTest {
-
-    private final IMoveService moveService = new MoveService(new FakeMoveRepository());
-
-    @DisplayName("캐릭터 별로 기술을 가져 올 수 있다.")
-    @Test
-    public void 캐릭터_별로_기술을_가져_올_수_있다() throws Exception {
-        // given
-        Long characterId = 1L;
-        Pageable pageable = PageRequest.of(0, 10);
-
-        // when
-        Page<MoveResponse> movePage = moveService.findAllByCharacter(characterId, pageable);
-
-        // then
-        List<MoveResponse> moves = movePage.getContent();
-        Assertions.assertThat(moves).hasSize(5);
-        Assertions.assertThat(moves)
-                .extracting(MoveResponse::getId)
-                .containsExactlyInAnyOrder("1", "2", "3", "4", "5");
-        Assertions.assertThat(moves)
-                .extracting(MoveResponse::getName)
-                .containsExactlyInAnyOrder("move 1", "move 2", "move 3", "move 4", "move 5");
-        Assertions.assertThat(moves)
-                .extracting(MoveResponse::getCommand)
-                .containsExactlyInAnyOrder("command 1", "command 2", "command 3", "command 4", "command 5");
-        Assertions.assertThat(moves)
-                .extracting(MoveResponse::getCommandDescription)
-                .containsExactlyInAnyOrder(
-                        "command description 1",
-                        "command description 2",
-                        "command description 3",
-                        "command description 4",
-                        "command description 5"
-                );
-
-        Assertions.assertThat(moves).first()
-                .extracting(MoveResponse::getCleanHitInfo)
-                .isEqualTo(CleanHitInfoResponse.builder()
-                        .damages(List.of(11))
-                        .hitFrame(15)
-                        .hitFrameWake(5)
-                        .hitStatus(HitStatus.DOWN)
-                        .build());
-    }
+public class MoveControllerTest {
+    
+    private final MoveController moveController = new MoveController(new FakeMoveService());
 
     @DisplayName("캐릭터 ID 를 (characterId) 이용한 검색을 할 수 있다.")
     @Test
@@ -73,7 +28,7 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> movePage = moveService.findAll(request, pageable);
+        Page<MoveResponse> movePage = moveController.searchAll(request, pageable);
 
         // then
         List<MoveResponse> content = movePage.getContent();
@@ -91,7 +46,7 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> movePage = moveService.findAll(request, pageable);
+        Page<MoveResponse> movePage = moveController.searchAll(request, pageable);
 
         // then
         List<MoveResponse> content = movePage.getContent();
@@ -110,8 +65,8 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> counterMovePage = moveService.findAll(counterRequest, pageable);
-        Page<MoveResponse> nonCounterMovePage = moveService.findAll(nonCounterRequest, pageable);
+        Page<MoveResponse> counterMovePage = moveController.searchAll(counterRequest, pageable);
+        Page<MoveResponse> nonCounterMovePage = moveController.searchAll(nonCounterRequest, pageable);
 
         // then
         List<MoveResponse> counterContent = counterMovePage.getContent();
@@ -137,9 +92,9 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> startMovePage = moveService.findAll(startRequest, pageable);
-        Page<MoveResponse> endMovePage = moveService.findAll(endRequest, pageable);
-        Page<MoveResponse> rangeMovePage = moveService.findAll(rangeRequest, pageable);
+        Page<MoveResponse> startMovePage = moveController.searchAll(startRequest, pageable);
+        Page<MoveResponse> endMovePage = moveController.searchAll(endRequest, pageable);
+        Page<MoveResponse> rangeMovePage = moveController.searchAll(rangeRequest, pageable);
 
         // then
         List<MoveResponse> startContent = startMovePage.getContent();
@@ -170,8 +125,8 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> lowMovePage = moveService.findAll(lowRequest, pageable);
-        Page<MoveResponse> highMovePage = moveService.findAll(highRequest, pageable);
+        Page<MoveResponse> lowMovePage = moveController.searchAll(lowRequest, pageable);
+        Page<MoveResponse> highMovePage = moveController.searchAll(highRequest, pageable);
 
         // then
         List<MoveResponse> lowContent = lowMovePage.getContent();
@@ -197,9 +152,9 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> startMovePage = moveService.findAll(startRequest, pageable);
-        Page<MoveResponse> endMovePage = moveService.findAll(endRequest, pageable);
-        Page<MoveResponse> rangeMovePage = moveService.findAll(rangeRequest, pageable);
+        Page<MoveResponse> startMovePage = moveController.searchAll(startRequest, pageable);
+        Page<MoveResponse> endMovePage = moveController.searchAll(endRequest, pageable);
+        Page<MoveResponse> rangeMovePage = moveController.searchAll(rangeRequest, pageable);
 
         // then
         List<MoveResponse> startContent = startMovePage.getContent();
@@ -234,8 +189,8 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> tornadoMovePage = moveService.findAll(tornadoRequest, pageable);
-        Page<MoveResponse> powerCrushMovePage = moveService.findAll(powerCrushRequest, pageable);
+        Page<MoveResponse> tornadoMovePage = moveController.searchAll(tornadoRequest, pageable);
+        Page<MoveResponse> powerCrushMovePage = moveController.searchAll(powerCrushRequest, pageable);
 
         // then
         List<MoveResponse> tornadoContent = tornadoMovePage.getContent();
@@ -267,8 +222,8 @@ class MoveServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        Page<MoveResponse> heatMovePage = moveService.findAll(heatRequest, pageable);
-        Page<MoveResponse> normalMovePage = moveService.findAll(normalRequest, pageable);
+        Page<MoveResponse> heatMovePage = moveController.searchAll(heatRequest, pageable);
+        Page<MoveResponse> normalMovePage = moveController.searchAll(normalRequest, pageable);
 
         // then
         List<MoveResponse> heatContent = heatMovePage.getContent();

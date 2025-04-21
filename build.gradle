@@ -48,15 +48,24 @@ dependencies {
 
 	// QueryDSL
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	implementation('com.querydsl:querydsl-mongodb:5.0.0') {
+		// 스프링에서 받아오는 드라이버 버전이랑 충돌; QueryDSL 은 오래된 버전을 사용하기 때문에 이걸 제외한다.
+		exclude group: "org.mongodb", module: "mongo-java-driver"
+	}
+
 	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
 	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:general'
+
 	testAnnotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
 	testAnnotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+	testAnnotationProcessor 'com.querydsl:querydsl-apt:5.0.0:general'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 	systemProperty "spring.profiles.active", "test"
+	jvmArgs "-javaagent:${configurations.testRuntimeClasspath.find { it.name.contains('mockito-core') }}", '-Xshare:off'
 }
 
 tasks.register('seedMoveData', JavaExec) {
