@@ -5,6 +5,7 @@ import com.github.hojoungjang.tekken_combo_maker.move.model.document.CleanHitInf
 import com.github.hojoungjang.tekken_combo_maker.move.model.document.Move;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitLevel;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
+import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveAttribute;
 import com.github.hojoungjang.tekken_combo_maker.move.model.enums.MoveCategory;
 import com.github.hojoungjang.tekken_combo_maker.move.service.IMoveRepository;
 import org.springframework.data.domain.Page;
@@ -35,18 +36,18 @@ public class FakeMoveRepository implements IMoveRepository {
                 .name("move " + id)
                 .command("command " + id)
                 .commandDescription("command description " + id)
-                .damages(List.of(10))
+                .damages(List.of(10 + Integer.parseInt(id)))
                 .hitCount(1)
                 .counter(false)
-                .startupFrame(10)
+                .startupFrame(10 + Integer.parseInt(id))
                 .hitLevels(List.of(HitLevel.HIGH))
-                .guardFrame(10)
-                .hitFrame(10)
+                .guardFrame(10 + Integer.parseInt(id))
+                .hitFrame(10 + Integer.parseInt(id))
                 .hitFrameWake((-10))
                 .hitFrameEngager(17)
                 .hitStatus(HitStatus.DOWN)
                 .cleanHitInfo(cleanHitInfo)
-                .moveAttributes(Set.of())
+                .moveAttributes(Set.of(MoveAttribute.POWER_CRUSH))
                 .moveCategory(MoveCategory.NORMAL)
                 .build();
         ReflectionTestUtils.setField(move, "id", id);
