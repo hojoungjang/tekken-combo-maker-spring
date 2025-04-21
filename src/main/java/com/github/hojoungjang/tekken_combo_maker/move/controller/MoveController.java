@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/moves")
 @RequiredArgsConstructor
-public class MoveController {
+public class MoveController implements SwaggerMoveController {
 
     private final IMoveService moveService;
 
