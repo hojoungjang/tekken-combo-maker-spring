@@ -17,7 +17,7 @@ public class MoveController {
     private final IMoveService moveService;
 
     @GetMapping
-    public Page<MoveResponse> getAllMoves(MoveSearchRequest request, Pageable pageable) {
+    public Page<MoveResponse> searchAll(MoveSearchRequest request, Pageable pageable) {
         return moveService.findAll(request, pageable);
     }
 }

@@ -20,6 +20,7 @@ public class FakeMoveService implements IMoveService {
 
     @Override
     public Page<MoveResponse> findAll(MoveSearchRequest request, Pageable pageable) {
-        return null;
+        Page<Move> movePage = moveRepository.findAll(request, pageable);
+        return movePage.map(MoveResponse::fromEntity);
     }
 }
