@@ -65,6 +65,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 	systemProperty "spring.profiles.active", "test"
+	jvmArgs "-javaagent:${configurations.testRuntimeClasspath.find { it.name.contains('mockito-core') }}", '-Xshare:off'
 }
 
 tasks.register('seedMoveData', JavaExec) {
