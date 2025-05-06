@@ -3,6 +3,9 @@ package com.github.hojoungjang.tekken_combo_maker.auth;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.CustomOAuth2UserService;
 import com.github.hojoungjang.tekken_combo_maker.member.repository.MemberRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,17 +23,35 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 @Configuration
 public class SecurityConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+    @Value("${WEB_CLIENT_APP_URL}")
+    private String webClientOrigin;
+
     // TODO: Remove in production
     @Bean
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring()
                 .requestMatchers(toH2Console());
+    }
+
+    @Bean
+    UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList(webClientOrigin));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "PATCH", "DELETE"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
     @Bean
@@ -47,6 +68,7 @@ public class SecurityConfig {
                 .requestMatchers("/swagger", "/swagger-ui/**", "/api-docs/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/members").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/characters/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/moves").permitAll()
                 .requestMatchers("/img/character/**").permitAll()
                 .anyRequest().authenticated());
 
