@@ -77,7 +77,7 @@ public class MoveRepository implements IMoveRepository {
         }
 
         List<Move> moves = new ArrayList<>();
-        moveMongoRepository.findAll(predicate).forEach(moves::add);
+        moveMongoRepository.findAll(predicate, pageable).forEach(moves::add);
         long total = moveMongoRepository.count(predicate);
         return new PageImpl<>(moves, pageable, total);
     }
