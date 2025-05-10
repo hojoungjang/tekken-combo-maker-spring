@@ -44,7 +44,7 @@ public class MoveRepositoryTest {
         Boolean counter = false;
         Integer startupFrameStart = 10;
         Integer startupFrameEnd = 15;
-        HitLevel hitLevel = HitLevel.MID;
+        List<HitLevel> hitLevels = List.of(HitLevel.MID);
         Integer guardFrameStart = 10;
         Integer guardFrameEnd = 15;
         List<MoveAttribute> moveAttributes = List.of(MoveAttribute.POWER_CRUSH);
@@ -56,7 +56,7 @@ public class MoveRepositoryTest {
                 .counter(counter)
                 .startupFrameStart(startupFrameStart)
                 .startupFrameEnd(startupFrameEnd)
-                .hitLevel(hitLevel)
+                .hitLevels(hitLevels)
                 .guardFrameStart(guardFrameStart)
                 .guardFrameEnd(guardFrameEnd)
                 .moveAttributes(moveAttributes)
@@ -69,16 +69,18 @@ public class MoveRepositoryTest {
                 .and(move.name.startsWithIgnoreCase(nameSearch))
                 .and(move.counter.eq(counter))
                 .and(move.startupFrame.between(startupFrameStart, startupFrameEnd))
-                .and(move.hitLevels.get(0).eq(hitLevel))
+                .and(move.hitLevels.get(0).in(hitLevels.getFirst()))
                 .and(move.guardFrame.between(guardFrameStart, guardFrameEnd))
                 .and(move.moveAttributes.contains(moveAttributes.getFirst()))
                 .and(move.moveCategory.eq(moveCategory));
+
+        when(moveMongoRepository.findAll(predicate, pageable)).thenReturn(Page.empty());
 
         // when
         Page<Move> movePage = moveRepository.findAll(request, pageable);
 
         // then
-        verify(moveMongoRepository).findAll(predicate);
+        verify(moveMongoRepository).findAll(predicate, pageable);
         verify(moveMongoRepository).count(predicate);
     }
 }

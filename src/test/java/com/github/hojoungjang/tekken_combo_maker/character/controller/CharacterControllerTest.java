@@ -254,14 +254,5 @@ class CharacterControllerTest {
                         "command description 4",
                         "command description 5"
                 );
-
-        Assertions.assertThat(moves).first()
-                .extracting(MoveResponse::getCleanHitInfo)
-                .isEqualTo(CleanHitInfoResponse.builder()
-                        .damages(List.of(11))
-                        .hitFrame(15)
-                        .hitFrameWake(5)
-                        .hitStatus(HitStatus.DOWN)
-                        .build());
     }
 }

@@ -120,8 +120,8 @@ public class MoveControllerTest {
     @Test
     public void 검색_타점_판정() throws Exception {
         // given
-        MoveSearchRequest lowRequest = MoveSearchRequest.builder().hitLevel(HitLevel.LOW).build();
-        MoveSearchRequest highRequest = MoveSearchRequest.builder().hitLevel(HitLevel.HIGH).build();
+        MoveSearchRequest lowRequest = MoveSearchRequest.builder().hitLevels(List.of(HitLevel.LOW)).build();
+        MoveSearchRequest highRequest = MoveSearchRequest.builder().hitLevels(List.of(HitLevel.HIGH)).build();
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
