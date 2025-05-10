@@ -56,8 +56,6 @@ public class Move {
     private Integer hitFrameEngager;            // 인게이져 발동시 프레임 격차
     private HitStatus hitStatus;                // 기술 적중후 상대 상태
 
-    private CleanHitInfo cleanHitInfo;          // 클린 히트 일때 프레임 정보
-
     private Set<MoveAttribute> moveAttributes;  // 기술 특수 효과
     private MoveCategory moveCategory;          // 기술 분류
 
@@ -80,7 +78,6 @@ public class Move {
             Integer hitFrameWake,
             Integer hitFrameEngager,
             HitStatus hitStatus,
-            CleanHitInfo cleanHitInfo,
             Set<MoveAttribute> moveAttributes,
             MoveCategory moveCategory
     ) {
@@ -101,7 +98,6 @@ public class Move {
         this.hitFrameWake = hitFrameWake;
         this.hitFrameEngager = hitFrameEngager;
         this.hitStatus = hitStatus;
-        this.cleanHitInfo = cleanHitInfo;
         this.moveAttributes = moveAttributes;
         this.moveCategory = moveCategory;
     }

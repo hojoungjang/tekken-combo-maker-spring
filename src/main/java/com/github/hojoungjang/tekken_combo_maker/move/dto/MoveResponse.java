@@ -37,8 +37,6 @@ public class MoveResponse {
     private final Integer hitFrameEngager;
     private final HitStatus hitStatus;
 
-    private final CleanHitInfoResponse cleanHitInfo;
-
     private final Set<MoveAttribute> moveAttributes;
     private final MoveCategory moveCategory;
 
@@ -62,7 +60,6 @@ public class MoveResponse {
             Integer hitFrameWake,
             Integer hitFrameEngager,
             HitStatus hitStatus,
-            CleanHitInfoResponse cleanHitInfo,
             Set<MoveAttribute> moveAttributes,
             MoveCategory moveCategory
     ) {
@@ -84,13 +81,11 @@ public class MoveResponse {
         this.hitFrameWake = hitFrameWake;
         this.hitFrameEngager = hitFrameEngager;
         this.hitStatus = hitStatus;
-        this.cleanHitInfo = cleanHitInfo;
         this.moveAttributes = moveAttributes;
         this.moveCategory = moveCategory;
     }
 
     public static MoveResponse fromEntity(Move move) {
-        CleanHitInfoResponse cleanHitInfoResponse = CleanHitInfoResponse.fromEntity(move.getCleanHitInfo());
 
         return MoveResponse.builder()
                 .id(move.getId())
@@ -111,7 +106,6 @@ public class MoveResponse {
                 .hitFrameWake(move.getHitFrameWake())
                 .hitFrameEngager(move.getHitFrameEngager())
                 .hitStatus(move.getHitStatus())
-                .cleanHitInfo(cleanHitInfoResponse)
                 .moveAttributes(move.getMoveAttributes())
                 .moveCategory(move.getMoveCategory())
                 .build();
