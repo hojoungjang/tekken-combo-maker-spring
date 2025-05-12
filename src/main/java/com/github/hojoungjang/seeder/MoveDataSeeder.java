@@ -34,11 +34,11 @@ public class MoveDataSeeder {
         PathMatchingResourcePatternResolver pathResolver = new PathMatchingResourcePatternResolver();
         Resource[] resources = pathResolver.getResources("/static/json/move/*.json");
         MappingJsonFactory jsonFactory = new MappingJsonFactory();
-        List<Move> moves = new ArrayList<>();
 
         for (Resource resource: resources) {
             InputStream is = resource.getInputStream();
             JsonParser parser = jsonFactory.createParser(is);
+            List<Move> moves = new ArrayList<>();
 
             while (parser.nextToken() != JsonToken.END_OBJECT) {
                 if ("moves".equals(parser.currentName())) {
