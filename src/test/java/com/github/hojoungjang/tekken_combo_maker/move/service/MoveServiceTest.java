@@ -54,15 +54,6 @@ class MoveServiceTest {
                         "command description 4",
                         "command description 5"
                 );
-
-        Assertions.assertThat(moves).first()
-                .extracting(MoveResponse::getCleanHitInfo)
-                .isEqualTo(CleanHitInfoResponse.builder()
-                        .damages(List.of(11))
-                        .hitFrame(15)
-                        .hitFrameWake(5)
-                        .hitStatus(HitStatus.DOWN)
-                        .build());
     }
 
     @DisplayName("캐릭터 ID 를 (characterId) 이용한 검색을 할 수 있다.")
@@ -165,8 +156,8 @@ class MoveServiceTest {
     @Test
     public void 검색_타점_판정() throws Exception {
         // given
-        MoveSearchRequest lowRequest = MoveSearchRequest.builder().hitLevel(HitLevel.LOW).build();
-        MoveSearchRequest highRequest = MoveSearchRequest.builder().hitLevel(HitLevel.HIGH).build();
+        MoveSearchRequest lowRequest = MoveSearchRequest.builder().hitLevels(List.of(HitLevel.LOW)).build();
+        MoveSearchRequest highRequest = MoveSearchRequest.builder().hitLevels(List.of(HitLevel.HIGH)).build();
         Pageable pageable = PageRequest.of(0, 10);
 
         // when

@@ -8,5 +8,6 @@ public enum MoveAttribute {
     HOMING,             // 호밍기
     TORNADO,            // 토내이도
     HEAT_ENGAGER,       // 히트 인게이져
-    RECOVERY_DELETE     // 리커버리 게이지 소멸
+    RECOVERY_DELETE,    // 리커버리 게이지 소멸
+    WALL_BREAK,         // 벽꽝
 }

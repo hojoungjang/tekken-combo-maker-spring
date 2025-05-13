@@ -36,13 +36,16 @@ public class Move {
 
     private Long characterId;       // character 테이블 primary key
     private String stanceName;      // stance 테이블의 스탠스 이름 (TODO: 스탠스이름과 캐릭터 ID 를 조합해 찾아야될수도 있음)
+    private List<String> moveDescriptions;
 
     private String name;
     private String command;
     private String commandDescription;
     private List<Integer> damages;
     private Integer hitCount;
+
     private boolean counter;
+    private Integer counterFrame;
 
     private Integer startupFrame;               // 발동 프레임
     private List<HitLevel> hitLevels;           // 타수별 타점 판정
@@ -52,8 +55,6 @@ public class Move {
     private Integer hitFrameWake;               // 상대가 낙법한 경우 프레임 격차
     private Integer hitFrameEngager;            // 인게이져 발동시 프레임 격차
     private HitStatus hitStatus;                // 기술 적중후 상대 상태
-
-    private CleanHitInfo cleanHitInfo;          // 클린 히트 일때 프레임 정보
 
     private Set<MoveAttribute> moveAttributes;  // 기술 특수 효과
     private MoveCategory moveCategory;          // 기술 분류
@@ -67,7 +68,9 @@ public class Move {
             String commandDescription,
             List<Integer> damages,
             Integer hitCount,
+            List<String> moveDescriptions,
             boolean counter,
+            Integer counterFrame,
             Integer startupFrame,
             List<HitLevel> hitLevels,
             Integer guardFrame,
@@ -75,7 +78,6 @@ public class Move {
             Integer hitFrameWake,
             Integer hitFrameEngager,
             HitStatus hitStatus,
-            CleanHitInfo cleanHitInfo,
             Set<MoveAttribute> moveAttributes,
             MoveCategory moveCategory
     ) {
@@ -86,7 +88,9 @@ public class Move {
         this.commandDescription = commandDescription;
         this.damages = damages;
         this.hitCount = hitCount;
+        this.moveDescriptions = moveDescriptions;
         this.counter = counter;
+        this.counterFrame = counterFrame;
         this.startupFrame = startupFrame;
         this.hitLevels = hitLevels;
         this.guardFrame = guardFrame;
@@ -94,7 +98,6 @@ public class Move {
         this.hitFrameWake = hitFrameWake;
         this.hitFrameEngager = hitFrameEngager;
         this.hitStatus = hitStatus;
-        this.cleanHitInfo = cleanHitInfo;
         this.moveAttributes = moveAttributes;
         this.moveCategory = moveCategory;
     }

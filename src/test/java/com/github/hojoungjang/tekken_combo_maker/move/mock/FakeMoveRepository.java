@@ -23,13 +23,6 @@ public class FakeMoveRepository implements IMoveRepository {
     private List<Move> moves = new ArrayList<>();
 
     private Move createTestData(String id) {
-        CleanHitInfo cleanHitInfo = CleanHitInfo.builder()
-                .damages(List.of(11))
-                .hitFrame(15)
-                .hitFrameWake(5)
-                .hitStatus(HitStatus.DOWN)
-                .build();
-
         Move move = Move.builder()
                 .characterId(1L)
                 .stanceName("test stance")
@@ -46,7 +39,6 @@ public class FakeMoveRepository implements IMoveRepository {
                 .hitFrameWake((-10))
                 .hitFrameEngager(17)
                 .hitStatus(HitStatus.DOWN)
-                .cleanHitInfo(cleanHitInfo)
                 .moveAttributes(Set.of(MoveAttribute.POWER_CRUSH))
                 .moveCategory(MoveCategory.NORMAL)
                 .build();
@@ -100,9 +92,9 @@ public class FakeMoveRepository implements IMoveRepository {
                     move -> move.getStartupFrame() <= request.getStartupFrameEnd()
             ).toList();
         }
-        if (request.getHitLevel() != null) {
+        if (request.getHitLevels() != null) {
             searchMoves = searchMoves.stream().filter(
-                    move -> move.getHitLevels().getFirst().equals(request.getHitLevel())
+                    move -> move.getHitLevels().containsAll(request.getHitLevels())
             ).toList();
         }
         if (request.getGuardFrameStart() != null) {

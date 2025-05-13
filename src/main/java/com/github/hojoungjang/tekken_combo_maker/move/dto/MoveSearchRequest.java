@@ -15,7 +15,7 @@ public class MoveSearchRequest {
     private final Boolean counter;
     private final Integer startupFrameStart;
     private final Integer startupFrameEnd;
-    private final HitLevel hitLevel;
+    private final List<HitLevel> hitLevels;
     private final Integer guardFrameStart;
     private final Integer guardFrameEnd;
     private final List<MoveAttribute> moveAttributes;
@@ -28,7 +28,7 @@ public class MoveSearchRequest {
             Boolean counter,
             Integer startupFrameStart,
             Integer startupFrameEnd,
-            HitLevel hitLevel,
+            List<HitLevel> hitLevels,
             Integer guardFrameStart,
             Integer guardFrameEnd,
             List<MoveAttribute> moveAttributes,
@@ -39,7 +39,7 @@ public class MoveSearchRequest {
         this.counter = counter;
         this.startupFrameStart = startupFrameStart;
         this.startupFrameEnd = startupFrameEnd;
-        this.hitLevel = hitLevel;
+        this.hitLevels = hitLevels;
         this.guardFrameStart = guardFrameStart;
         this.guardFrameEnd = guardFrameEnd;
         this.moveAttributes = moveAttributes;
