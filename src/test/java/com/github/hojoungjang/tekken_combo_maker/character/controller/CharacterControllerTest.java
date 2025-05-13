@@ -8,10 +8,8 @@ import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.mock.FakeComboService;
 import com.github.hojoungjang.tekken_combo_maker.common.exception.NotFoundException;
-import com.github.hojoungjang.tekken_combo_maker.move.dto.CleanHitInfoResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.mock.FakeMoveService;
-import com.github.hojoungjang.tekken_combo_maker.move.model.enums.HitStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -45,6 +43,7 @@ class CharacterControllerTest {
         Assertions.assertThat(response.getId()).isEqualTo(1L);
         Assertions.assertThat(response.getName()).isEqualTo("character 1");
         Assertions.assertThat(response.getFullName()).isEqualTo("character full 1");
+        Assertions.assertThat(response.getLabel()).isEqualTo("캐릭터 1");
         Assertions.assertThat(response.getDescription()).isEqualTo("description 1");
         Assertions.assertThat(response.getAvatarImageName()).isEqualTo("character-1.png");
     }
@@ -88,6 +87,9 @@ class CharacterControllerTest {
                 .extracting(CharacterResponse::getFullName)
                 .contains("character full 1", "character full 2", "character full 3");
         Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getLabel)
+                .contains("캐릭터 1", "캐릭터 2", "캐릭터 3");
+        Assertions.assertThat(characters)
                 .extracting(CharacterResponse::getAvatarImageName)
                 .contains("character-1.png", "character-2.png", "character-3.png");
     }
@@ -110,6 +112,7 @@ class CharacterControllerTest {
         Assertions.assertThat(character.getId()).isEqualTo(2L);
         Assertions.assertThat(character.getName()).isEqualTo("character 2");
         Assertions.assertThat(character.getFullName()).isEqualTo("character full 2");
+        Assertions.assertThat(character.getLabel()).isEqualTo("캐릭터 2");
         Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-2.png");
     }
 

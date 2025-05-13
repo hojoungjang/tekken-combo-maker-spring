@@ -21,10 +21,12 @@ public class FakeCharacterRepository implements ICharacterRepository {
         for (long i=1; i < 4; i++) {
             String name = "character " + i;
             String fullName = "character full " + i;
+            String label = "캐릭터 " + i;
             String description = "description " + i;
             Character character = Character.builder()
                     .name(name)
                     .fullName(fullName)
+                    .label(label)
                     .description(description)
                     .build();
             ReflectionTestUtils.setField(character, "id", i);
