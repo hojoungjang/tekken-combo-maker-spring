@@ -13,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Arrays;
 import java.util.List;
 
 class CharacterServiceTest {
@@ -33,6 +32,7 @@ class CharacterServiceTest {
         Assertions.assertThat(character.getId()).isEqualTo(1);
         Assertions.assertThat(character.getName()).isEqualTo("character 1");
         Assertions.assertThat(character.getFullName()).isEqualTo("character full 1");
+        Assertions.assertThat(character.getLabel()).isEqualTo("캐릭터 1");
         Assertions.assertThat(character.getDescription()).isEqualTo("description 1");
         Assertions.assertThat(character.getAvatarImageName()).isEqualTo("character-1.png");
     }
@@ -75,6 +75,9 @@ class CharacterServiceTest {
         Assertions.assertThat(characters)
                 .extracting(CharacterResponse::getFullName)
                 .contains("character full 1", "character full 2", "character full 3");
+        Assertions.assertThat(characters)
+                .extracting(CharacterResponse::getLabel)
+                .contains("캐릭터 1", "캐릭터 2", "캐릭터 3");
         Assertions.assertThat(characters)
                 .extracting(CharacterResponse::getAvatarImageName)
                 .contains("character-1.png", "character-2.png", "character-3.png");

@@ -24,12 +24,15 @@ public class Character extends AuditFields {
 
     private String fullName;
 
+    private String label;
+
     private String description;
 
     @Builder
-    public Character(String name, String fullName, String description) {
+    public Character(String name, String fullName, String label, String description) {
         this.name = name;
         this.fullName = fullName;
+        this.label = label;
         this.description = description;
     }
 
