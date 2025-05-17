@@ -22,8 +22,14 @@ jobs:
           distribution: 'corretto'
           java-version: '21'
 
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+
+      - name: Build with gradle
+        run: ./gradlew clean build
+
       - name: Generate deployment package
-        run: zip -r deployment.zip . -x '*.git*'
+        run: zip deployment.zip build/libs/tekken-combo-maker.jar Procfile
 
       - name: Get version name from the tag
         id: version_tag
@@ -33,7 +39,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ vars.AWS_REGION }}
-          role-to-assume: ${{ vars.AWS_BEANSTALK_ROLE_ARN }}
+          role-to-assume: ${{ secrets.AWS_BEANSTALK_ROLE_ARN }}
 
       - name: Beanstalk Deployment
         uses: einaregilsson/beanstalk-deploy@v22
