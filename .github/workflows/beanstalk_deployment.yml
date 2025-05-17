@@ -2,8 +2,7 @@ name: Deployment to AWS Beanstalk
 
 on:
   pull_request:
-    types:
-      - opened
+    branches: [ main ]
   push:
     tags: [ "v*" ]
     branches: [ main ]
