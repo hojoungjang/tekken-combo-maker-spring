@@ -1,8 +1,6 @@
 name: Deployment to AWS Beanstalk
 
 on:
-  pull_request:
-    branches: [ main ]
   push:
     tags: [ "v*" ]
     branches: [ main ]
@@ -15,34 +13,21 @@ jobs:
       id-token: write
 
     steps:
-#      - uses: actions/checkout@v4
-#
-#      - uses: actions/setup-java@v4
-#        with:
-#          distribution: 'corretto'
-#          java-version: '21'
-#
-#      - name: Grant execute permission to gradlew
-#        run: chmod +x gradlew
-#
-#      - name: Build with gradle
-#        run: ./gradlew clean build
-#
-#      - name: Get current time
-#        uses: josStorer/get-current-time@v2
-#        id: current-time
-#        with:
-#          format: YYYY-MM-DDTHH-mm-ss
-#          utcOffset: "+09:00"
-#
-#      - name: Set artifact
-#        run: echo "artifact=$(ls ./build/libs)" >> $GITHUB_ENV
+      - name: Checkout repository source code
+        uses: actions/checkout@v4
 
-#      - name: Print Beanstalk deployment variables
-#        run: |
-#          echo "Deployment package: ./build/libs/${{env.artifact}}"
-#          echo "AWS Access Key: ${{ secrets.AWS_ACCESS_KEY_ID }}"
-#          echo "AWS Secret Key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+
+      - name: Generate deployment package
+        run: zip -r deployment.zip . -x '*.git*'
+
+      - name: Get version name from the tag
+        id: version_tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -50,20 +35,12 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_BEANSTALK_ROLE_ARN }}
 
-      - name: Check credentials
-        run: |
-          echo "Access Key ID: $AWS_ACCESS_KEY_ID"
-          echo "Secret Access Key: $AWS_SECRET_ACCESS_KEY"
-          echo "Session Token: $AWS_SESSION_TOKEN"
-          echo "Region: $AWS_REGION"
-
-#      - name: Beanstalk Deployment
-#        uses: einaregilsson/beanstalk-deploy@v22
-#        with:
-#          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          application_name: tekken-combo-maker
-#          environment_name: tekken-combo-maker-env
-#          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
-#          region: ap-northeast-2
-#          deployment_package: ./build/libs/${{env.artifact}}
+      - name: Beanstalk Deployment
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_session_token: $AWS_SESSION_TOKEN
+          application_name: tekken-combo-maker
+          environment_name: tekken-combo-maker-dev
+          version_label: ${{ steps.version_tag.outputs.tag }}
+          region: ${{ vars.AWS_REGION }}
+          deployment_package: deployment.zip
