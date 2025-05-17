@@ -2,6 +2,7 @@ name: Deployment to AWS Beanstalk
 
 on:
   push:
+    tags: [ "v*" ]
     branches: [ main ]
 
 jobs:
@@ -14,7 +15,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
-          java-version: '17'
+          java-version: '21'
 
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
@@ -32,19 +33,19 @@ jobs:
       - name: Set artifact
         run: echo "artifact=$(ls ./build/libs)" >> $GITHUB_ENV
 
-      - name: Print Beanstalk deployment variables
-        run: |
-          echo "Deployment package: ./build/libs/${{env.artifact}}"
-          echo "AWS Access Key: ${{ secrets.AWS_ACCESS_KEY_ID }}"
-          echo "AWS Secret Key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+#      - name: Print Beanstalk deployment variables
+#        run: |
+#          echo "Deployment package: ./build/libs/${{env.artifact}}"
+#          echo "AWS Access Key: ${{ secrets.AWS_ACCESS_KEY_ID }}"
+#          echo "AWS Secret Key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}"
 
-      # - name: Beanstalk Deployment
-      #   uses: einaregilsson/beanstalk-deploy@v22
-      #   with:
-      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     application_name: tekken-combo-maker
-      #     environment_name: tekken-combo-maker-env
-      #     version_label: github-action-${{steps.current-time.outputs.formattedTime}}
-      #     region: ap-northeast-2
-      #     deployment_package: ./build/libs/${{env.artifact}}
+      - name: Beanstalk Deployment
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: tekken-combo-maker
+          environment_name: tekken-combo-maker-env
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          region: ap-northeast-2
+          deployment_package: ./build/libs/${{env.artifact}}
