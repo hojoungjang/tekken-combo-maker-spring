@@ -47,6 +47,7 @@ jobs:
       - name: Beanstalk Deployment
         uses: einaregilsson/beanstalk-deploy@v22
         with:
+          aws_access_key: $AWS_ACCESS_KEY_ID
           aws_session_token: $AWS_SESSION_TOKEN
           application_name: tekken-combo-maker
           environment_name: tekken-combo-maker-dev
