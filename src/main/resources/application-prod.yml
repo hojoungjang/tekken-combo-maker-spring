@@ -23,6 +23,11 @@ spring:
       - classpath:db/migration
       - classpath:db/seed
 
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER_URI}
+      database: ${MONGODB_DATABASE}
+
   sql:
     init:
       mode: never

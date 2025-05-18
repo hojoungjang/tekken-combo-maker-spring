@@ -5,8 +5,3 @@ spring:
   output:
     ansi:
       enabled: always
-
-  data:
-    mongodb:
-      uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER_URI}
-      database: ${MONGODB_DATABASE}
