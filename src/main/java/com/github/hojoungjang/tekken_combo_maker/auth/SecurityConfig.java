@@ -5,6 +5,7 @@ import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.CustomOAuth2UserSer
 import com.github.hojoungjang.tekken_combo_maker.member.repository.MemberRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -22,6 +23,13 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 @Configuration
 public class SecurityConfig {
+
+    @Bean
+    @Profile("dev")
+    public WebSecurityCustomizer configure() {
+        return (web) -> web.ignoring()
+                .requestMatchers(toH2Console());
+    }
 
     @Bean
     public SecurityFilterChain filterChain(
