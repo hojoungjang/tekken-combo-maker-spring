@@ -1,9 +1,12 @@
 name: Deployment to AWS Beanstalk
 
 on:
-  push:
-    tags: [ "v*" ]
-    branches: [ main ]
+  pull_request:
+    branches:
+      - main
+#  push:
+#    tags: [ "v*" ]
+#    branches: [ main ]
 
 jobs:
   build:
@@ -31,9 +34,9 @@ jobs:
       - name: Generate deployment package
         run: zip deployment.zip build/libs/tekken-combo-maker.jar Procfile
 
-      - name: Get version name from the tag
-        id: version_tag
-        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+#      - name: Get version name from the tag
+#        id: version_tag
+#        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -47,6 +50,7 @@ jobs:
           aws_session_token: $AWS_SESSION_TOKEN
           application_name: tekken-combo-maker
           environment_name: tekken-combo-maker-dev
-          version_label: ${{ steps.version_tag.outputs.tag }}
+#          version_label: ${{ steps.version_tag.outputs.tag }}
+          version_label: v0.1.0
           region: ${{ vars.AWS_REGION }}
           deployment_package: deployment.zip
