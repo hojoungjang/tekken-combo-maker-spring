@@ -40,16 +40,18 @@ jobs:
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
+        id: aws_cred
         with:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ secrets.AWS_BEANSTALK_ROLE_ARN }}
+          output-credentials: true
 
       - name: Beanstalk Deployment
         uses: einaregilsson/beanstalk-deploy@v22
         with:
-          aws_access_key: $AWS_ACCESS_KEY_ID
-          aws_secret_key: $AWS_SECRET_ACCESS_KEY
-          aws_session_token: $AWS_SESSION_TOKEN
+          aws_access_key: ${{ steps.aws_cred.outputs.aws-access-key-id }}
+          aws_secret_key: ${{ steps.aws_cred.outputs.aws-secret-access-key }}
+          aws_session_token: ${{ steps.aws_cred.outputs.aws-session-token }}
           application_name: tekken-combo-maker
           environment_name: tekken-combo-maker-dev
 #          version_label: ${{ steps.version_tag.outputs.tag }}
