@@ -22,7 +22,7 @@ public class AuthenticationTest {
     @Autowired
     private MockMvc mvc;
 
-    @DisplayName("유효하지 사용자 로그인 정보를 이용해 로그인 할 수 없다.")
+    @DisplayName("유효하지 않은 사용자 로그인 정보를 이용해 로그인 할 수 없다.")
     @Test
     public void loginWithInvalidUser() throws Exception {
         mvc.perform(formLogin().user("testuser").password("password"))

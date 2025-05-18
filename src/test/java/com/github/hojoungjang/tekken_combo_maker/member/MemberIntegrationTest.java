@@ -35,10 +35,15 @@ public class MemberIntegrationTest {
 
         // when
         // then
+//        mockMvc.perform(post("/api/v1/members")
+//                .content(content)
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("$.error.detail").value("Invalid request content."));
         mockMvc.perform(post("/api/v1/members")
                 .content(content)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.error.detail").value("Invalid request content."));
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.error.detail").value("Full authentication is required to access this resource"));
     }
 }

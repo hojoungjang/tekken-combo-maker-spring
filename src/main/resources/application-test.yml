@@ -20,6 +20,9 @@ spring:
     console:
       enabled: true
 
+  flyway:
+    enabled: false
+
   sql:
     init:
       mode: never
