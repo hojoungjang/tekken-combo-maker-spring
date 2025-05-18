@@ -3,9 +3,9 @@ package com.github.hojoungjang.tekken_combo_maker.auth;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.hojoungjang.tekken_combo_maker.auth.oauth2.CustomOAuth2UserService;
 import com.github.hojoungjang.tekken_combo_maker.member.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -21,34 +21,17 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 @Configuration
 public class SecurityConfig {
 
-    @Value("${WEB_CLIENT_APP_URL}")
-    private String webClientOrigin;
-
-    // TODO: Remove in production
     @Bean
+    @Profile("dev")
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring()
                 .requestMatchers(toH2Console());
-    }
-
-    @Bean
-    UrlBasedCorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(webClientOrigin));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "PATCH", "DELETE"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
     }
 
     @Bean
@@ -63,25 +46,15 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(c -> c
                 .requestMatchers("/swagger", "/swagger-ui/**", "/api-docs/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/v1/members").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/characters/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/moves").permitAll()
-                .requestMatchers("/img/character/**").permitAll()
-                .anyRequest().authenticated());
+                .requestMatchers("/api/v1/posts").denyAll()
+                .requestMatchers("/api/v1/members").denyAll()
+                .requestMatchers("/api/v1/characters/{id}/combos").denyAll()
+                .requestMatchers("/api/v1/characters/{id}/moves").denyAll()
+        );
 
         http.httpBasic(HttpBasicConfigurer::disable);
-
-        http.formLogin(c -> c
-                        .successHandler(loginSuccessHandler)
-                        .failureHandler(loginFailureHandler)
-                        .loginProcessingUrl("/api/v1/auth/login"));
-
-        http.oauth2Login(c -> c
-                .userInfoEndpoint(config -> config
-                        .userService(customOAuth2UserService))
-                .successHandler(loginSuccessHandler)
-                .failureHandler(loginFailureHandler)
-        );
 
         http.exceptionHandling(c -> c
                 .authenticationEntryPoint(restLoginAuthenticationEntryPoint));    // TODO: defaultAuthenticationEntryPointFor() 사용 확인하기
@@ -137,5 +110,4 @@ public class SecurityConfig {
     ) {
         return new CustomOAuth2UserService(passwordEncoder, memberRepository);
     }
-
 }
