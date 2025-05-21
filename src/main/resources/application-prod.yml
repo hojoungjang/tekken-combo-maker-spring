@@ -58,3 +58,7 @@ management:
   endpoint:
     health:
       access: read-only
+
+server:
+  error:
+    include-stacktrace: never
