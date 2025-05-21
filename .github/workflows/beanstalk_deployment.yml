@@ -1,11 +1,11 @@
 name: Deployment to AWS Beanstalk
 
 on:
-  pull_request:
-    branches: [ main ]
-#  push:
-#    tags: [ "v*" ]
+#  pull_request:
 #    branches: [ main ]
+  push:
+    tags: [ "v*" ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -19,20 +19,20 @@ jobs:
       - name: Checkout repository source code
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'corretto'
-          java-version: '21'
-
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
-
-      - name: Build with gradle
-        run: ./gradlew clean build
+#      - name: Set up Java
+#        uses: actions/setup-java@v4
+#        with:
+#          distribution: 'corretto'
+#          java-version: '21'
+#
+#      - name: Grant execute permission to gradlew
+#        run: chmod +x gradlew
+#
+#      - name: Build with gradle
+#        run: ./gradlew clean build
 
       - name: Generate deployment package
-        run: zip deployment.zip build/libs/tekken-combo-maker.jar Procfile
+        run: zip -r deployment.zip .
 
 #      - name: Get version name from the tag
 #        id: version_tag
@@ -58,3 +58,4 @@ jobs:
           version_label: v0.1.0
           region: ${{ vars.AWS_REGION }}
           deployment_package: deployment.zip
+          wait_for_deployment: false
