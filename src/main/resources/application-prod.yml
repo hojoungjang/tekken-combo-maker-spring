@@ -58,6 +58,9 @@ management:
   endpoint:
     health:
       access: read-only
+  health:
+    ssl:
+      enabled: false
 
 server:
   error:
