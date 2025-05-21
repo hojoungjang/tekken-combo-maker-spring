@@ -43,3 +43,25 @@ springdoc:
     enabled: false
   swagger-ui:
     enabled: false
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: "*"
+    web:
+      base-path: "/api/actuator"
+      exposure:
+        include: "health"
+  endpoint:
+    health:
+      access: read-only
+      show-details: never
+      show-components: never
+  health:
+    ssl:
+      enabled: false
+
+server:
+  error:
+    include-stacktrace: never
