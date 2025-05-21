@@ -1,5 +1,7 @@
 server:
   port: 5000
+  error:
+    include-stacktrace: never
 
 spring:
 #  config:
@@ -69,7 +71,3 @@ management:
   health:
     ssl:
       enabled: false
-
-server:
-  error:
-    include-stacktrace: never
