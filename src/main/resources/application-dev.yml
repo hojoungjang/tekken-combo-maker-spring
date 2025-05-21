@@ -46,3 +46,18 @@ springdoc:
 
   cache:
     disabled: true
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: "*"
+    web:
+      base-path: "/api/actuator"
+      exposure:
+        include: "health"
+    access:
+      default: none
+  endpoint:
+    health:
+      access: read-only

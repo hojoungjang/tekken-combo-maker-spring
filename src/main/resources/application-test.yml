@@ -26,3 +26,12 @@ spring:
   sql:
     init:
       mode: never
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: "*"
+    web:
+      exposure:
+        exclude: "*"
