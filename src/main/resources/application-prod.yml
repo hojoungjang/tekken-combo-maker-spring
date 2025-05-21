@@ -58,6 +58,8 @@ management:
   endpoint:
     health:
       access: read-only
+      show-details: never
+      show-components: never
   health:
     ssl:
       enabled: false
