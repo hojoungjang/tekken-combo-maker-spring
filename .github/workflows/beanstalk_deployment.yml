@@ -1,0 +1,58 @@
+name: Deployment to AWS Beanstalk
+
+on:
+  push:
+    tags: [ "v*" ]
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout repository source code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+
+      - name: Build with gradle
+        run: ./gradlew clean build
+
+      - name: Generate deployment package
+        run: zip deployment.zip build/libs/tekken-combo-maker.jar Procfile
+
+      - name: Get version name from the tag
+        id: version_tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        id: aws_cred
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_BEANSTALK_ROLE_ARN }}
+          output-credentials: true
+
+      - name: Beanstalk Deployment
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ steps.aws_cred.outputs.aws-access-key-id }}
+          aws_secret_key: ${{ steps.aws_cred.outputs.aws-secret-access-key }}
+          aws_session_token: ${{ steps.aws_cred.outputs.aws-session-token }}
+          application_name: tekken-combo-maker
+          environment_name: tekken-combo-maker-dev
+          version_label: ${{ steps.version_tag.outputs.tag }}
+          region: ${{ vars.AWS_REGION }}
+          deployment_package: deployment.zip
+          wait_for_deployment: false
