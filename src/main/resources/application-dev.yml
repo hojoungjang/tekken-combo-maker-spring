@@ -1,3 +1,7 @@
+application:
+  env:
+    rest-client-auth-key: ${REST_CLIENT_AUTH_KEY}
+
 spring:
   config:
     import: ./env/.env.dev[.properties]
