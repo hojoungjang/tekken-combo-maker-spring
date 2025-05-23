@@ -4,8 +4,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.crypto.Mac;
@@ -15,13 +13,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.HexFormat;
 import java.util.stream.Collectors;
 
-@Component
 public class InternalClientAuthFilter extends OncePerRequestFilter {
 
-    @Value("${application.env.rest-client-auth-key}")
-    private String authKey;
+    private final String authKey;
     private final String hmacSignatureHeader = "Hmac-Signature";
     private final String hmacTimestampHeader = "Hmac-Timestamp";
+
+    public InternalClientAuthFilter(String authKey) {
+        this.authKey = authKey;
+    }
 
     @Override
     protected void doFilterInternal(
@@ -70,5 +70,10 @@ public class InternalClientAuthFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             throw new RuntimeException("Failed to generate HMAC", e);
         }
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        return request.getRequestURI().equals("/api/actuator/health");
     }
 }
