@@ -45,6 +45,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);      // TODO: 제대로 설정해주기
 
         http.authorizeHttpRequests(c -> c
+                .requestMatchers("/error").permitAll()
                 .requestMatchers("/api/actuator/health").permitAll()
                 .requestMatchers("/swagger", "/swagger-ui/**", "/api-docs/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/characters/**").permitAll()
