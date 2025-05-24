@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("!test")
+@Profile("prod")
 public class FilterConfig {
 
     @Value("${application.env.rest-client-auth-key}")
