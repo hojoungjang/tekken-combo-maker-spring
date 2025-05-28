@@ -1,8 +1,39 @@
 # Tekken Combo Maker Spring
-개인적으로 진행하고 있는 웹 애플리케이션 프로젝트의 스프링 백엔드 애플리케이션 입니다.
+<!--
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/a863d24f-8e6b-4b57-8887-34ba9de8a322" width="300"/>
+</div>
+-->
 
-철권은 3D 격투게임으로 각 플레이어가 타격 기술을 사용하여 상대방을 쓰러트리는 게임입니다.
+철권8 기반 게임 데이터 플랫폼 프로젝트의 웹 백엔드 애플리케이션 입니다.
 
-이 프로젝트를 통해 철권 8 의 기술데이터를 이용해 젼략적 플레이에 필요한 정보 및 프레임 데이터를 제공하고 공유할 수 있는 커뮤니티를 만들고자 합니다.
+기능 구현은 작은 단위로 분리하여 pull request 형태로 관리하였으며, [Closed Pull Requests](https://github.com/hojoungjang/tekken-combo-maker-spring/pulls?q=is%3Apr+is%3Aclosed) 목록에서 관련 논의나 코드를 참고하는데 도움이 될 수 있습니다.
 
-_**각 pull request 를 열어보시면 작성하였던 코드와 설명을 더 보실 수 있습니다.**_
+또한 [포트폴리오 문서](https://www.notion.so/GG-1ff34f2b68ad8042bfdae4a5ec815fbb)에도 프로젝트 관련 작업을 상세히 기술하였습니다. 
+
+## 기술 스택
+스프링 프레임워크 기반 애플리케이션
+- **Spring Framework**
+  - Spring Boot
+  - Spring Security
+  - Spring Data JPA (JPA, Hibernate)
+  - Spring Data Mongo
+  - Spring Actuator
+
+- **Database and Tools**
+  - MySQL
+  - MongoDB
+  - QueryDSL
+  - Flyway
+
+- **Test**
+  - JUnit
+
+- **AWS**
+  - Elastic Beanstalk
+  - EC2
+  - RDS
+
+- **기타**
+  - Lombok
+  - Springdoc (Swagger API 문서)
