@@ -5,6 +5,7 @@ import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Characte
 import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRepository;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllResponse;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
@@ -36,10 +37,9 @@ public class FakeComboService implements IComboService {
     }
 
     @Override
-    public List<Long> saveAll(ComboCreateAllRequest request) {
+    public ComboCreateAllResponse saveAll(Long characterId, ComboCreateAllRequest request) {
         List<ComboCreateRequest> comboPayloads = request.getCombos();
         List<Combo> combos = comboPayloads.stream().map(comboRequest -> {
-            Long characterId = comboRequest.getCharacterId();
             Character character = characterRepository.findById(characterId)
                     .orElseThrow(() -> NotFoundException.supplier(
                             String.format("Character not found with ID: %d", characterId)
@@ -48,10 +48,12 @@ public class FakeComboService implements IComboService {
                     .character(character)
                     .name(comboRequest.getName())
                     .damage(comboRequest.getDamage())
-                    .hitCount(comboRequest.getHitCount())
+//                    .hitCount(comboRequest.getHitCount())
                     .build();
         }).toList();
         List<Combo> savedCombos = comboRepository.saveAll(combos);
-        return savedCombos.stream().map(Combo::getId).toList();
+        return ComboCreateAllResponse.builder()
+                .comboIds(savedCombos.stream().map(Combo::getId).toList())
+                .build();
     }
 }

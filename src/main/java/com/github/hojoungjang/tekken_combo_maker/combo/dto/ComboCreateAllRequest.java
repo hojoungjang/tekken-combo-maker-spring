@@ -9,6 +9,8 @@ import java.util.List;
 @Getter
 public class ComboCreateAllRequest {
 
+    // TODO: characterId can be added here if needed
+    // private final Long characterId;
     private List<ComboCreateRequest> combos = new ArrayList<>();
 
     @Builder

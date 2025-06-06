@@ -4,6 +4,7 @@ import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllResponse;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.move.controller.IMoveService;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
@@ -42,9 +43,11 @@ public class CharacterController implements SwaggerCharacterController {
     }
 
     @PostMapping("/{id}/combos")
-    public List<Long> createAllCombo(@RequestBody ComboCreateAllRequest request) {
-        // TODO: Add base response format and change this response format
-        return comboService.saveAll(request);
+    public ComboCreateAllResponse createAllCombo(
+            @PathVariable("id") Long id,
+            @RequestBody ComboCreateAllRequest request
+    ) {
+        return comboService.saveAll(id, request);
     }
 
     @GetMapping("/{id}/moves")

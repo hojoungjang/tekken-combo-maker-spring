@@ -4,6 +4,7 @@ import com.github.hojoungjang.tekken_combo_maker.character.model.entity.Characte
 import com.github.hojoungjang.tekken_combo_maker.character.service.ICharacterRepository;
 import com.github.hojoungjang.tekken_combo_maker.combo.controller.IComboService;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllResponse;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.combo.model.entity.Combo;
@@ -36,23 +37,30 @@ public class ComboService implements IComboService {
     }
 
     @Override
-    public List<Long> saveAll(ComboCreateAllRequest request) {
+    public ComboCreateAllResponse saveAll(
+            Long characterId,
+            ComboCreateAllRequest request
+    ) {
         List<ComboCreateRequest> comboPayloads = request.getCombos();
+
+        Character character = characterRepository.findById(characterId)
+                .orElseThrow(() -> NotFoundException.supplier(
+                        String.format("Character not found with ID: %d", characterId)
+                ));
+
         List<Combo> combos = comboPayloads.stream().map(comboRequest -> {
-            Long characterId = comboRequest.getCharacterId();
-            // TODO: optimize DB query
-            Character character = characterRepository.findById(characterId)
-                    .orElseThrow(() -> NotFoundException.supplier(
-                            String.format("Character not found with ID: %d", characterId)
-                    ));
             return Combo.builder()
                     .character(character)
                     .name(comboRequest.getName())
+                    .description(comboRequest.getDescription())
+                    .moveIds(comboRequest.getMoveIds())
                     .damage(comboRequest.getDamage())
                     .hitCount(comboRequest.getHitCount())
                     .build();
         }).toList();
         List<Combo> savedCombos = comboRepository.saveAll(combos);
-        return savedCombos.stream().map(Combo::getId).toList();
+        return ComboCreateAllResponse.builder()
+                .comboIds(savedCombos.stream().map(Combo::getId).toList())
+                .build();
     }
 }
