@@ -13,5 +13,5 @@ public interface IComboService {
 
     Page<ComboDto> findAllByCharacter(Long characterId, Pageable pageable);
     Page<ComboDto> findAllByPost(Long postId, Pageable pageable);
-    List<Long> saveAll(ComboCreateAllRequest request);
+    List<Long> saveAll(Long characterId, ComboCreateAllRequest request);
 }

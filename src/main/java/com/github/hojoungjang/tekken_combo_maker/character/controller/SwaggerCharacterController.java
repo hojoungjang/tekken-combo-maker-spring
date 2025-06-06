@@ -55,7 +55,10 @@ public interface SwaggerCharacterController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "캐릭터 콤보 성공적으로 생성")
     })
-    List<Long> createAllCombo(@RequestBody(description = "콤보 데이터") ComboCreateAllRequest request);
+    List<Long> createAllCombo(
+            @Parameter(description = "캐릭터 ID", example = "1") Long id,
+            @RequestBody(description = "콤보 데이터") ComboCreateAllRequest request
+    );
 
     @Operation(summary = "캐릭터 기술 목록 조회", description = "캐릭터의 전체 기술을 조회합니다.")
     @ApiResponses({

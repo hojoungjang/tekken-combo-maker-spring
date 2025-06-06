@@ -42,9 +42,12 @@ public class CharacterController implements SwaggerCharacterController {
     }
 
     @PostMapping("/{id}/combos")
-    public List<Long> createAllCombo(@RequestBody ComboCreateAllRequest request) {
+    public List<Long> createAllCombo(
+            @PathVariable("id") Long id,
+            @RequestBody ComboCreateAllRequest request
+    ) {
         // TODO: Add base response format and change this response format
-        return comboService.saveAll(request);
+        return comboService.saveAll(id, request);
     }
 
     @GetMapping("/{id}/moves")

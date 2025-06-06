@@ -85,10 +85,10 @@ class ComboServiceTest {
         List<ComboCreateRequest> comboPayloads = new ArrayList<>();
         for (long id=1; id <= 3; id++) {
             ComboCreateRequest comboPayload = ComboCreateRequest.builder()
-                    .characterId(characterId)
                     .name(String.format("new combo %d", id))
+                    .description(String.format("국민 콤보 (필드)"))
+                    .moveIds(List.of("move-id-1", "move-id-2", "move-id-3"))
                     .damage(30)
-                    .hitCount(2)
                     .build();
             comboPayloads.add(comboPayload);
         }
@@ -97,7 +97,7 @@ class ComboServiceTest {
                 .build();
 
         // when
-        comboService.saveAll(request);
+        comboService.saveAll(characterId, request);
 
         // then
         Page<ComboDto> characterComboPage = comboService.findAllByCharacter(characterId, PageRequest.of(0, 10));
@@ -116,10 +116,10 @@ class ComboServiceTest {
         List<ComboCreateRequest> comboPayloads = new ArrayList<>();
         for (long id=1; id <= 3; id++) {
             ComboCreateRequest comboPayload = ComboCreateRequest.builder()
-                    .characterId(characterId)
                     .name(String.format("new combo %d", id))
+                    .description(String.format("국민 콤보 (필드)"))
+                    .moveIds(List.of("move-id-1", "move-id-2", "move-id-3"))
                     .damage(30)
-                    .hitCount(2)
                     .build();
             comboPayloads.add(comboPayload);
         }
@@ -131,7 +131,7 @@ class ComboServiceTest {
         // then
         Assertions.assertThatExceptionOfType(NotFoundException.class)
                 .isThrownBy(() -> {
-                        comboService.saveAll(request);
+                        comboService.saveAll(characterId, request);
                 })
                 .withMessageContaining("Character not found with ID: 10");
 

@@ -36,10 +36,9 @@ public class FakeComboService implements IComboService {
     }
 
     @Override
-    public List<Long> saveAll(ComboCreateAllRequest request) {
+    public List<Long> saveAll(Long characterId, ComboCreateAllRequest request) {
         List<ComboCreateRequest> comboPayloads = request.getCombos();
         List<Combo> combos = comboPayloads.stream().map(comboRequest -> {
-            Long characterId = comboRequest.getCharacterId();
             Character character = characterRepository.findById(characterId)
                     .orElseThrow(() -> NotFoundException.supplier(
                             String.format("Character not found with ID: %d", characterId)
@@ -48,7 +47,7 @@ public class FakeComboService implements IComboService {
                     .character(character)
                     .name(comboRequest.getName())
                     .damage(comboRequest.getDamage())
-                    .hitCount(comboRequest.getHitCount())
+//                    .hitCount(comboRequest.getHitCount())
                     .build();
         }).toList();
         List<Combo> savedCombos = comboRepository.saveAll(combos);
