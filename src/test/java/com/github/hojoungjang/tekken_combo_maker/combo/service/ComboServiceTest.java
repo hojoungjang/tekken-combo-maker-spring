@@ -89,6 +89,7 @@ class ComboServiceTest {
                     .description(String.format("국민 콤보 (필드)"))
                     .moveIds(List.of("move-id-1", "move-id-2", "move-id-3"))
                     .damage(30)
+                    .hitCount(7)
                     .build();
             comboPayloads.add(comboPayload);
         }

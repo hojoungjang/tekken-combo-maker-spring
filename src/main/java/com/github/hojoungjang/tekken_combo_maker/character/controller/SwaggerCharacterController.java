@@ -3,6 +3,7 @@ package com.github.hojoungjang.tekken_combo_maker.character.controller;
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterResponse;
 import com.github.hojoungjang.tekken_combo_maker.character.dto.CharacterSearchRequest;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllRequest;
+import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboCreateAllResponse;
 import com.github.hojoungjang.tekken_combo_maker.combo.dto.ComboDto;
 import com.github.hojoungjang.tekken_combo_maker.common.dto.BaseErrorResponse;
 import com.github.hojoungjang.tekken_combo_maker.move.dto.MoveResponse;
@@ -55,7 +56,7 @@ public interface SwaggerCharacterController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "캐릭터 콤보 성공적으로 생성")
     })
-    List<Long> createAllCombo(
+    ComboCreateAllResponse createAllCombo(
             @Parameter(description = "캐릭터 ID", example = "1") Long id,
             @RequestBody(description = "콤보 데이터") ComboCreateAllRequest request
     );

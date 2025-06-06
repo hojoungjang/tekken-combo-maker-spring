@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * 콤보 엔티티 클래스
  * 콤보는 보통 둘 이상의 기술 (Move) 의 조합
@@ -31,14 +33,26 @@ public class Combo extends AuditFields {
     private Post post;
 
     private String name;
+    private String description;
+    private List<String> moveIds;
     private int damage;
     private int hitCount;
 
     @Builder
-    public Combo(Character character, Post post, String name, int damage, int hitCount) {
+    public Combo(
+            Character character,
+            Post post,
+            String name,
+            String description,
+            List<String> moveIds,
+            int damage,
+            int hitCount
+    ) {
         this.character = character;
         this.post = post;
         this.name = name;
+        this.description = description;
+        this.moveIds = moveIds;
         this.damage = damage;
         this.hitCount = hitCount;
     }
